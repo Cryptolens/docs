@@ -55,17 +55,20 @@ var result = Key.Activate(token: auth, parameters: new ActivateModel()
     MachineCode = Helpers.GetMachineCode()
 });
 
-if (result == null || result.Result == ResultType.Error || 
-    result.LicenseKey.HasValidSignature(RSAPubKey).IsValid())
+if (result == null || result.Result == ResultType.Error ||
+    !result.LicenseKey.HasValidSignature(RSAPubKey).IsValid())
 {
     // an error occurred or the key is invalid or it cannot be activated
     // (eg. the limit of activated devices was achieved)
     Console.WriteLine("The license does not work.");
 }
+else
+{
+    // everything went fine if we are here!
+    Console.WriteLine("The license is valid!");
+}
 
-// everything went fine if we are here!
-
-Console.WriteLine("The license is valid!");
+Console.ReadLine();
 ```
 
 ### Key verification in VB.NET
@@ -84,17 +87,21 @@ Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
                           })
 
 If result Is Nothing OrElse result.Result = ResultType.[Error] OrElse
-    result.LicenseKey.HasValidSignature(RSAPubKey).IsValid Then
+    Not result.LicenseKey.HasValidSignature(RSAPubKey).IsValid Then
     ' an error occurred or the key is invalid or it cannot be activated
     ' (eg. the limit of activated devices was achieved)
     Console.WriteLine("The license does not work.")
-End If
 
-'everything went fine if we are here!
-Console.WriteLine("The license is valid!")
+Else
+    ' everything went fine if we are here!
+    Console.WriteLine("The license is valid!")
+End If
 ```
 
 ## Common errors
+
+### .NET Core issues
+The `Helpers.GetMachineCode()` method is currently not supported on the .NET Core. **MachineCode** can be any value that allows you to uniquely identify an end user (eg. their computer).
 
 ### Namespaces missing
 This means that [SKGLExtesion](/web-api/skm-client-api) library (aka SKM Client API) was not included into the project. It can be easily added using **NuGet packager manager**, which you can find by right clicking on the project:
