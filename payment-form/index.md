@@ -27,7 +27,7 @@ For a Payment Form to work, we need a Payment Processor that will process paymen
 When a transaction is complete, it's important to tell the <a href="/basics/webapi">Web API</a> that you want to generate a new key that should be sent to the customer upon successful transaction. You can send a request to any other web application as well. There are two types of requests that can be sent:
 <ul>
  	<li><strong>Void Request</strong> - Simply sends a request without looking at the response.</li>
- 	<li><strong>Data Request</strong> - Sends a request and awaits data in JSON. <a href="http://support.serialkeymanager.com/kb/key-generation/">Key Generation</a> requests (<a href="/basics/webapi">Web API</a>) should be of this kind.</li>
+ 	<li><strong>Data Request</strong> - Sends a request and awaits data in JSON. <a href="/examples/key-generation">Key Generation</a> requests (<a href="/basics/webapi">Web API</a>) should be of this kind.</li>
 </ul>
 The great thing about data requests is that they can send the payment form additional information (in JSON). For example, a success message may look like:
 <pre class="toolbar:2 lang:diff decode:false ">Thank you for purchasing Product. Your key is [key].

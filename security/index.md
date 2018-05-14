@@ -19,9 +19,9 @@ For now, please review the following articles:
 * [Making Agreement Binding](/legal/MakeAgreementBinding)
 * [Consent to Personal Data Processing](/legal/ConsentToPersonalDataProcessing)
 
-You can also review our data protection terms:
+You can also review our data processor agreement:
 
-* [Data Protection Terms](https://app.cryptolens.io/Content/Legal/Agreement.pdf)
+* [Data Processor Agreement](/legal/DPA)
 
 ## Security
 We have listed several security procedures [here](/legal/DataPolicy#safeguarding-measures).
