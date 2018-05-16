@@ -1,11 +1,11 @@
 ---
-title: Data protection policy for SKM platform
+title: Data protection policy for the Cryptolens platform
 author: Artem Los
 description: Details of your rights as data controller, how to be GDPR compliant and safety measures in place to safeguard your data.
 labelID: security_advice
 ---
 
-# Cryptolens Data Protection Policy for SKM
+# Data Protection Policy
 
 ## Summary
 
