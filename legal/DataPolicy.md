@@ -32,7 +32,7 @@ You have the right to [[1]](https://ec.europa.eu/info/law/law-topic/data-protect
 receive your personal data in a machine-readable format and send it to another controller (‘data portability’);
 * request that decisions based on automated processing concerning you or significantly affecting you and based on your personal data are made by natural persons, not only by computers. You also have the right in this case to express your point of view and to contest the decision.
 
-To exercise your rights, please contact us at support@skmapp.com.
+To exercise your rights, please contact us at support@cryptolens.io.
 
 ## How to be compliant as a software vendor
 
@@ -42,17 +42,13 @@ These different cases are summarized below: on the left is the when the end user
 
 <img src="/images/DesktopAndSDK.png" alt="Drawing" style="width: 500px;"/>
 
+### Compliance by default (update)
+If you use Cryptolens as it is intended to be used, there is no need to include a consent in your agreement. The only personal data that Cryptolens needs is the IP address and Machine Code of the end user device. Both of these are needed to provide your customers the service.
 
-### When you have a direct relationship with end users
-When you sell you software directly to your end users (eg. a desktop app), we only need one consent from the end user (see [Consent to personal data processing](ConsentToPersonalDataProcessing)). Please make sure your users agree to these terms (i.e. all end users who will use your software).
+* **IP address** is needed to be able to spot unauthorized use of your software.
+* **Machine code** is needed to be able to enforce your licensing model (eg. restrict usage of a license to a specific number of machines).
 
-### When you don't have a direct relationship with end users
-When you sell your software as a software development kit (eg. libraries that other developers will integrate with their own and later redistribute), things become more tricky. This is because we need to make sure that all parties are aware of data processing, their rights and that they consent to it (in some cases). Please make sure that both the developers who will be using your SDK (your direct customers) and their customers (the end users) sign the [Consent to personal data processing](ConsentToPersonalDataProcessing).
-
-### How to make the consent binding
-We have outlined the necessary steps in [Binding the agreement to your customers](MakeAgreementBinding). 
-
-> Note, **it's not just to put a text stating that they agree** if the user is using the service. You need to make sure that they have actually read it.
+> If you want to use this information for any other purpose, you need to obtain a consent from your customers.
 
 ## What data we collect
 In short, we collect two types of data: data about you and data about your customers. In cases where your customers integrate your software (eg. a library/SDK) as a part of theirs, the end user is also their customers.
@@ -62,7 +58,7 @@ To make this as general as possible, we will go through the features in SKM and 
 ### Products
 Products is a way of grouping licenses. Many of the parameters in a product such as `name`, `description` and `licenses` belong to you directly. However, if you collect information in the `notes` field or `data objects` that can be linked, directly or indirectly to a person, this then becomes personally identifiable information.
 
-> Note, be very careful with the way you define personal data, since even IP address are considered personal identifiable information. Even primary keys in a table can be considered as such, if they can be used to link the data to a person.
+> Note, be very careful with the way you define personal data, since even IP address are considered personal identifiable information. Even primary keys in a table can be considered as such, if they can be used to link the data, directly or indirectly, to a person.
 
 Always ask the question whether the data you put in these fields is necessary to provide the service. If you need additional data, the user has to give you an explicit consent.
 
@@ -103,7 +99,8 @@ When developing SKM, we apply an **assume breach policy**. This means that we de
 ### When data is no longer needed
 Cryptolens strives to only store data that is needed to provide the service. Once such data is no longer needed, it will be removed or anonymized. To be more precise:
 
-* The IP and address in both the **Activatated Machines** and **Logging** will be erased after 24 months
+* The IP and address in both the **Activatated Machines** and **Logging** will be erased after 24 months.
+* Inactive accounts will be erased after 1 year of inactivity.
 
 ### Protection of the database
 #### Encryption of data at rest
@@ -146,11 +143,14 @@ On the [security settings](https://serialkeymanager.com/User/Security) page, ple
 #### Disable Web API 2
 Please do not use Web API 2. It can be blocked on the [security settings](https://serialkeymanager.com/User/Security) page.
 
+## History
+* 2018.05.24 Update the consent requirement (i.e. you no longer need a consent from your customers to be compliant).
+* 2018.03.16 First version.
 
 ## References
 1. https://ec.europa.eu/info/law/law-topic/data-protection/reform/rights-citizens/my-rights/what-are-my-rights_en, Last accessed 2018-02-28.
-2. https://serialkeymanager.com/docs/api/v3/model/ActivationData, Last accessed 2018-03-06.
-3. https://serialkeymanager.com/docs/api/v2/WebAPILog, Last accessed 2018-03-06.
-4. https://serialkeymanager.com/docs/api/v3/AddCustomer, Last accessed 2018-03-06.
-5. https://serialkeymanager.com/docs/api/v3/Activate, Last accessed 2018-03-12
-6. https://serialkeymanager.com/docs/api/v3/GetKey, Last accessed 2018-03-12
+2. https://app.cryptolens.io/docs/api/v3/model/ActivationData, Last accessed 2018-03-06.
+3. https://app.cryptolens.io/docs/api/v2/WebAPILog, Last accessed 2018-03-06.
+4. https://app.cryptolens.io/docs/api/v3/AddCustomer, Last accessed 2018-03-06.
+5. https://app.cryptolens.io/docs/api/v3/Activate, Last accessed 2018-03-12
+6. https://app.cryptolens.io/docs/api/v3/GetKey, Last accessed 2018-03-12
