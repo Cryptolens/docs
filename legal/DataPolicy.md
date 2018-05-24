@@ -12,6 +12,7 @@ labelID: security_advice
 1. [Introduction](#introduction)
 2. [How to be compliant as a software vendor](#how-to-be-compliant-as-a-software-vendor)
 3. [What data we collect](#what-data-we-collect)
+4. [Third party services](#third-party-services)
 4. [Safeguarding measures](#safeguarding-measures)
 5. [How to increase privacy for your customers](#how-to-increase-privacy-for-your-customers)
 
@@ -92,6 +93,15 @@ To facilitate grouping of licenses that belong to the same customer, we use the 
 * `CompanyName` - the company name of the company the customer belongs to.
 
 All of the fields above are personal identifiable information.
+
+## Third party services
+The list below shows the list of sub processors that we are using to deliver you the service:
+
+* [Microsoft Azure](https://azure.microsoft.com) - for application and data storage (hosted in North Europe).
+* [SendGrid](https://sendgrid.com/) - to send transactional mail.
+* [Intercom](https://www.intercom.com/) - to make sure you can chat with us.
+* [Google Analytics](https://analytics.google.com) - for website analytics.
+
 
 ## Safeguarding measures
 When developing SKM, we apply an **assume breach policy**. This means that we develop components in such a way as to ensure that if a breach occurs, we can minimize its damanage.
