@@ -40,8 +40,6 @@ After these steps, you should see a page similar to the one below:
 4. In the <strong>private key</strong> box, you should enter your "identity token". You can find it on your PayPal page by clicking on Profile (top menu, right corner) &gt; Account Settings &gt; Website Preferences. On that page, select <em>Auto Return</em> to "On", enter "https://serialkeymanager.com/Form/IPN/" and finally set <em>Payment Data Transfer</em> to "On". Then, press on Save. An identity token will be generated for you.
 > If you want to receive payments in a currency that is not your default currency, please ensure that you allow other currencies. You can do so by going to Profile (top menu, right corner) &gt; Account Settings &gt; Block Payments and select "Yes, accept and convert them to U.S. Dollars". <strong>Tip</strong>: If you are using the classical interface, you would need to go to Profile (top menu, right corner) &gt; My Selling Tools (in both scenarios).
     
-    
-</ol>
 <a name="stripe"></a>
 <h4>Stripe</h4>
 <ol>
