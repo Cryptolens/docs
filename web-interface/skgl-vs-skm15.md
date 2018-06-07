@@ -10,7 +10,9 @@ Serial Key Manager platform supports two key generation algorithms, SKGL and SKM
 
 ## SKGL
 
-[SKGL](https://skgl.codeplex.com/) – Serial Key Generating Library is an open source, information based key validation algorithm. It’s the primary algorithm that Serial Key Manager uses to generate new keys. One of the features of SKGL is that it is decentralized, allowing you to validate keys without using Serial Key Manager. However, one of the advantages of using Serial Key Manager is the fact that you don’t need to expose the encryption password during key validation.
+[SKGL](/faq/what-is-skgl) – Serial Key Generating Library is an open source, information based key validation algorithm. It’s the primary algorithm that Serial Key Manager uses to generate new keys. One of the features of SKGL is that it is decentralized, allowing you to validate keys without using Cryptolens. However, one of the advantages of using Cryptolens is the fact that you don’t need to expose the encryption password during key validation.
+
+> Note, each product using SKGL can only store 99999 (10^5-1) keys. 
 
 ## SKM15
 
