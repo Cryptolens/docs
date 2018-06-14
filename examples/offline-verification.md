@@ -134,6 +134,14 @@ var licensefile = new LicenseKey().LoadFromFile("ActivationFile20180606.skm");
 
 if(licensefile.HasValidSignature(RSAPubKey, 365).IsOnRightMachine(SKGL.SKM.getSHA256).IsValid())
 {
+    // if you have multiple products, make sure the license file has correct product id.
+    
+    //if(licensefile.ProductId != 123)
+    //{
+    //    Console.WriteLine("This license file is not for this product.");
+    //    return;
+    //}
+
     Console.WriteLine("License verification successful.");
 }
 else
@@ -151,6 +159,13 @@ Dim RSAPubKey = "{enter the RSA Public key here}"
 Dim licensefile = New LicenseKey().LoadFromFile("ActivationFile20180606.skm")
 
 If (licensefile.HasValidSignature(RSAPubKey, 365).IsOnRightMachine(AddressOf SKGL.SKM.getSHA256).IsValid()) Then
+
+    ' if you have multiple products, make sure the license file has correct product id.
+    'If (licensefile.ProductId <> 123) Then
+    '    Console.WriteLine("This license file is not for this product.")
+    '    Return
+    'End If
+
     Console.WriteLine("License verification successful.")
 Else
     Console.WriteLine("The license file is not valid or has expired.")
