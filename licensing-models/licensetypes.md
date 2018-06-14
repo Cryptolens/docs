@@ -27,6 +27,7 @@ labelID: licensing_models
 <li><a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#checking-properties">check properties to enable/disable functionality</a>
 </li>
 </ol>
+<p><a href="/licensing-models/perpetual">Read more</a></p>
  </td>
 </tr>
 <tr>

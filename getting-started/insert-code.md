@@ -15,6 +15,8 @@ Our application will have two places where we will need to insert the code:
 
 You can download the source code <a href="https://github.com/SerialKeyManager/Examples/tree/master/Digital%20Tools%20Collection" target="_blank">here</a>.
 
+> Note, you find more detailed examples of .NET [here](/examples/) and C++ specific examples [here](/web-api/cpp/cpp-client). Please don't hesitate to contact us should you have any questions.
+
 ## License Key Registration
 
 ```vb

@@ -7,24 +7,23 @@ labelID: web_api
 
 # SKM Client API for C++
 
-This repository contains the official C++ API for interacting with the Serial Key Manager Web API (serialkeymanager.com). There's also a [.NET version](https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET) available.
+On this page, we have outlined several examples of how to get started with the [SKM Client API](/web-api/skm-client-api) for C++.
 
-The C++ API currently supports a subset of the methods available via the Web API, more
-precisely, activation and deactivation of license keys are currently supported.
-The C++ library is currently under development, if you have any other needs, don't hesitate
-to contact us.
+> Note, SKM Client API for C++ currently supports **activation** and **deactivation** methods. Support for more methods is coming soon.
 
-You can find the API documentation here: [https://api.serialkeymanager.com/cpp/](https://api.serialkeymanager.com/cpp/). Please consider reviewing the [announcement](https://cryptolens.io/2017/08/new-client-api-for-c/) on our blog for a quick start guide.
+You can find the API documentation here: [https://api.serialkeymanager.com/cpp/](https://api.serialkeymanager.com/cpp/).
+
+If you are already familiar with the .NET version of the library, we have summarized key differences in an [announcement](https://cryptolens.io/2017/08/new-client-api-for-c/) on our blog.
+
+**Note**, A new version of the library that combines Windows and Linux versions into one. You can read the release notes [here](https://github.com/Cryptolens/SKM-Client-API-CPP/blob/future/README.md).
 
 ## Example usage
 
-The library is built to be flexible in the way the communication with the serialkeymanager.com
-Web API is performed. The examples below instantiate a handle class of type SKM which deals
-with communation with the Web API. This handle class is in fact parameterized by several policy
-classes to which, among other things, communication with the Web API is delegated, see the section
-''Handle class'' for mor information.  In case this seem too heavy weight it is also possible to
-sidestep this entierly and manually make the HTTPS request and simply provide the response as a
-string, this is illustrated in the section ''Manual HTTPS requests''.
+The library is built to be flexible in the way the communication with Cryptolens Web API.
+The examples below instantiate a handle class of type SKM which deals with communication with the Web API. This handle class is in fact parameterized by several policy classes to which, among other things, communication with the Web API is delegated, see the section
+`Handle class` for mor information.  In case this seem too heavy weight it is also possible to
+sidestep this entirely and manually make the HTTPS request and simply provide the response as a
+string, this is illustrated in the section `Manual HTTPS requests`.
 
 ### Basic usage
 
