@@ -23,3 +23,7 @@ use the saved license file. The user will be able to use the software 90 days of
 
 * [Create a new SKM account](/getting-started/create-account)
 
+## Remarks
+
+If your application uses C++, you can use our C++ client API instead (see the [GitHub repo](https://github.com/cryptolens/cryptolens-cpp) for examples). Note, if you want to view code snippets for key verification in C# or VB.NET, you can jump directly to the [Examples](/examples/index) section.
+
