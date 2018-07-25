@@ -21,7 +21,7 @@ Once the machines are registered, the license will be locked to them. The custom
 
 ### In the dashboard
 
-Node-locking is enforced by setting **maximum number of machines** to a value greater than 0. This can be done when creating a new or by modifying an existing license. Once set, each time a [key verification](/examples/key-verification) request is performed, Cryptolens will ensure that the number of machines that have activated the license does not exceed the value that you have specified.
+Node-locking is enforced by setting [maximum number of machines](/web-interface/maximum-number-of-machines) to a value greater than 0. This can be done when creating a new or by modifying an existing license. Once set, each time a [key verification](/examples/key-verification) request is performed, Cryptolens will ensure that the number of machines that have activated the license does not exceed the value that you have specified.
 
 ### Code
 In order to get node-locking to work, you can use the same code that was shown in the [key verification](/examples/key-verification) tutorial.
@@ -30,7 +30,7 @@ For additional security, we should add a check as shown below:
 **In C#**
 
 ```cs
-if(Helpers.IsOnRightMachine()) 
+if(Helpers.IsOnRightMachine(result.LicenseKey)) 
 {
     // everything is ok
 }
@@ -44,12 +44,13 @@ else
 **In VB.NET**
 
 ```vb
-If Helpers.IsOnRightMachine() Then
+If Helpers.IsOnRightMachine(result.LicenseKey) Then
     ' everything is ok
 Else
     ' an error occurred
 End If
 ```
 
-This code will work for the first example (remember to set **maximum number of machines** to **2** in your dashboard). For the second example, we will need to modify the key verification code slightly.
-Instead of using `MachineCode = Helpers.GetMachineCode()`, we need another way of identifying unique machine codes. In this case, we need to ensure every device in the on-site generates the same machine code. This could, for example, be the network name, IP address, etc.
+This code will work for the first example (remember to set **maximum number of machines** to **2** in your dashboard).
+
+For the second example, we will need to modify the key verification code slightly. Instead of using `MachineCode = Helpers.GetMachineCode()`, we need another way of identifying unique machine codes. In this case, we need to ensure every device in the on-site generates the same machine code. This could, for example, be the network name, IP address, etc.
