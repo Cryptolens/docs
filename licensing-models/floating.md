@@ -8,7 +8,7 @@ labelID: licensing_models
 # Floating licenses
 
 ## Idea
-Using [node-locking](/licensing-models/node-locking), we saw a way to "lock" a license to a limited number of machines. A problem with this set up is if your customers plans to change computers often, in which case it can turn out to be inconvenient to keep activate and deactivate machines.
+Using [node-locking](/licensing-models/node-locked), we saw a way to "lock" a license to a limited number of machines. A problem with this set up is if your customers plans to change computers often, in which case it can turn out to be inconvenient to keep activate and deactivate machines.
 
 Instead, we can use the notion of floating licenses, where we ensure that a license can be used on a certain number of machines at a time. 
 
