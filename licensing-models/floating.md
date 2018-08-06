@@ -20,7 +20,7 @@ Here are some examples:
 ## Implementation
 
 ### In the dashboard
-As with [node-locked](/licensing-models/node-locking) licenses, floating licenses are enforced by setting **maximum number of machines** to a value greater than 0.
+As with [node-locked](/licensing-models/node-locked) licenses, floating licenses are enforced by setting **maximum number of machines** to a value greater than 0.
 
 ### Code
 

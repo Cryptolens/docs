@@ -17,7 +17,7 @@ labelID: security_advice
 5. [How to increase privacy for your customers](#how-to-increase-privacy-for-your-customers)
 
 ## Introduction
-This document summarizes the data being stored by Cryptolens AB ("Cryptolens") to provide the service SKM (https://serialkeymanager.com/) and the protection measures we have in place to safeguard against accidental loss and data breach.
+This document summarizes the data being stored by Cryptolens AB ("Cryptolens") to provide the service SKM (https://app.cryptolens.io) and the protection measures we have in place to safeguard against accidental loss and data breach.
 
 It should be used for informational purposes only. If you are unsure, please consult a lawyer.
 
@@ -101,6 +101,7 @@ The list below shows the list of sub processors that we are using to deliver you
 * [SendGrid](https://sendgrid.com/) - to send transactional mail.
 * [Intercom](https://www.intercom.com/) - to make sure you can chat with us.
 * [Google Analytics](https://analytics.google.com) - for website analytics.
+* [Pipedrive](https://www.pipedrive.com/en-gb) - for customer management
 
 
 ## Safeguarding measures
