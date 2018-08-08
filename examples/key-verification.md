@@ -104,11 +104,11 @@ End If
 The `Helpers.GetMachineCode()` method is currently not supported on the .NET Core. **MachineCode** can be any value that allows you to uniquely identify an end user (eg. their computer).
 
 ### Namespaces missing
-This means that [SKGLExtesion](/web-api/skm-client-api) library (aka SKM Client API) was not included into the project. It can be easily added using **NuGet packager manager**, which you can find by right clicking on the project:
+This means that [Cryptolens.Licensing](/web-api/skm-client-api) library was not included into the project. It can be easily added using **NuGet packager manager**, which you can find by right clicking on the project:
 
 <img src="/images/nuget-vs2017-example.png" style="width:100%" />
 
-> Note, `SKGLExtension` has nothing in common with `SKGL`. There is no need to include `SKGL`.
+> Note, `Cryptolens.Licensing` has nothing in common with `SKGL`. There is no need to include `SKGL`.
 
 ### Result is null
 In most cases, this is because some of the required parameters are missing. These are:
