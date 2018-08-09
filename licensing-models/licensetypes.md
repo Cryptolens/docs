@@ -20,14 +20,8 @@ labelID: licensing_models
 </p>
 <p>The user can later upgrade the same license key to be able to get a full-featured version of the application.</p>
 </td>
-<td>To get this working, you only need to
-<ol>
-<li><a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#get-license-information">get license key details</a>
-</li>
-<li><a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#checking-properties">check properties to enable/disable functionality</a>
-</li>
-</ol>
-<p><a href="/licensing-models/perpetual">Read more</a></p>
+<td>
+<p><a href="/licensing-models/perpetual">Perpetual license tutorial</a></p>
  </td>
 </tr>
 <tr>
@@ -56,18 +50,17 @@ to get auto-renewal functionality and payments.
 </tr>
 <tr>
 <td>Pay per use</td>
-<td><p>Pay-per-use enables you to charge based on usage.
-</p>
-<p>
-A license may be _pre-paid_ with 'credits' that your customers consume when they use your app. They can later refill them.
-</p> 
-<p>
-This model is gives you additional ways of monetizing your software, eg. based on CPU usage, number of reports generated (accounting software), or anything more specific to your app. 
-</p>
+<td>
+<blockquote>By supporting usage-based licenses, we can monetize a group of users that would otherwise not have purchased the product (eg. because it is too expensive).</blockquote>
+
+<p>Usage-based licensing is when you charge for usage of specific features. For example, if you have an accounting software, you can charge per
+created yearly report. If you have a movie editing software, you can charge per created movie (or for each conversion to a different movie format).</p>
+
+<p>The point is to allow a larger group of people to be able to use your software. For example, let's return to the movie editing software. There can be two groups of users: those that will use the software a lot (eg. professional use), in which case they will prefer a subscription or a perpetual license. Another group can have movie editing as a hobby, in which case they may create very few movies, so a subscription may be to expensive.</p>
 </td>
 
-<td>To get this working, you need to use <a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#custom-variables-aka-data-objects">data objects</a>.
-You can then use methods such as <a href="http://api.serialkeymanager.com/html/M_SKM_V3_Methods_Data_IncrementIntValue_1.htm">increment int value</a> to increase the counter inside your app.
+<td>
+<a href="/licensing-models/usage-based">Usage based licensing tutorial</a>
 </td>
 </tr>
 <tr>
@@ -79,8 +72,7 @@ For example, imagine you want your customers to be able to use your application 
 </p> 
 </td>
 
-<td>Please see the 
-<a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#floating-licenses">example code</a>.
+<td><a href="/licensing-models/floating">Floating licenses tutorial</a>.
 </td>
 </tr>
 

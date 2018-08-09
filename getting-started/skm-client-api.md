@@ -1,7 +1,7 @@
 ---
-title: Installing SKM Client API for .NET
+title: Installing Cryptolens Licensing Client for .NET
 author: Artem Los
-description: Description of how to install SKM Client API through NuGet.
+description: Description of how to install Cryptolens Licensing Client through NuGet.
 labelID: getting_started
 ---
 

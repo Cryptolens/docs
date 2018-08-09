@@ -20,21 +20,35 @@ The user can later upgrade the same license key to be able to get a full-feature
 To implement this model, there are just two concepts that are required: key generation (for trial- and full-featured licenses) and key verification (inside your application).
 
 ### Key generation
-In order to deliver a license key to your customer, you can either use [Payment Forms](/payment-form/index) built-in into Cryptolens or any other third party service.
-In either way, you need to call the key generation method to obtain a license key eg. upon a successful transaction. Below is an example of how this can be done in Web API 2.
 
-```
-https://app.cryptolens.io/Ext/GenerateKey?UserId=3903&PrivateKey=<private key>&ProductId=3843&SetTime=30&Feature1=True&Feature2=False&Feature3=False&Feature4=False&Feature5=False&Feature6=False&Feature7=False&Feature8=False&AutomaticActivation=True&UpdateTrialOnActivation=False&MaxNoOfMachines=0&OptionalFieldA=0&CustomerInformationId=0&json=true
-```
+#### Trial keys
+In order to allow your customers to try your software, trial keys can be used. Trial keys can be generated inside your application using [Key.CreateTrialKey](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html?q=create%20trial#SKM_V3_Methods_Key_CreateTrialKey_System_String_SKM_V3_Models_CreateTrialKeyModel_) method.
 
-Please read the step-by-step tutorial available below:
+These keys will be locked to the machine that requested them, which ensures that the trial cannot be requested again. Once the trial has elapsed, users can keep the same key (they only need to upgrade it). We describe this below.
+
+#### Upgrading trial
+
+If your users liked the product, the next step is to **upgrade the license*** key with the features they need (or extending the duration of the key if you have a SaaS model). You can **create an entirely new license** key also. We cover both of the options below:
+
+##### Upgrading existing key
+The simplest way of doing this is to take their existing license key and upgrade it. In this case, changes will reach the software instantly. 
+
+There are two ways to upgrade a license key. The fastest way is to use [Payment Forms](/payment-form/index) built-in into Cryptolens. You can also use any other third party service or perform this operation manually using our dashboard. If you use Payment Forms, we can take advantage of the [custom field](/payment-form/request), when passing a license key to the form. In this way, you can create a link inside your app which allows your users to upgrade a license.
+
+When upgrading a license key, [key related methods](https://app.cryptolens.io/docs/api/v3/Key) in the Web API will be of great help, for example, `Add Feature` or `Extend License`.
+
+##### Creating a new key
+
+If you do not use the built-in trial keys, there is an option to create an entierely new license key (upon a successful payment). As we described in the previous sections, you can either use [Payment Forms](/payment-form/index) built-in into Cryptolens or any other third party service. 
+
+[Create Key](https://app.cryptolens.io/docs/api/v3/CreateKey) method can be used to create new license keys using the Web API. Please take a look at the tutorial below:
 
 * [Key generation tutorial](/examples/key-generation)
 
-> Note, to generate a trial key, a similar procedure can be performed.
+> Note, to generate a trial key, a similar procedure can be performed (if you don't want to create trial keys inside your application).
 
 ### Key validation
-Assuming your customer has received a license key, we now want to verify it in the application. This is described in the tutorial below:
+Assuming your customer has received a license key (either by requesting a trial inside the app or by any other means), we now want to verify it in the application. This is described in the tutorial below:
 
 * [Key verification tutorial](/examples/key-verification)
 
