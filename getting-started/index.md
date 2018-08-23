@@ -1,11 +1,11 @@
 ---
-title: Introduction to SKM step by step
+title: Introduction to Cryptolens step by step
 author: Artem Los
 description: Introduction to the getting started tutorial.
 labelID: getting_started
 ---
 
-# Introduction
+# Introduction to Cryptolens step by step
 
 <p align="center">
 <img src="/images/digitaltools-all-features.png">

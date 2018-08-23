@@ -1,11 +1,11 @@
 ---
-title: Basics
+title: Introduction to the basics
 author: Artem Los
-description: Overview of SKM and explanation of the difference between SKM Platform and Cryptolens Client API.
+description: Overview of Cryptolens and explanation of the difference between Cryptolens Platform and Cryptolens Client API.
 labelID: basics
 ---
 
-# Introduction
+# Introduction to the basics
 
 <img src="/images/skmoverview3.png" width="80%" />
 

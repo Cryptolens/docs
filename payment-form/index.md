@@ -5,7 +5,7 @@ description: Introduction to the key concepts of Payment Forms
 labelID: payment_forms
 ---
 
-# Introduction
+# Introduction to Payment Forms
 
 Using the <a href="/basics/webapi">Web API</a>, you can achieve a great degree of automatization in your licensing solutions. By combining payment forms with the <a href="/basics/webapi">Web API</a>, you can ensure that your customers receive a key directly after that they've purchased a license. This means that they can use your software right away. There's no need to take any specific actions from your side. This is one of the advantages of using payment forms.
 
