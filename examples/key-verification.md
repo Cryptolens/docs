@@ -9,7 +9,7 @@ labelID: examples
 
 In this example, our aim is to quickly implement the basic licensing functionality into your application.
 
-> We assume you have created an project using Visual Studio 2017 and added SKGL Extension (see [this tutorial](/getting-started/skm-client-api)).
+> We assume you have created an project using Visual Studio 2017 and added Cryptolens.Licensing (see [this tutorial](/getting-started/skm-client-api)).
 
 If you would experience any issues, please check [common errors](#common-errors) section.
 
