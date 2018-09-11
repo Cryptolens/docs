@@ -1,11 +1,11 @@
 ---
-title: SKM Client API Reference
+title: Cryptolens Licensing Client Reference
 author: Artem Los
 description: A reference of client APIs avaiable in multiple languages.
 labelID: web_api
 ---
 
-# SKM Client API
+# Cryptolens Licensing Client
 
 ## Introduction
  Cryptolens.Licensing (aka SKM Client API) is a free of charge, open source library that provides additional methods for the functionality available in the Cryptolens platform. One of the examples is key activation. In other words, it is used to simplify interaction with the Web API.

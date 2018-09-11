@@ -5,11 +5,11 @@ description: A comprehensive article that describes how the C++ client can be us
 labelID: web_api
 ---
 
-# SKM Client API for C++
+# Cryptolens Licensing for C++
 
-On this page, we have outlined several examples of how to get started with the [SKM Client API](/web-api/skm-client-api) for C++.
+On this page, we have outlined several examples of how to get started with the [Cryptolens Client](/web-api/skm-client-api) for C++.
 
-> **Note**, SKM Client API for C++ currently supports **activation** and **deactivation** methods. Support for more methods is coming soon.
+> **Note**, Cryptolens Client for C++ currently supports **activation** and **deactivation** methods. Support for more methods is coming soon.
 
 You can find the API documentation here: [https://api.serialkeymanager.com/cpp/](https://api.serialkeymanager.com/cpp/).
 

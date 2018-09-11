@@ -37,15 +37,7 @@ This model is good because it provides you with a recurring revenue stream.
 </p>
 </td>
 
-<td>To get this working, you only need to
-<ol>
-<li><a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#get-license-information">get license key details</a>
-</li>
-<li><a href="https://github.com/SerialKeyManager/SKGL-Extension-for-dot-NET/blob/master/Tutorials/v401.md#checking-properties">check properties to enable/disable functionality</a>
-</li>
-</ol>
-In addition, you will need to set up <a href="https://support.serialkeymanager.com/kb/introduction-to-payment-forms">payment forms</a>
-to get auto-renewal functionality and payments.
+<td><a href="/licensing-models/subscription">Subscription model tutorial</a>
 </td>
 </tr>
 <tr>
