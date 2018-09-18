@@ -42,7 +42,7 @@ Instead of keeping track of each end user instance, we can instead count the num
 ## Privacy
 When implementing SDK licensing, you have to assume that information in the license key (eg. notes field, activated devices, customer info) will be shared amongst all end users. In most cases, they will not see this, but we always have to assume they can, as this is technically possible.
 
-A [key verification](/examples/key-verification) call translates to a call to [Activate](https://app.cryptolens.io/docs/api/v3/Activate). This method supports data masking using the **feature lock** field, available when creating a new **access token**. If you scroll down to [License Key](https://app.cryptolens.io/docs/api/v3/Activate#LicenseKey), you will see the fields that can be hidden. If possible, please hide all information unless there is field that you really need. Remember,
+A [key verification](/examples/key-verification) call translates to a call to [Activate](https://app.cryptolens.io/docs/api/v3/Activate). This method supports data masking using the **feature lock** field, available when creating a new **access token**. If you scroll down to [License Key](https://app.cryptolens.io/docs/api/v3/Activate#LicenseKey), you will see the fields that can be hidden. If possible, please hide all information unless there is field that you really need.
 
 > **Note**, all fields in a license key can be seen by all end users, unless data masking is used.
 
@@ -242,5 +242,4 @@ namespace SDKExample
         }
     }
 }
-
 ```

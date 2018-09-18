@@ -22,5 +22,5 @@ If you've followed the steps above, you should be able to see a page similar to 
 
 ## Next
 
-* [Install SKM Client API](/getting-started/skm-client-api)
+* [Install Cryptolens Client](/getting-started/skm-client-api)
 

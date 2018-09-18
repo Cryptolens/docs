@@ -74,7 +74,7 @@ For example, imagine you want your customers to be able to use your application 
 </p>
 </td>
 
-<td>Please <a href="https://support.serialkeymanager.com/contact">contact us</a>!.
+<td>Please <a href="mailto:support@cryptolens.io">contact us</a>!.
 </td>
 </tr>
 </table>
