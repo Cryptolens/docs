@@ -1,5 +1,5 @@
 ---
-title: SaaS licensing model
+title: Subscription licensing (SaaS)
 author: Artem Los
 description: Explains how you can set up recurring payments for your application, aka SaaS model. This can also be used to keep track of potential support/maintenance subscriptions.
 labelID: licensing_models
@@ -39,7 +39,7 @@ In the introduction, we mentioned three ideas to subscription based licensing mo
 #### Require subscription to access the product
 This is quite simple to restrict access to entire product if the license key has expired. In the code below, we assume that you have read the [key verification tutorial](/examples/key-verification). The only change is to add `HasNotExpired()` in the if-statement below:
 
-##### In C#
+##### In C\#
 ```cs
 // notice that we have added ".HasNotExpired()".
 

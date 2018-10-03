@@ -30,6 +30,6 @@ You can find more [here](https://app.cryptolens.io/docs/api/v3/).
 ## Next steps
 You've now learned about the basic concepts of SKM. Here's what's next:
 
-1. [Get started with a pratical implementation](/getting-started/intro)
+1. [Get started with a pratical implementation](/getting-started/index)
 2. [Learn more about possible licensing models](/licensing-models/licensetypes)
 3. [Understand GDPR and its implications](/legal/GDPR)

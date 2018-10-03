@@ -4,7 +4,10 @@ author: Artem Los
 description: Introduction to how you can allow users to use their account instead of license key to get hold of their licenses.
 labelID: licensing_models
 ---
-# User Login Authentication
+# User Account Authentication
+
+> User account authentication is currently being updated. Please check back in the coming weeks.
+
 User login authentication allows your customers to use a **user account** instead of typing in a **long license key**.
 This makes licensing more **convenient for your customers** and makes it **easier** for you to **manage license rights** of each customer.
 
