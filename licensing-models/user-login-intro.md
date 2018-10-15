@@ -1,5 +1,5 @@
 ---
-title: User Login Authentication (Intro)
+title: User Account Authentication (Intro)
 author: Artem Los
 description: Introduction to how you can allow users to use their account instead of license key to get hold of their licenses.
 labelID: licensing_models
