@@ -7,8 +7,6 @@ labelID: payment_forms
 
 # Setting things up
 
-> This feature is coming the 14th of October.
-
 Before we can use recurring payments feature in Cryptolens, we need to set up a few things in Stripe and in Cryptolens. In this article, we detail all the necessary steps.
 
 ## Stripe setup

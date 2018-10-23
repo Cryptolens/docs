@@ -7,8 +7,6 @@ labelID: payment_forms
 
 # Managing customers
 
-> This feature is coming the 14th of October.
-
 ## Adding new customers
 
 To allow your customers to login and manage their subscriptions, you need to register them as customers in Cryptolens. You either do this using the Web API or in the dashboard. When creating a new customer, you need to check **enable customer association** and note down the url. This should then be sent to the customer, which will allow them to create a new Cryptolens account or use an existing one. The association url will be similar to the one below:
