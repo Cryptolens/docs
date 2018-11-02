@@ -122,10 +122,10 @@ else if (license.HasExpired().IsValid())
 If you plan to only use subscriptions to keep track of who is eligible for support, no additional code is requires besides what is presented in the [key verification tutorial](/examples/key-verification).
 
 ### Integration with other services
-The key to get subscriptions up and running is the [ExtendLicense](https://app.cryptolens.io/docs/api/v3/ExtendLicense) method in the Web API. It allows you to extend the expiration date of a license key by a certain number of days. For example, let's assume the users pays for the subscription on a monthly basis. Once a payment is successful, we can extend the duration of the license by sending a GET request to as shown below:
+The key to get subscriptions up and running is the [ExtendLicense](https://app.cryptolens.io/docs/api/v3/ExtendLicense) method in the Web API. It allows you to extend the expiration date of a license key by a certain number of days. For example, let's assume the users pays for the subscription on a monthly basis. Once a payment is successful, we can extend the duration of the license by sending a GET request to as shown below (the access token can be created on [this page](https://app.cryptolens.io/User/AccessToken#/)):
 
 ```
-https://app.cryptolens.io/api/key/ExtendLicense?ProductId=123&Key=FRQHQ-FSOSD-BWOPU-KJOWF&Days=30
+https://app.cryptolens.io/api/key/ExtendLicense?ProductId=123&Key=FRQHQ-FSOSD-BWOPU-KJOWF&NoOfDays=30&token=<access token with 'Extend License permission'>
 ```
 
 > Although we extending the duration of the license key by **30** days (for a monthly subscription), it is better to add a few extra days in case there are issues with the payment, in order to avoid disruptions.
