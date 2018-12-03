@@ -20,7 +20,7 @@ For instance, it enables you to:
 * Process payments
 * Analyse usage data
 
-## SKM Client API
+## Cryptolens Client API
 In order to be able to take advantage of all the power of the **Cryptolens Platform**,
 you need to include small [library](/web-api/skm-client-api) into your application.
 As an example, it enables you to translate your licensing model into simple logic, as shown below:
