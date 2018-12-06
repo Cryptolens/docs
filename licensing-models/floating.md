@@ -15,7 +15,8 @@ Instead, we can use the notion of floating licenses, where we ensure that a lice
 Here are some examples:
 
 * you have developed a desktop app that your customers can install unlimited number of times, with the condition that they use it on 1 device at a time.
-* a company has 100 employees, but you only want to ensure that 20 of those can use your software simultaneously. 
+* a company has 100 employees, but you only want to ensure that 20 of those can use your software simultaneously.
+* a company has 10 devices that have the software installed, but only 2 of them will use it concurrently. Sometimes, all of the 10 devices have to be used simultaneously and you want to permit that (aka overdraft license).
 
 ## Implementation
 
@@ -25,6 +26,10 @@ As with [node-locked](/licensing-models/node-locked) licenses, floating licenses
 ### In your application
 
 We can reuse almost the entire code snippet from the [key verification](/examples/key-verification) tutorial, with the only difference in the last parameter, which we have to add. The `IsOnRightMachine` check is similar to the one in the [node-locking](/licensing-models/node-locking) example, only differing in `isFloatingLicense`, which is set to true. 
+
+#### Floating without overdraft
+
+The code bellow allows at most the **maximum number of machines** to use the software concurrently.
 
 **In C#**
 ```cs
@@ -66,8 +71,55 @@ Else
 End If
 ```
 
+#### Floating with overdraft
+The code bellow allows at most the **maximum number of machines** + 1 to use the software concurrently.
+
+```cs
+var result = Key.Activate(token: auth, parameters: new ActivateModel()
+{
+    Key = licenseKey,
+    ProductId = 3349,
+    Sign = true,
+    MachineCode = Helpers.GetMachineCode(),
+    FloatingTimeInterval = 100      // <- we have added this parameter.
+    MaxOverdraft = 1                // <- we can exceed the max number of machines by one.
+});
+
+// from node-locking example
+if(Helpers.IsOnRightMachine(result.LicenseKey, isFloatingLicense: true, allowOverdraft: true))) 
+{
+    // everything is ok
+}
+else
+{
+    // an error occurred
+} 
+```
+
+**In VB.NET**
+```vb
+Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
+                          .Key = licenseKey,
+                          .ProductId = 3349,
+                          .Sign = True,
+                          .MachineCode = Helpers.GetMachineCode()
+                          .FloatingTimeInterval = 100      ' <- we have added this parameter.
+                          .MaxOverdraft = 1                ' <- we can exceed the max number of machines by one.
+                          })
+
+' from node-locking example
+If Helpers.IsOnRightMachine(result.LicenseKey, isFloatingLicense:= true, allowOverdraft:= true) Then
+    ' everything is ok
+Else
+    ' an error occurred
+End If
+```
+
+#### Notes about the code
+
 > **FloatingTimeInterval** specifies how long back in history of activations we should go, in order to decide whether a
-machine is still using the software or not (specified in seconds).
+machine is still using the software or not (specified in seconds). **MaxOverdraft** specifies how many more devices than
+specified in **maximum number of machines** can use the software concurrently.
 
 **Note**, in comparison to node-locking, where key verification for most applications can occur once during startup, floating licensing requires continuous key verifications. The smaller FloatingTimeInterval, the more key verifications have to occur.
 
