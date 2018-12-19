@@ -1,5 +1,5 @@
 ---
-title: Floating icenses
+title: Floating licenses
 author: Artem Los
 description: An overview of how floating licenses can be implemented in Cryptolens
 labelID: licensing_models
@@ -59,7 +59,7 @@ Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
                           .Key = licenseKey,
                           .ProductId = 3349,
                           .Sign = True,
-                          .MachineCode = Helpers.GetMachineCode()
+                          .MachineCode = Helpers.GetMachineCode(),
                           .FloatingTimeInterval = 100      ' <- we have added this parameter.
                           })
 
@@ -74,6 +74,8 @@ End If
 #### Floating with overdraft
 The code bellow allows at most the **maximum number of machines** + 1 to use the software concurrently.
 
+**In C#**
+
 ```cs
 var result = Key.Activate(token: auth, parameters: new ActivateModel()
 {
@@ -81,7 +83,7 @@ var result = Key.Activate(token: auth, parameters: new ActivateModel()
     ProductId = 3349,
     Sign = true,
     MachineCode = Helpers.GetMachineCode(),
-    FloatingTimeInterval = 100      // <- we have added this parameter.
+    FloatingTimeInterval = 100,     // <- we have added this parameter.
     MaxOverdraft = 1                // <- we can exceed the max number of machines by one.
 });
 
@@ -103,7 +105,7 @@ Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
                           .ProductId = 3349,
                           .Sign = True,
                           .MachineCode = Helpers.GetMachineCode()
-                          .FloatingTimeInterval = 100      ' <- we have added this parameter.
+                          .FloatingTimeInterval = 100,     ' <- we have added this parameter.
                           .MaxOverdraft = 1                ' <- we can exceed the max number of machines by one.
                           })
 
@@ -124,3 +126,53 @@ specified in **maximum number of machines** can use the software concurrently.
 **Note**, in comparison to node-locking, where key verification for most applications can occur once during startup, floating licensing requires continuous key verifications. The smaller FloatingTimeInterval, the more key verifications have to occur.
 
 > As a rule of thumb, if you plan to verify a license every 10 minutes, the **FloatingTimeInterval** should be no less than 600 (600s = 10min) if you want to ensure that your customers never exceed the **maximum number of machines**. However, if you can allow the customers to exceed this boundary in eg. 5 minutes, you could reduce **FloatingTimeInterval**  to 300 (300s = 5min).
+
+### Tips
+
+#### Releasing a floating license
+Normally, floating licenses will automatically be released in a certain period of time (specified by `FloatingTimeInterval`). However, you can manually release a floating license by using [Key.Deactivate](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html?#SKM_V3_Methods_Key_Deactivate_System_String_SKM_V3_Models_DeactivateModel_) with `Floating=True`, as shown below:
+
+```cs
+Key.Deactivate(activateToken, new DeactivateModel { 
+    Key = "GEBNC-WZZJD-VJIHG-GCMVD", 
+    ProductId = 3349, 
+    MachineCode = Helpers.GetMachineCode(),
+    Floating = true // <- add this
+});
+```
+
+#### Number of used and free licenses
+
+To get the number of floating licenses left (among other things), you can simply add `Metadata=true`.
+A helper method, [GetFloatingLicenseInformation](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Helpers.html#SKM_V3_Methods_Helpers_GetFloatingLicenseInformation_SKM_V3_Models_ActivateModel_SKM_V3_Models_KeyInfoResult_) can be used to extract this information.
+
+```cs
+
+// we have just separated the initialization of the input parameters for activate
+// into a separate variable, since we will need it later on.
+var activateModel = new ActivateModel()
+{
+    Key = licenseKey,
+    ProductId = 3349,
+    Sign = true,
+    MachineCode = Helpers.GetMachineCode(),
+    FloatingTimeInterval = 100,      // <- we have added this parameter.
+    MaxOverdraft = 1,                // <- we can exceed the max number of machines by one.
+    Metadata = true
+}
+
+var result = Key.Activate(token: auth, parameters: activateModel);
+
+// some code here
+
+if (result != null && result.Result == ResultType.Success)
+{
+    var info = Helpers.GetFloatingLicenseInformation(activateModel, result);
+
+    Console.WriteLine(info.AvailableDevices);
+    Console.WriteLine(info.UsedDevices);
+    Console.WriteLine(info.OverdraftDevices);
+}
+```
+
+
