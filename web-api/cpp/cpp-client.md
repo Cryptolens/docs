@@ -5,13 +5,13 @@ description: A comprehensive article that describes how the C++ client can be us
 labelID: web_api
 ---
 
-# Cryptolens Licensing for C++
+# Cryptolens Client API for C++
 
-On this page, we have outlined several examples of how to get started with the [Cryptolens Client](/web-api/skm-client-api) for C++.
+On this page, we have outlined several examples of how to get started with the [Cryptolens Client API](/web-api/skm-client-api) for C++.
 
-> **Note**, Cryptolens Client for C++ currently supports **activation** and **deactivation** methods. Support for more methods is coming soon.
+> **Note**, Cryptolens Client API for C++ currently supports **activation** and **deactivation** methods. Support for more methods is coming soon.
 
-You can find the API documentation here: [https://api.serialkeymanager.com/cpp/](https://api.serialkeymanager.com/cpp/).
+You can find the API documentation here: [https://help.cryptolens.io/api/cpp/](https://help.cryptolens.io/api/cpp/).
 
 If you are already familiar with the .NET version of the library, we have summarized key differences in an [announcement](https://cryptolens.io/2017/08/new-client-api-for-c/) on our blog.
 
@@ -29,7 +29,7 @@ If you are already familiar with the .NET version of the library, we have summar
 
 ## Example projects
 
-[This repository](https://github.com/Cryptolens/SKM-Client-API-CPP) contains some example projects using the library in the examples/ directory.
+[This repository](https://github.com/Cryptolens/cryptolens-cpp) contains some example projects using the library in the examples/ directory.
 The cmake example project is set up to be compiled against OpenSSL and libcurl, while the
 VisualStudio project builds against the CryptoAPI and WinHTTP libraries available on Windows.
 The rest of this section contains instructions for how to build the example projects.
@@ -49,8 +49,8 @@ $ yum install libcurl-devel openssl-devel
 Next, clone the repository and build the examples
 
 ```
-$ git clone https://github.com/Cryptolens/SKM-Client-API-CPP.git
-$ cd SKM-Client-API-CPP/examples/cmake
+$ git clone https://github.com/Cryptolens/cryptolens-cpp.git
+$ cd cryptolens-cpp/examples/cmake
 $ mkdir build
 $ cd build
 $ cmake ..
@@ -92,14 +92,12 @@ application. The first step is to include the appropriate headers:
 #include <cryptolens/SignatureVerifier_YYY.hpp>
 ```
 
-We currently support the following RequestHandlers
+We currently support the following RequestHandlers and SignatureVerifiers:
 
 | RequestHandler                | Description                                           |
 | ----------------------------- | ----------------------------------------------------- |
 | `RequestHandler_curl`         | Uses libcurl                                          |
 | `RequestHandler_WinHTTP`      | Uses the WinHTTP library available as part of Windows |
-
-and SignatureVerifiers
 
 | SignatureVerifier             | Description                                     |
 | ----------------------------- | ----------------------------------------------- |
@@ -135,7 +133,7 @@ cryptolens::optional<cryptolens::LicenseKey> license_key =
   cryptolens_handle.activate
     ( // Object used for reporting if an error occured
       e
-    , // SKM Access Token
+    , // Cryptolens Access Token
       "WyI0NjUiLCJBWTBGTlQwZm9WV0FyVnZzMEV1Mm9LOHJmRDZ1SjF0Vk52WTU0VzB2Il0="
     , // Product id
       "3646"
@@ -210,8 +208,8 @@ every single call.
 One way to support activation while offline is to initially make one activation request
 while connected to the internet and then saving this response. By then reading the saved
 response and performing the cryptographic checks it is not necessary to make another
-request to the Web API in the future. Thus we can proceed as above, but save the response
-to a file
+request to the Web API in the future. Thus we can proceed as during online activation
+but save the response as a string:
 
 ```cpp
 Cryptolens cryptolens_handle;
@@ -219,27 +217,38 @@ cryptolens_handle.signature_verifier.set_modulus_base64(e, "ABCDEFGHI1234");
 cryptolens_handle.signature_verifier.set_exponent_base64(e, "ABCD");
 ...
 cryptolens::optional<cryptolens::LicenseKey> license_key =
-  cryptolens_handle.activate(...);
+  cryptolens_handle.activate(
+    ( // Object used for reporting if an error occured
+      e
+    , // Cryptolens Access Token
+      "WyI0NjUiLCJBWTBGTlQwZm9WV0FyVnZzMEV1Mm9LOHJmRDZ1SjF0Vk52WTU0VzB2Il0="
+    , // Product id
+      "3646"
+    , // License Key
+      "MPDWY-PQAOW-FKSCH-SGAAU"
+    , // Machine Code
+      "289jf2afs3"
+    );
 if (e) { handle_error(e); return 1; }
-file << license_key->get_license() << "-" << license_key->get_signature() << std::endl;
+
+std::string s = license_key->to_string();
 ```
 
-and then when offline the license key can be verified via:
+The string *s* can now be saved to a file or similar, in an application dependent manner. In order
+to check the license later when offline, load the string *s* and recover the license key as follows:
 
 ```cpp
-std::string s << file;
-size_t k = s.find('-');
-
-if (k == string::npos) { return 1; }
-
-std::string license = s.substr(0, k);
-std::string signature = s.substr(k+1, string::npos);
 cryptolens::Error e;
+Cryptolens cryptolens_handle;
+cryptolens_handle.signature_verifier.set_modulus_base64(e, "ABCDEFGHI1234");
+cryptolens_handle.signature_verifier.set_exponent_base64(e, "ABCD");
+
 cryptolens::optional<cryptolens::LicenseKey> license_key =
-  cryptolens::LicenseKey::make(e, license, signature);
+  cryptolens_handle.make_license_key(e, s);
 if (e) { handle_error(e); return 1; }
 ```
 
+A full working example can be found as *example4.cpp* in the examples directory.
 
 ## HTTPS requests outside the library
 
