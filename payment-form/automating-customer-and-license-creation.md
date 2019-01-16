@@ -80,6 +80,22 @@ Once you have added the requests, that section in the payment form should look s
 
 > It is important that the top request is to **add a customer** and that the **add license** request is below.
 
+### Customizing success message
+
+If you would like to use the built in success page, we can customize it to show the license key upon a successful payment. We have so far used two API calls, one to [create a customer](https://app.cryptolens.io/docs/api/v3/AddCustomer) and another to [create a license key](https://app.cryptolens.io/docs/api/v3/CreateKey). These methods will return the following variables (see **Results** section for each API call):
+
+* **customerId**  - (from Add Customer) the customer id
+* **portalLink** -  (from Add Customer) the link to the sign up form for the portal where customers can manage licenses (requires **EnableCustomerAssociation** to be true when creating the customer)
+* **key** - (from Create Key) the key string
+
+> Note: Although each variable is capitalized, the API will format all variables with came case, eg **PortalLink** becomes **portalLink**.
+
+Using these variables, you can create a template for the message, for example:
+
+```
+Thank you for your order. Your key is [key] and customer id [customerId].
+```
+
 ## Finishing up and testing
 If everything was set up correctly, you can click on **Preview** of the form, which will show you the live payment form.
 

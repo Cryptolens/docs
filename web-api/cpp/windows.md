@@ -13,13 +13,7 @@ It is fairly simple to get started with SKM Client API for C++ on Windows.
 
 ## Getting the library
 
-### Official release (recommended)
-
-You can download the official pre-compiled versions of the SKM Client API for C++ on Windows on the link below:
-
-* [Download the packages](/security/packages)
-
-### Building the library youself (advanced users)
+### Building the library yourself
 
 Instructions for building the library and creating *CryptolensSKM.lib* using Visual Studio:
 
