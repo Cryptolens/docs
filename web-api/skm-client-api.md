@@ -12,7 +12,7 @@ labelID: web_api
 
 > NOTE: The use of most of the methods requires an active subscription.
 
-There are currently two versions of the API, one for .NET and one for C++ environments.
+There are currently five versions of the API.
 
 * [.NET version](#net-version)
 * [C++ version](#c-version)
