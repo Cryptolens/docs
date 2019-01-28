@@ -1,7 +1,7 @@
 ---
 title: Cryptolens Licensing Client Reference
 author: Artem Los
-description: A reference of client APIs avaiable in multiple languages.
+description: A reference of client APIs available in multiple languages.
 labelID: web_api
 ---
 
@@ -16,6 +16,9 @@ There are currently two versions of the API, one for .NET and one for C++ enviro
 
 * [.NET version](#net-version)
 * [C++ version](#c-version)
+* [Java version](#java-version)
+* [Python version](#python-version)
+* [PHP version](#php-version)
 
 ### .NET version
 
@@ -39,3 +42,23 @@ We recommend to review the following tutorials:
 #### Getting started
 * [Quickstart](https://cryptolens.io/2017/08/new-client-api-for-c/)
 * [Comprehensive documentation](/web-api/cpp/cpp-client)
+
+### Java version
+
+#### Download
+* [The latest release](https://github.com/Cryptolens/cryptolens-java/releases)
+* [Source code](https://github.com/Cryptolens/cryptolens-java)
+
+#### Getting started
+* [Examples](https://github.com/Cryptolens/cryptolens-java)
+
+### Python version
+#### Download
+* Run `pip install licensing`.
+* [Source code](https://github.com/Cryptolens/cryptolens-python)
+
+#### Getting started
+* [Examples](https://github.com/Cryptolens/cryptolens-python)
+
+### PHP version
+* [Example](https://github.com/Cryptolens/cryptolens-php)
