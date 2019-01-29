@@ -9,7 +9,8 @@ labelID: getting_started
 
 Our aim of this tutorial is to guide you through, step by step, the process of
 implementing Cryptolens into your application. We'll assume that you've developed a .NET application
-and use <a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx" target="_blank">Visual Studio 2013</a>.
+and use <a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx" target="_blank">Visual Studio 2013</a>. 
+If you are using a different language, we recommend to check out [this page](/web-api/skm-client-api).
 
 > If you want to jump straight into the code, please check out the [key verification](/examples/key-verification) tutorial.
 
@@ -24,8 +25,4 @@ use the saved license file. The user will be able to use the software 90 days of
 ## Next
 
 * [Create a new SKM account](/getting-started/create-account)
-
-## Remarks
-
-If your application uses C++, you can use our C++ client API instead (see the [GitHub repo](https://github.com/cryptolens/cryptolens-cpp) for examples). Note, if you want to view code snippets for key verification in C# or VB.NET, you can jump directly to the [Examples](/examples/index) section.
 

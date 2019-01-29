@@ -27,7 +27,7 @@ You have successfully completed this tutorial! If you would have any questions, 
 Good luck! :) 
 
 ## Next steps
-You've now implemented SKM into your application. Here's what's next:
+You've now implemented Cryptolens into your application. Here's what's next:
 
 1. [Get started with payment forms](/payment-form/intro)
 2. [Learn more about possible licensing models](/licensing-models/licensetypes)

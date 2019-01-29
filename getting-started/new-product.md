@@ -17,7 +17,7 @@ enter the name of your application and press 'Create'.
 id as well.
 
 ## Product Id
-When you start implementing SKM Client API into your code, you will need to provide
+When you start implementing Cryptolens Client API into your code, you will need to provide
 a `ProductId`, which is simply a number used to identify your product.
 
 One of the ways to get the product id is to:
