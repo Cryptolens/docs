@@ -41,7 +41,7 @@ We recommend to review the following tutorials:
 
 #### Getting started
 * [Quickstart](https://cryptolens.io/2017/08/new-client-api-for-c/)
-* [Comprehensive documentation](/web-api/cpp/cpp-client)
+* [Comprehensive documentation](https://github.com/Cryptolens/cryptolens-cpp)
 
 ### Java version
 
