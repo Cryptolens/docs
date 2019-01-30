@@ -46,9 +46,8 @@ Imports SKM.V3.Models
 To get the Python code to work, you need to run `pip install licensing` first.
 
 ```python
-from licensing.helpers import Helpers
-from licensing.models import Response, RSAPublicKey
-from licensing.methods import Key
+from licensing.models import *
+from licensing.methods import Key, Helpers
 ```
 
 #### In Java
@@ -143,9 +142,10 @@ auth = "{access token with permission to access the activate method}"
 result = Key.activate(token=auth,\
                    rsa_pub_key=RSAPubKey,\
                    product_id=3349, \
-                   key="ICVLD-VVSZR-ZTICT-YKGXL", machine_code="test")
+                   key="ICVLD-VVSZR-ZTICT-YKGXL",\
+                   machine_code=Helpers.GetMachineCode())
 
-if result[0] == None:
+if result[0] == None or not Helpers.IsOnRightMachine(res[0]):
     # an error occurred or the key is invalid or it cannot be activated
     # (eg. the limit of activated devices was achieved)
     print("The license does not work: {0}".format(result[1]))
