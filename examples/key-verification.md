@@ -53,9 +53,8 @@ from licensing.methods import Key, Helpers
 #### In Java
 To get the Java code to work, you need to reference **cryptolens.jar** available [here](https://github.com/cryptolens/cryptolens-java).
 ```java
-import io.cryptolens.Cryptolens;
-import io.cryptolens.Helpers;
-import io.cryptolens.LicenseKey;
+import io.cryptolens.methods.*;
+import io.cryptolens.models.*;
 ```
 
 #### In C++
@@ -159,30 +158,17 @@ else:
 String RSAPubKey = "{enter the RSA Public key here}";
 String auth = "{access token with permission to access the activate method}";
 
-Cryptolens cryptolens = Cryptolens.getDefault();
-cryptolens.setRSAPublicKey(RSAPubKey);
+LicenseKey license = Key.Activate(auth, RSAPubKey, 
+                      new ActivateModel(3349, 
+                      "ICVLD-VVSZR-ZTICT-YKGXL", 
+                      Helpers.GetMachineCode()));
 
-Cryptolens.ActivateResponse result =
-        cryptolens.activate(auth
-                , 3349
-                , "ICVLD-VVSZR-ZTICT-YKGXL"
-                , Helpers.GetMachineCode()
-        );
+if (license == null || !Helpers.IsOnRightMachine(license)) {
+    System.out.println("The license does not work.");
+} else {
 
-if (!result.successful()) {
-
-    System.out.println("Failed to activate!");
-    Cryptolens.ActivateServerError er = result.getServerError();
-    Exception ex = result.getException();
-
-    if (er != null) {
-        System.out.println("Server error: " + er);
-    }
-
-    if (ex != null) {
-        ex.printStackTrace(System.out);
-    }
-    return;
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + license.Expires);
 }
 ```
 
