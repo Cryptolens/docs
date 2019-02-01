@@ -74,6 +74,21 @@ Else
 End If
 ```
 
+#### In Java
+
+```java
+// notice that we have added "HasExpired()".
+if (license == null || !Helpers.IsOnRightMachine(license) || license.HasExpired()) {
+    // an error occurred or the key is invalid or it cannot be activated
+    // (eg. the limit of activated devices was achieved)
+    System.out.println("The license does not work.");
+} else {
+    // everything went fine if we are here!
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + license.Expires);
+}
+```
+
 If you use a specific feature to denote time-limited licenses, you can similarly add `HasFeature(<feature number>)` in the if-statement.
 
 #### Require subscription to access updates

@@ -71,6 +71,24 @@ Else
 End If
 ```
 
+**In Java**
+
+```java
+String RSAPubKey = "{Your RSA public key}";
+String auth = "{access token with Activate permission}";
+
+// notice the new parameter set to 100.
+LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), 100));
+
+// from node-locking example
+if (license == null || !Helpers.IsOnRightMachine(license, true)) {
+    System.out.println("The license does not work.");
+} else {
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + license.Expires);
+}
+```
+
 #### Floating with overdraft
 The code bellow allows at most the **maximum number of machines** + 1 to use the software concurrently.
 
@@ -115,6 +133,23 @@ If Helpers.IsOnRightMachine(result.LicenseKey, isFloatingLicense:= true, allowOv
 Else
     ' an error occurred
 End If
+```
+
+**In Java**
+```java
+String RSAPubKey = "{Your RSA public key}";
+String auth = "{access token with Activate permission}";
+
+// notice the two new parameter, one for floating time interval (i.e. 100) and one telling how much we can exceed the max number of machines (i.e. by 1).
+LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), 100, 1));
+
+// from node-locking example (NB: we need to provide an additional true flag in Helpers.IsOnRightMachine to support overdraft)
+if (license == null || !Helpers.IsOnRightMachine(license, true, true)) {
+    System.out.println("The license does not work.");
+} else {
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + license.Expires);
+}
 ```
 
 #### Notes about the code
@@ -174,5 +209,3 @@ if (result != null && result.Result == ResultType.Success)
     Console.WriteLine(info.OverdraftDevices);
 }
 ```
-
-

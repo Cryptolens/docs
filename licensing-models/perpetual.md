@@ -94,3 +94,25 @@ Else
 End If
 
 ```
+
+In Java
+
+```java
+//...
+//everything went fine if we are here!
+
+if (license.HasFeature(1) && license.HasNotExpired()) 
+{
+    // feature 1 is trial, so we check if it's enabled, we check
+    // the expiration date
+} 
+else if (license.HasNotFeature(1))
+{
+    // if feature 1 is not enabled, it is a full featured license.
+}
+else 
+{
+    // the license has expired.
+}
+
+```
