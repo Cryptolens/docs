@@ -12,6 +12,8 @@ The goal of trial keys is to set it up in such a way that you don't need to manu
 
 In Cryptolens, all trial keys are bound to the device that requested them, which helps to prevent users from using the trial after reinstalling their device.
 
+You can define which features should count as trial by [editing feature definitions](/web-interface/feature-definitions) on the product page.
+
 ## Example
 
 In order to create a trial key, you only need to call `Key.CreateTrialKey`. This method will either return a new trial key or an existing one (if this command was called before).
