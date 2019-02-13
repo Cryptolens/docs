@@ -7,6 +7,8 @@ labelID: web_interface
 
 # Maximum number of machines
 
+> Please check out the [FAQ article](/faq/index#maximum-number-of-machines) as well.
+
 The maximum number of machines allows you to lock a license key to specific number of devices (aka hardware lock / node-lock). This value is an upper bound. If it is set to zero, this feature will be deactivated, which means that unlimited number of activations can be performed. This will only affect [key verification](https://help.cryptolens.io/examples/key-verification), i.e. you will still be able to retrieve key information using [GetKey method](https://app.cryptolens.io/docs/api/v3/GetKey).
 
 * 0 – hardware lock disabled, i.e. unlimited number of activation.

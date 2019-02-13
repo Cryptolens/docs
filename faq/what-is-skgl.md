@@ -2,7 +2,7 @@
 title: What is SKGL?
 author: Artem Los
 description: SKGL is a predecessor to Cryptolens
-labelID: faq
+labelID: basics
 ---
 
 # What is SKGL?

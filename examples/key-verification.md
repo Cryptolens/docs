@@ -9,7 +9,7 @@ labelID: examples
 
 In this example, our aim is to quickly implement the basic licensing functionality into your application.
 
-> Please make sure to add the client API for your language, as described in [this tutorial](/getting-started/skm-client-api).
+> Please make sure to add the client API for your language, as described in [this tutorial](/web-api/skm-client-api).
 
 If you would experience any issues, please check [common errors](#common-errors) section.
 

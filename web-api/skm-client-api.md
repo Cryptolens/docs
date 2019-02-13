@@ -27,6 +27,8 @@ There are currently five versions of the API.
 * [API documentation](https://help.cryptolens.io/api/dotnet/api/index.html)
 * [Source code, pre-releases, examples](https://github.com/Cryptolens/cryptolens-dotnet)
 
+**Note:** If you plan to use the client with Mono (eg. in Unity) or on Linux/Mac, you need to use the binaries without System.Management, which can be downloaded [here](https://github.com/Cryptolens/cryptolens-dotnet/releases).
+
 #### Getting started
 
 We recommend to review the following tutorials:
