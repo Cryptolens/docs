@@ -53,6 +53,63 @@ Cryptolens uses two different protocols to deliver license key information to th
 
 Most of the clients have methods that allow to load a license key object from file or from String. For example, [LoadFromFile (.NET)](https://help.cryptolens.io/api/dotnet/api/SKM.V3.ExtensionMethods.html#SKM_V3_ExtensionMethods_LoadFromFile_SKM_V3_LicenseKey_), [LoadFromString (Java)](https://help.cryptolens.io/api/java/io/cryptolens/models/LicenseKey.html#LoadFromString-java.lang.String-java.lang.String-int-) or [load_from_string (Python)](https://help.cryptolens.io/api/python/#licensing.models.LicenseKey.load_from_string).
 
+<!--### What is activation-->
+
+## Client APIs / SDKs
+
+### Machine code generation
+
+Machine codes are used to uniquely identify an end user instances, i.e. a machine code is a device fingerprint. The way it is generated depends on the SDK and the platform, which is listed below:
+
+#### .NET
+Prior to v4.0.15, machine codes have used the [following code](https://github.com/Cryptolens/cryptolens-dotnet/blob/master/Cryptolens.Licensing/SKM.cs#L1233) to gather device specific information and later hash it using either SHA1 or SHA256. The problem with this method is that it is Windows specific and requires System.Management (which is not supported in Mono when integrating with Unity). To solve this, we opted for platform specific methods to retrieve the UUID. You can read more about how to migrate [here](https://help.cryptolens.io/api/dotnet/articles/v4015.html#platform-independent-machine-code-method). Depending on the platform, the following shell calls are made to retrieve the UUID:
+
+**Windows**
+```
+cmd.exe /C wmic csproduct get uuid
+```
+
+**Mac**
+```
+system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }'
+```
+
+**Linux**
+
+Note, the method below requires root access.
+
+```
+dmidecode -s system-uuid
+```
+
+#### Java
+In Java, the [following method](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/methods/Helpers.java#L23) is used.
+
+#### Python
+In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L64). Note, the machine code will not be the same as in .NET.
+
+#### C++
+In C++, we use the same method that was used in .NET prior to v4.0.15. The source code can be found [here](https://gist.github.com/svedi/1f2dfac7c54965f9659fbe5447b3bf72). We are working on shipping a platform independent version in the next release.
+
+#### Plan ahead
+Our plan is to introduce a platform independent method to retrive the UUIDs, in order to ensure that machine codes are the same for all SDKs.
+
+### Protecting RSA Public Key and Access Tokens
+
+If we take the [key verification tutorial](/examples/key-verification) as an example, there are three parameters that are specific to your account: `RSA Public Key`, `Access Token` and `ProductId`. The product id is not a se
+
+#### RSA Public Key
+The RSA public key is used to verify a license key object sent by Cryptolens. This is especially useful if you want to implement [offline activation](/examples/offline-verification) since we don't want any of the properties (eg. features and expiration date) to be changed by the user.
+
+> Note: the RSA public key can only be used to verify a license key object, the private key that is used for signing is stored on our server.
+
+#### Access Token
+An access token tells Cryptolens who you are (authentication) and what permissions are allowed (authorization). In other words, it can be thought of as username and password combined, but with restricted permission.
+
+It's recommend to restrict access tokens as much as possible, both in terms of what it can do (eg. Activate or Create Key) and what information it returns (read more [here](/legal/DataPolicy#using-feature-lock-for-data-masking)). For example, you should preferably only allow access tokens used in the client application to `Activate` a license key. The permission to `Create Key` should only be accessible in applications that you control, eg. on your server.
+
+So if you have a restricted access token, the chances that an adversary will be able to do any harm is minimal. For example, the worst that an adversary can do is to activate more devices (up to a [certain limit](#maximum-number-of-machines)), which can be fixed quite easily in the dashboard.
+
 ## Legal
 
 ### GDPR

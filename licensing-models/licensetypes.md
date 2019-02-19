@@ -69,6 +69,27 @@ For example, imagine you want your customers to be able to use your application 
 </tr>
 
 <tr>
+<td>SDK licensing</td>
+<td><p> Software Development Kit (SDK) licensing is when you distribute a component, usually a library, that is later going to be integrated as a part of another commercial solution.
+</p>
+</td>
+
+<td><a href="/licensing-models/sdk-licensing">SDK licensing tutorial</a>.
+</td>
+</tr>
+
+
+<tr>
+<td>User Account licensing</td>
+<td><p>User account based licensing replaces license keys with username/password authentication (and optionally with 2FA). A secure protocol, open-source, protocol is used to authenticatate users in the app, with them having to expose their username/password to the app. You can read more about the protocol <a href="https://cryptolens.io/2018/10/secure-user-account-authentication-inside-apps-for-software-licensing/">here</a>.
+</p>
+</td>
+
+<td><a href="/licensing-models/user-login-intro">User account authentication tutorial</a>.
+</td>
+</tr>
+
+<tr>
 <td>Custom licensing</td>
 <td><p>SKM can be thought of as a toolbox for developers that simplifies implementation of a big variety of licensing scenarios.
 </p>
