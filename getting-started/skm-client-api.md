@@ -22,6 +22,6 @@ Now, type `Cryptolens.Licensing` into the Browse tab, select `SKM Client API` an
 
 ## Next
 
-* [Create a new product](/getting-started/new-product)
+* [Adding code](/getting-started/insert-code)
 
 

@@ -1,28 +1,104 @@
 ---
-title: Introduction to Cryptolens step by step
+title: Introduction to Cryptolens
 author: Artem Los
-description: Introduction to the getting started tutorial.
+description: Summary of tutorials to get started with Cryptolens software licensing
 labelID: getting_started
 ---
 
-# Introduction to Cryptolens step by step
+# Getting Started
 
-Our aim of this tutorial is to guide you through, step by step, the process of
-implementing Cryptolens into your application. We'll assume that you've developed a .NET application
-and use <a href="https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx" target="_blank">Visual Studio 2013</a>. 
-If you are using a different language, we recommend to check out [this page](/web-api/skm-client-api).
+## Quick start
 
-> If you want to jump straight into the code, please check out the [key verification](/examples/key-verification) tutorial.
+If you are new to Cryptolens, we recommend to go through the basics, such as [creating new account](/getting-started/create-account) and [new product](/getting-started/new-product).
 
-<p align="center">
-<img src="/images/digitaltools-all-features.png">
-</p>
+## Supported platforms
 
-> Our application will have three features (voice, audio and converter), and  the ability to license these as a
-'subscription' (time-limited) or 'perpetual' (unlimited time). We will check the license key when we have an Internet connection. If we're offline, we will
-use the saved license file. The user will be able to use the software 90 days offline at most.
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+    <a href="/getting-started/net-intro" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">.NET</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="/getting-started/unity" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Unity</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://cryptolens.io/2019/01/autocad-plugin-software-licensing/" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">AutoCAD</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+</div>
 
-## Next
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://cryptolens.io/2019/01/protecting-rhinoceros-plugins-with-software-licensing/" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Rhinoceros / Grasshopper</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-java" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Java</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-python" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Python</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+</div>
 
-* [Create a new SKM account](/getting-started/create-account)
-
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-cpp" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">C++</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="/getting-started/ios-android" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Android and iOS</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-php" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">PHP</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+</div>

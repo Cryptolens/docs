@@ -6,8 +6,8 @@ labelID: getting_started
 ---
 
 # Access Tokens
-In the code example on the previous page, we had a variable called `token`.
-This is also called an <a href="https://app.cryptolens.io/docs/api/v3/auth" target="_blank">access token</a>.
+In all of the code examples, you will see variables such as `token` or `auth`.
+They refer to an <a href="https://app.cryptolens.io/docs/api/v3/auth" target="_blank">access token</a>.
 
 The idea behind access tokens is to allow you to:
  * identify yourself with Cryptolens (authentication) - let Cryptolens know that you are you
