@@ -10,6 +10,8 @@ labelID: examples
 Although Cryptolens is a web-based service, we can still use it to protect applications that have no direct access to the internet (eg. air-gapped devices).
 This is especially useful if you plan to sell your software to larger enterprises.
 
+> You can find example projects [here](https://github.com/Cryptolens/Examples/tree/master/offline-verification).
+
 ## Idea
 
 To verify licenses without internet access, Cryptolens uses public-key cryptography to sign each response that is sent to your application. You can think of each of these responses as a
@@ -104,6 +106,59 @@ Else
     ' -------------------New code ends ---------------------
 End If
 ```
+
+#### In Java
+```java
+
+// ...
+
+String currentMachineId = "test"; // usually you can call Helpers.GetMachineCode() to obtain this value. Other platforms, such as Android, require a different identifier.
+
+if (license == null || !Helpers.IsOnRightMachine(license, currentMachineId)) {
+    // an error occurred or the key is invalid or it cannot be activated
+    // (eg. the limit of activated devices was achieved)
+
+    // -------------------new code starts -------------------
+    // we will try to check for a cached response/certificate
+
+    String contents = "";
+    try {
+        contents = new String(Files.readAllBytes(Paths.get("licensefile.skm")));
+    } catch (IOException e) {
+        e.printStackTrace();
+        return;
+    }
+
+    LicenseKey licenseFile = LicenseKey.LoadFromString(RSAPubKey, contents, 3);
+
+    if(licenseFile != null && Helpers.IsOnRightMachine(license, currentMachineId)) {
+        System.out.println("Offline mode");
+        System.out.println("The license is valid!");
+        System.out.println("It will expire: " + licenseFile.Expires);
+    } else {
+        System.out.println("The license does not work.");
+    }
+
+    // -------------------new code ends ---------------------
+
+} else {
+
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + license.Expires);
+
+    // -------------------new code starts -------------------
+    // saving a copy of the response/certificate
+    try {
+        PrintWriter pw = new PrintWriter("licensefile.skm");
+        pw.println(license.SaveAsString());
+        pw.close();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    // -------------------new code ends ---------------------
+}
+
+```
 #### How it works
 The code examples above will always try to access Cryptolens to check a license key. If a request to Cryptolens would fail, we check for an **cached** version of the response/certificate and that it has ***not expired** (eg. the last successful access was at most 3 days ago).
 
@@ -172,4 +227,38 @@ Else
     Console.WriteLine("Please obtain a new one here: https://app.cryptolens.io/Form/A/onp4cDAc/222")
     Console.WriteLine("Your machine code is: " + Helpers.GetMachineCode())
 End If
+```
+
+#### In Java
+```java
+
+String currentMachineId = "test"; // usually you can call Helpers.GetMachineCode() to obtain this value. Other platforms, such as Android, require a different identifier.
+
+String contents = "";
+
+try {
+    contents = new String(Files.readAllBytes(Paths.get("ActivationFile20180606.skm")));
+} catch (IOException e) {
+    e.printStackTrace();
+    return;
+}
+
+LicenseKey licenseFile = LicenseKey.LoadFromString(RSAPubKey, contents, 365);
+
+if(licenseFile != null && Helpers.IsOnRightMachine(license, currentMachineId)) {
+
+    // if you have multiple products, make sure the license file has correct product id.
+    /*if(licenseFile.ProductId != 123) {
+        System.out.println("This license file is not for this product.");
+        return;
+    }*/
+
+    System.out.println("License verification successful.");
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + licenseFile.Expires);
+} else {
+    System.out.println("The license file is not valid or has expired.")
+    System.out.println("Please obtain a new one here: https://app.cryptolens.io/Form/A/onp4cDAc/222")
+    System.out.println("Your machine code is: " + currentMachineId)
+}
 ```

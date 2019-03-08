@@ -20,6 +20,9 @@ This may feel a bit counter-intuitive and we are continuously working on improvi
 
 For now, if you see that a code-example contains a call to the `activate` method (which all examples do at the moment), it means that you need to check the expiration date even if you get a successful result. A way to do this is to call `HasNotExpired` (depending on the library) or simply check the `Expire` field. If you plan to support both time-limited and time-unlimited licenses, you can use one of the feature flags as a way to distinguish this. Please read more [here](/web-interface/keys-that-dont-expire).
 
+#### Blocking expired licenses
+In order to ensure that licenses stop working after that they have expired, you can select "Block Expired Licenses" when editing [feature names](/web-interface/feature-definitions). Expired licenses will be blocked within an hour.
+
 #### Plan ahead
 You may noticed that you can [edit feature definitions](/web-interface/feature-definitions) in each product. They can be used as a way to help you to keep track of what each feature flag means and they also help our platform understand how to display a certain license in a meaningful way (eg. if F1 stands for a time-limited license and it's not enabled for a certain license, there won't be an option to prolong it).
 

@@ -16,6 +16,8 @@ The point is to allow a larger group of people to be able to use your software. 
 
 > By supporting usage-based licenses, we can monetize a group of users that would otherwise not have purchased the product (eg. because it is too expensive).
 
+Example project can be found [here](https://github.com/Cryptolens/Examples/tree/master/usage-based/java).
+
 ## Implementation
 
 We can implement usage based licensing using [data objects (aka custom variables)](https://app.cryptolens.io/docs/api/v3/Data). An advantage of using them is that they allow us to increment and decrement them atomically, which means that the counter will always reflect the actual usage of a specific feature.
@@ -27,7 +29,7 @@ We can implement this in two ways; the choice of which depends on if we want to 
 
 ### Creating a data object
 
-In order to associate a data object with a license key, you can use the code below:
+In order to associate a data object with a license key, you can use the code below (in C#):
 
 ```cs
 // note, if we ran Key Verification earlier, we can can set Key=result.LicenseKey.KeyString
@@ -40,6 +42,23 @@ var parameters = new AddDataObjectToKeyModel()
 };
 
 var result = Data.AddDataObject("access token with AddDataObject permission (and keylock set to '-1' for improved security)", parameters);
+```
+
+In Java, it's quite similar:
+
+```java
+String auth = "access token with AddDataObject permission (and keylock set to '-1' for improved security)";
+BasicResult addResult = Data.AddDataObject(auth,
+        new AddDataObjectToKeyModel(
+                3941,
+                "FRQHQ-FSOSD-BWOPU-KJOWF",
+                "usagecount",
+                0,
+                ""));
+
+if (!Helpers.IsSuccessful(addResult)) {
+    System.out.println("Could not add a new data object. Maybe the limit was reached?");
+}
 ```
 
 In curl, this can be accomplished as shown below:
@@ -71,7 +90,6 @@ Note that `IncrementIntValue` or `DecrementIntValue` methods allow you to specif
 If we simply want to keep track of the number of times a feature was used (and bill our customers in the end of the month), we can use the following code:
 
 ```cs
-
 var auth = "Access token with AddDataObject, ListDataObject and IncrementIntValue permission. Please also set KeyLock value to '-1'";
 var licenseKey = "LZKZU-MPJEW-TARNP-UHDBQ";
 
@@ -105,6 +123,44 @@ else
 }
 ```
 
+```java
+// note, if we ran Key Verification earlier, we can can set Key=license.KeyString
+String auth = "Access token with AddDataObject, ListDataObject and IncrementIntValue permission. Please also set KeyLock value to '-1'";
+
+ListOfDataObjectsResult listResult = Data.ListDataObjects(auth, new ListDataObjectsToKeyModel(3941, "FRQHQ-FSOSD-BWOPU-KJOWF", "usagecount"));
+
+if (!Helpers.IsSuccessful(listResult)) {
+    System.out.println("Could not list the data objects.");
+}
+
+if (listResult.DataObjects == null) {
+    BasicResult addResult = Data.AddDataObject(auth,
+            new AddDataObjectToKeyModel(
+                    3941,
+                    "FRQHQ-FSOSD-BWOPU-KJOWF",
+                    "usagecount",
+                    0,
+                    ""));
+    if (!Helpers.IsSuccessful(addResult)) {
+        System.out.println("Could not add a new data object. Maybe the limit was reached?");
+    }
+} else {
+    // if you set enableBound=true and bound=50 (as an example)
+    // it won't be possible to increase to a value greater than 50.
+    BasicResult incrementResult = Data.IncrementIntValue(auth,
+            new IncrementIntValueToKeyModel(
+                    3941,
+                    "FRQHQ-FSOSD-BWOPU-KJOWF",
+                    listResult.DataObjects.get(0).Id,
+                    1,
+                    false,
+                    0));
+    if(!Helpers.IsSuccessful(incrementResult)) {
+        System.out.println("Could not increment the data object");
+    }
+}
+```
+
 The idea is to either create a new data object (if such does not exist) or increment and existing one.
 
 #### Paying upfront
@@ -129,6 +185,29 @@ if (!res)
     Console.WriteLine("Could not decrement the data object. The limit was reached.");
 }
 
+```
+
+```java
+String auth = "Access token with AddDataObject, ListDataObject and IncrementIntValue permission. Please also set KeyLock value to '-1'";
+
+ListOfDataObjectsResult listResult = Data.ListDataObjects(auth, new ListDataObjectsToKeyModel(3941, "FRQHQ-FSOSD-BWOPU-KJOWF", "usagecount"));
+
+if (!Helpers.IsSuccessful(listResult)) {
+    System.out.println("Could not list the data objects.");
+}
+
+BasicResult decrementResult = Data.DecrementIntValue(auth,
+        new DecrementIntValueToKeyModel(
+                3941,
+                "FRQHQ-FSOSD-BWOPU-KJOWF",
+                listResult.DataObjects.get(0).Id,
+                1,
+                true,
+                0));
+
+if(!Helpers.IsSuccessful(decrementResult)) {
+    System.out.println("Could not decrement the data object");
+}
 ```
 
 ### Security note
