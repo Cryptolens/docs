@@ -31,7 +31,7 @@ var result = Key.Activate(token: auth, productId: 3349, key: "GEBNC-WZZJD-VJIHG-
 var license = LicenseKey.FromResponse("RSAPubKey", result);
 ```
 
-Also, when implementing offline verification, please call `LoadFromFile` and `LoadFromString` with the RSAPubKey.
+Also, when implementing offline verification, please call `LoadFromFile` and `LoadFromString` with the RSAPubKey. The format of the license file should be set to **Other languages** (see more [here](/faq/index#protocols)) when downloading it in the dashboard or using Activation Forms.
 
 You can download a sample project [here](https://github.com/Cryptolens/Examples/tree/master/unity).
 
