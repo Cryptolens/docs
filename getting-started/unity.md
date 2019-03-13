@@ -21,6 +21,18 @@ Once you have the binaries, we can get license key verification up and running q
 1. Add the Cryptolens.Licensing.dll and Newtonsoft.Json.dll into the **Assets folder**.
 2. Include the [license key verification logic](/examples/key-verification).
 
+> **Note:** we recommend to avoid using [Key.Activate](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html?#SKM_V3_Methods_Key_Activate_System_String_SKM_V3_Models_ActivateModel_) that takes in an [ActivateModel](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Models.ActivateModel.html) since signature verification will not work on some platforms. Instead, we recommend to use a special version of [Key.Activate](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html#SKM_V3_Methods_Key_Activate_System_String_System_Int32_System_String_System_String_System_Boolean_System_Int32_System_Int32_) as shown below: 
+
+```cs
+// call to activate
+var result = Key.Activate(token: auth, productId: 3349, key: "GEBNC-WZZJD-VJIHG-GCMVD", machineCode: "foo");
+
+// obtaining the license key (and verifying the signature automatically).
+var license = LicenseKey.FromResponse("RSAPubKey", result);
+```
+
+Also, when implementing offline verification, please call `LoadFromFile` and `LoadFromString` with the RSAPubKey.
+
 You can download a sample project [here](https://github.com/Cryptolens/Examples/tree/master/unity).
 
 ### Other licensing models
