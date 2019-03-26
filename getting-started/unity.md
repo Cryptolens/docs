@@ -1,11 +1,11 @@
 ---
 title: Unity 3D
 author: Artem Los
-description: Introduction to Unity 3D software licensing
+description: Introduction to Unity 3D and Mono software licensing
 labelID: getting_started
 ---
 
-# Unity 3D
+# Unity 3D / Mono
 
 ## Idea
 In this post we have summarized the necessary steps to add software licensing into a Unity game. Unity uses Mono runtime, which means that a special version of our .NET client library can be used.
@@ -37,6 +37,9 @@ You can download a sample project [here](https://github.com/Cryptolens/Examples/
 
 ### Other licensing models
 Since Unity uses C# as the scripting interface, you can use all of the .NET examples provided in this wiki. As a next step, please take a look at the available [licensing models](/licensing-models/licensetypes).
+
+Please keep in mind if you use the version of [Key.Activate](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html#SKM_V3_Methods_Key_Activate_System_String_System_Int32_System_String_System_String_System_Boolean_System_Int32_System_Int32_) that was suggested earlier, 
+ you would need to create a license key object from the response such as `LicenseKey.FromResponse(result).SaveToFile()` to be able to use the extension methods, eg. `result.LicenseKey.SaveToFile()` will not work.
 
 ### Considerations
 The `GetMachineCode()` and `IsOnRightMachine()` methods require root access on Linux.

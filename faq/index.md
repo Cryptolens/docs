@@ -51,7 +51,7 @@ For trial keys, it's better to use the first approach whereas for paid licenses,
 ### Protocols
 Cryptolens uses two different protocols to deliver license key information to the client during activation:
 
-* **.NET compatible** (aka LingSign): if you use C# or VB.NET
+* **.NET compatible** (aka LingSign): if you use C# or VB.NET (unless you use Unity/Mono specific methods, in which case _Other languages_ protocol is used)
 * **Other languages** (aka StringSign): if you use C++, Java or Python
 
 Most of the clients have methods that allow to load a license key object from file or from String. For example, [LoadFromFile (.NET)](https://help.cryptolens.io/api/dotnet/api/SKM.V3.ExtensionMethods.html#SKM_V3_ExtensionMethods_LoadFromFile_SKM_V3_LicenseKey_), [LoadFromString (Java)](https://help.cryptolens.io/api/java/io/cryptolens/models/LicenseKey.html#LoadFromString-java.lang.String-java.lang.String-int-) or [load_from_string (Python)](https://help.cryptolens.io/api/python/#licensing.models.LicenseKey.load_from_string).

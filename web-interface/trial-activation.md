@@ -12,21 +12,21 @@ labelID: web_interface
 ## Introduction
 Say you have generated 1000 trial keys for a full-featured version of your software that you ship along with another product in order to encourage customers to try it out. Or, you have a product that is subscription based (for example 365 days). In both examples, you want the trial to start from the moment a user starts your application.
 
-In offline based validation system as SKGL, this is not possible unless you set up your own system that is going to track if the user has used the trial or not.
+In offline based validation system such as SKGL, this is not possible unless you set up your own system that is going to track if the user has used the trial or not.
 
-However, thanks to a server based validation system, in this case serialkeymanager.com, you can let the server to take care of that. The only thing that is required is to execute several lines of code.
+However, thanks to a server based validation system, in this case Cryptolens, you can let the server to take care of that. The only thing that is required is to execute several lines of code.
 
-> NOTE: A trial can only be registered on one machine. If you have specified the Maximum number of machines to be greater than 1, the last user that has activated the software has to save the updated key in order to be able to activate the software on a different machine.
+> NOTE (for SKGL key algorithm): A trial can only be registered on one machine. If you have specified the Maximum number of machines to be greater than 1, the last user that has activated the software has to save the updated key in order to be able to activate the software on a different machine.
 
 ## Getting started
 By default, a newly generated key does not have this option enabled. In order to enable it,
 
 1. Go to https://app.cryptolens.io/Product
 2. Select the product you want to use.
-3. Press Create new key
+3. Click Create new key
 4. Tick **start trial upon activation**
 6. Set the Maximum number of machines to 1. (note, this value can be anything greater than zero for this feature to work)
-7. Press Create.
+7. Click Create.
 
 All keys you generate using this procedure will be trial keys that can be updated a specific number of times. In this case, only once.
 
