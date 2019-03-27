@@ -73,6 +73,11 @@ Please read through the [following instructions](https://github.com/cryptolens/c
 namespace cryptolens = ::cryptolens_io::v20180502;
 using Cryptolens = cryptolens::basic_SKM<cryptolens::RequestHandler_curl,cryptolens::SignatureVerifier_OpenSSL>;
 ```
+#### In Golang
+
+```golang
+import "github.com/Cryptolens/cryptolens-golang/cryptolens"
+```
 
 ### Key verification
 
@@ -232,6 +237,23 @@ int main()
   else                                     { std::cout << "Welcome!" << std::endl; }
 
   curl_global_cleanup();
+}
+```
+
+#### In Golang
+
+```golang
+token := "{access token with permission to access the activate method}"
+publicKey := "{enter the RSA Public key here}"
+
+licenseKey, err := cryptolens.KeyActivate(token, cryptolens.KeyActivateArguments{
+	ProductId:   3646,
+	Key:         "MPDWY-PQAOW-FKSCH-SGAAU",
+	MachineCode: "289jf2afs3",
+})
+if err != nil || !licenseKey.HasValidSignature(publicKey) {
+	fmt.Println("License key activation failed!")
+	return
 }
 ```
 

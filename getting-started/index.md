@@ -102,3 +102,33 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
     </div>
 </div>
 </div>
+
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-golang" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Golang</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="#" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">AutoHotKey</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+    <a href="#" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Coming soon</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+</div>
