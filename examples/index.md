@@ -11,6 +11,8 @@ In this section, we have listed several examples to help you get started. The fo
 
 If you want to explore other licensing models, we recommend to review [licensing models](/licensing-models/licensetypes) section, where all examples have code suggestions in .NET.
 
+> Depending on the platform (eg. Unity, Android, etc), we recommend to review [this page](/getting-started/index) for platform specific advice.
+
 ## Inside your application
 
 * [Key verification](/examples/key-verification) - prepared example for key verification (C#, VB.NET, Java, Python, C++).

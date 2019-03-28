@@ -19,6 +19,8 @@ There are currently five versions of the API.
 * [Java version](#java-version)
 * [Python version](#python-version)
 * [PHP version](#php-version)
+* [Golang version](#golang-version)
+* [NodeJS version](#nodejs-version)
 
 ### .NET version
 
@@ -64,3 +66,9 @@ We recommend to review the following tutorials:
 
 ### PHP version
 * [Example](https://github.com/Cryptolens/cryptolens-php)
+
+### Golang version
+* [Example](https://github.com/Cryptolens/cryptolens-golang)
+
+### NodeJS version
+* [Example](https://github.com/Cryptolens/cryptolens-nodejs)
