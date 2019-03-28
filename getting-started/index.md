@@ -115,9 +115,9 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
 </div>
 <div class="col-md-4">
     <div class="card">
-    <a href="#" style="text-decoration:none;">
+    <a href="https://github.com/Cryptolens/cryptolens-nodejs" style="text-decoration:none;">
         <div class="card-body" style="background-color: #220999;">
-            <h3 class="text-center" style="color:white;">AutoHotKey</h3> 
+            <h3 class="text-center" style="color:white;">NodeJS</h3> 
         </div>
     </a>
     </div>
@@ -126,7 +126,7 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
     <div class="card">
     <a href="#" style="text-decoration:none;">
         <div class="card-body" style="background-color: #220999;">
-            <h3 class="text-center" style="color:white;">Coming soon</h3> 
+            <h3 class="text-center" style="color:white;">AutoHotKey</h3> 
         </div>
     </a>
     </div>

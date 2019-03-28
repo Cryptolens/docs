@@ -79,6 +79,12 @@ using Cryptolens = cryptolens::basic_SKM<cryptolens::RequestHandler_curl,cryptol
 import "github.com/Cryptolens/cryptolens-golang/cryptolens"
 ```
 
+#### In NodeJS
+
+```js
+const Key = require('cryptolens').Key;
+```
+
 ### Key verification
 
 #### In C\#
@@ -255,6 +261,23 @@ if err != nil || !licenseKey.HasValidSignature(publicKey) {
 	fmt.Println("License key activation failed!")
 	return
 }
+```
+
+#### In NodeJS
+
+```js
+var RSAPubKey = "{Your RSA Public key, which can be found here: https://app.cryptolens.io/User/Security}";
+var result = Key.Activate(token="{Access token with with Activate permission}", RSAPubKey, ProductId=3349, Key="GEBNC-WZZJD-VJIHG-GCMVD", MachineCode="test");
+
+result.then(function(license) {
+    if (!license) {
+        // failure
+        return;
+    }
+    
+    // Please see https://app.cryptolens.io/docs/api/v3/model/LicenseKey for a complete list of parameters.
+    console.log(license.Created);
+});
 ```
 
 
