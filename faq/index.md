@@ -23,6 +23,9 @@ For now, if you see that a code-example contains a call to the `activate` method
 #### Blocking expired licenses
 In order to ensure that licenses stop working after that they have expired, you can select "Block Expired Licenses" when editing [feature names](/web-interface/feature-definitions). Expired licenses will be blocked within an hour.
 
+#### Starting countdown upon activation
+If you do not know when your customers will activate the license for the first time but you still want them to use it for a set number of days, you can enable [trial activation](/web-interface/trial-activation).
+
 #### Plan ahead
 You may noticed that you can [edit feature definitions](/web-interface/feature-definitions) in each product. They can be used as a way to help you to keep track of what each feature flag means and they also help our platform understand how to display a certain license in a meaningful way (eg. if F1 stands for a time-limited license and it's not enabled for a certain license, there won't be an option to prolong it).
 

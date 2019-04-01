@@ -1,25 +1,18 @@
 ---
-title: Trial activation
+title: Start countdown upon activation (aka Trial activation)
 author: Artem Los
 description: Describes the trial activation setting for a license key.
 labelID: web_interface
 ---
 
-# Trial Activation
+# Start countdown upon activation (aka trial activation)
 
-> Note: Since the introduction of [SKM15 (Key Algorithm)](/web-interface/skgl-vs-skm15), the key string will no longer have to be updated (if that algorithm is used). This means that, instead of being limited to one device only, you can have as many device as you like using the same key. But keep in mind, every new device will update the global trial "count" for every user.
+## Idea
 
-## Introduction
-Say you have generated 1000 trial keys for a full-featured version of your software that you ship along with another product in order to encourage customers to try it out. Or, you have a product that is subscription based (for example 365 days). In both examples, you want the trial to start from the moment a user starts your application.
-
-In offline based validation system such as SKGL, this is not possible unless you set up your own system that is going to track if the user has used the trial or not.
-
-However, thanks to a server based validation system, in this case Cryptolens, you can let the server to take care of that. The only thing that is required is to execute several lines of code.
-
-> NOTE (for SKGL key algorithm): A trial can only be registered on one machine. If you have specified the Maximum number of machines to be greater than 1, the last user that has activated the software has to save the updated key in order to be able to activate the software on a different machine.
+Trial activation allows you to pre-generate time-limited licenses so that the time-limit starts from the first day of activation. This is especially useful when you don't know in advance when the license key will be used for the first time.
 
 ## Getting started
-By default, a newly generated key does not have this option enabled. In order to enable it,
+By default, a newly generated license key does not have this option enabled. In order to enable it,
 
 1. Go to https://app.cryptolens.io/Product
 2. Select the product you want to use.
@@ -28,9 +21,20 @@ By default, a newly generated key does not have this option enabled. In order to
 6. Set the Maximum number of machines to 1. (note, this value can be anything greater than zero for this feature to work)
 7. Click Create.
 
-All keys you generate using this procedure will be trial keys that can be updated a specific number of times. In this case, only once.
+If your set time was set to 30 (as an example), then if the user activates the license key in 2 months from now, they will still be able to use the license for 30 days.
 
-You can also change individual keys’ settings by clicking on a key and ticking **trial activation** box. Remember to set **maximum number of machines** to a value greater than 0.
+## Remarks
 
-## General Advice
-Never hard code a trial key into your application. Although the trial will not be extended if only one user is using it, once we allow multiple users to activate the trial (for the same key), they will update the global trial count.
+Please read these through before you start using feature in production.
+
+### Maximum number of machines greater than 1
+Trial activation feature ensures that each new machine code can use the license for a set number of days (specified in set time / period). However, since the "expiration date" is global for
+the license (shared among all machines), setting maximum number of machines to a value greater than 1 will allow the old machines to use the license until the last machine expires.
+
+For example, let's say you set maximum number of machines to 2 and set time to 30 (this value is referred to as "period" on the product page). When the first machine activates the license, it will extend the expiration date so that the license can be used in 30 days. After that 30 days have expired, the second machine activates the license, which will extend the expiration date for another 30 days. The old machine will still be able to use the license.
+
+### SKGL key generation algorithm
+We recommend to always use SKM15, which is the default for all newly created products. Using SKGL will update the license key string, which is described [here](https://app.cryptolens.io/docs/api/v3/Activate).
+
+### Hard coding licenses
+Never hard code a trial key into your application. Although the trial will not be extended if only one user is using it, once we allow multiple users to activate the trial (for the same key), they will update the global trial count. If you need trial key functionality, please take a look at [verified trials](/examples/verified-trials).
