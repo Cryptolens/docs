@@ -151,9 +151,9 @@ namespace SDKExample
         {
             // From: https://help.cryptolens.io/examples/key-verification
 
-            var RSAPubKey = "{your RSA pub key}";
+            var RSAPubKey = "{Your RSA Public key}";
 
-            var auth = "{access token}";
+            var auth = "{access token with permission to access the activate method}";
             var result = Key.Activate(token: auth, parameters: new ActivateModel()
             {
                 Key = licenseKey,

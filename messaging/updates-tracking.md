@@ -18,11 +18,11 @@ It is also quite common to offers users the possibility to choose what type of u
 ## Implementation
 
 ### Code
-Let's suppose the user is listening on the stable branch and we want to show them the recent message if such exists. Then, we can use the code below.
+Let's suppose the user is listening on the stable branch and we want to show them the recent message if such exists. Then, we can use the code below. **Remember** that this method requires a separate [access token](/getting-started/access-token) with 'GetMessages' permission, which can be created [here](https://app.cryptolens.io/User/AccessToken#/).
 
 ```cs
 var currentVersion = 1538610060;
-var result = (GetMessagesResult)Message.GetMessages("token with GetMessages permission", new GetMessagesModel { Channel = "stable", Time = currentVersion } );
+var result = (GetMessagesResult)Message.GetMessages("access token with GetMessages permission", new GetMessagesModel { Channel = "stable", Time = currentVersion } );
 
 if(result == null || result.Result == ResultType.Error)
 {

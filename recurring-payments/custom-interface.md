@@ -9,7 +9,7 @@ labelID: payment_forms
 
 ## Idea
 
-Recurring billing module consists of two parts: 
+[Recurring billing module](/recurring-payments/index) consists of two parts: 
 * an interface that allows your customers to manage subscriptions.
 * a Stripe webhook endpoint that ensures that subscriptions in Stripe stay in sync with the licenses in Cryptolens.
 

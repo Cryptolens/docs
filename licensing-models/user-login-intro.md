@@ -52,7 +52,7 @@ To get this code to work, you need the RSAPubKey, an access token with GetToken 
 * The product id can be found on the [product page](https://app.cryptolens.io/Product).
 
 ```cs
-string RSAPubKey = "RSA Pub key";
+string RSAPubKey = "{enter the RSA Public key here}";
 string token = "access token with GetToken permission";
 
 string existingToken = null; // in case you've already authenticated them once and the token is still valid.

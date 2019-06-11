@@ -37,4 +37,4 @@ One of the ways to get the product id is to:
 
 ## Next
 
-* [Add new access token](/getting-started/access-tokens)
+* [Add new access token](/getting-started/access-token)

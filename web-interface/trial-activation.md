@@ -17,7 +17,7 @@ By default, a newly generated license key does not have this option enabled. In 
 1. Go to https://app.cryptolens.io/Product
 2. Select the product you want to use.
 3. Click Create new key
-4. Tick **start trial upon activation**
+4. Tick **start countdown upon activation**
 6. Set the Maximum number of machines to 1. (note, this value can be anything greater than zero for this feature to work)
 7. Click Create.
 

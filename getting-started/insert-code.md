@@ -22,8 +22,8 @@ You can download the source code <a href="https://github.com/Cryptolens/Examples
 ```vb
 ' The code below is based on https://help.cryptolens.io/examples/key-verification.
 
-Dim token = "WyIyNjAxIiwiL0ZYYndDTm1jTlJNdGRPeDFNS29iNnlaQSs1NTVkZHcyREVWZXFDdyJd"
-Dim RSAPubKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTnu+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
+Dim token = "{access token with permission to access the activate method}"
+Dim RSAPubKey = "{Your RSA Public key}"
 Dim keyStr = TextBox1.Text.Replace(" ", "")
 
 Dim result = Key.Activate(token:=token, parameters:=New ActivateModel() With {
@@ -77,8 +77,8 @@ Once we have a valid license, we will save it locally (it will be signed by SKM,
 ' The code below is based on https://help.cryptolens.io/examples/key-verification.
 
 Dim license = New LicenseKey().LoadFromFile()
-Dim publicKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTnu+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
-Dim token = "WyIyNjAxIiwiL0ZYYndDTm1jTlJNdGRPeDFNS29iNnlaQSs1NTVkZHcyREVWZXFDdyJd"
+Dim publicKey = "{Your RSA Public key}"
+Dim token = "{access token with permission to access the activate method}"
 
 If license IsNot Nothing Then
 

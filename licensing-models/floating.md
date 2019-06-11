@@ -33,6 +33,7 @@ The code bellow allows at most the **maximum number of machines** to use the sof
 
 **In C#**
 ```cs
+var auth = "{access token with permission to access the activate method}";
 var result = Key.Activate(token: auth, parameters: new ActivateModel()
 {
     Key = licenseKey,
@@ -55,6 +56,7 @@ else
 
 **In VB.NET**
 ```vb
+Dim auth = "{access token with permission to access the activate method}"
 Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
                           .Key = licenseKey,
                           .ProductId = 3349,
@@ -74,8 +76,8 @@ End If
 **In Java**
 
 ```java
-String RSAPubKey = "{Your RSA public key}";
-String auth = "{access token with Activate permission}";
+String RSAPubKey = "{Your RSA Public key}";
+String auth = "{access token with permission to access the activate method}";
 
 // notice the new parameter set to 100.
 LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), 100));
@@ -95,6 +97,7 @@ The code bellow allows at most the **maximum number of machines** + 1 to use the
 **In C#**
 
 ```cs
+var auth = "{access token with permission to access the activate method}";
 var result = Key.Activate(token: auth, parameters: new ActivateModel()
 {
     Key = licenseKey,
@@ -118,6 +121,7 @@ else
 
 **In VB.NET**
 ```vb
+Dim auth = "{access token with permission to access the activate method}"
 Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
                           .Key = licenseKey,
                           .ProductId = 3349,
@@ -137,8 +141,8 @@ End If
 
 **In Java**
 ```java
-String RSAPubKey = "{Your RSA public key}";
-String auth = "{access token with Activate permission}";
+String RSAPubKey = "{Your RSA Public key}";
+String auth = "{access token with permission to access the activate method}";
 
 // notice the two new parameter, one for floating time interval (i.e. 100) and one telling how much we can exceed the max number of machines (i.e. by 1).
 LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), 100, 1));
@@ -168,6 +172,7 @@ specified in **maximum number of machines** can use the software concurrently.
 Normally, floating licenses will automatically be released in a certain period of time (specified by `FloatingTimeInterval`). However, you can manually release a floating license by using [Key.Deactivate](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html?#SKM_V3_Methods_Key_Deactivate_System_String_SKM_V3_Models_DeactivateModel_) with `Floating=True`, as shown below:
 
 ```cs
+var auth = "{Access token with permission to access the deactivate method}";
 Key.Deactivate(activateToken, new DeactivateModel { 
     Key = "GEBNC-WZZJD-VJIHG-GCMVD", 
     ProductId = 3349, 
@@ -196,6 +201,7 @@ var activateModel = new ActivateModel()
     Metadata = true
 }
 
+var auth = "{access token with permission to access the activate method}";
 var result = Key.Activate(token: auth, parameters: activateModel);
 
 // some code here

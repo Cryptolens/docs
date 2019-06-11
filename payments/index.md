@@ -11,7 +11,7 @@ labelID: payment_forms
 
 Cryptolens core functionality has always been the software licensing API, which keeps track of what features your customers are entitled to, how long they can use your software, etc. Since Cryptolens is a cloud-based application, you can easily integrate it with other services, including those that process payments.
 
-There are three ways to integrate payments with Cryptolens: calling our API manually, using [payment forms](/payment-forms/index) or the new [recurring payments](/recurring-payments/index).
+There are three ways to integrate payments with Cryptolens: [calling our API](/payments/external-providers) manually, using [payment forms](/payment-form/index) or the new [recurring payments](/recurring-payments/index).
 
 ![](/images/cryptolens-payments-overview.png)
 
