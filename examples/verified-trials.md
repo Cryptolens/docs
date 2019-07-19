@@ -14,6 +14,8 @@ In Cryptolens, all trial keys are bound to the device that requested them, which
 
 You can define which features should count as trial by [editing feature definitions](/web-interface/feature-definitions) on the product page.
 
+> Note: the duration of the trial is 15 days by default. You can change that by creating an access token that has **FeatureLock** set to the number of days the trial should be valid. We recommend to create a separate access token for `Key.CreateTrialKey` since the feature lock can interfere with other methods, such as Activate (where it acts as mask for fields).
+
 ## Example
 
 In order to create a trial key, you only need to call `Key.CreateTrialKey`. This method will either return a new trial key or an existing one (if this command was called before).
@@ -23,7 +25,7 @@ Once that is done, you can perform [key verification](/examples/key-verification
 > **Note**, it's very important to check `Helpers.IsOnRightMachine(activate.LicenseKey)` is true, in order to make sure that
 the trial belongs to the right machine.
 
-The code below is an example of how trial key creation can be set up together with a key verification afterwards. A VB.NET example is comming soon.
+The code below is an example of how trial key creation can be set up together with a key verification afterwards. A VB.NET example is coming soon.
 
 ```cs
 var newTrialKey = Key.CreateTrialKey("access token", new CreateTrialKeyModel { ProductId= 3941, MachineCode =Helpers.GetMachineCode() });

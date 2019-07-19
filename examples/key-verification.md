@@ -43,11 +43,21 @@ Imports SKM.V3.Models
 ```
 
 #### In Python
+
+##### Python 3
 To get the Python code to work, you need to run `pip install licensing` first.
 
 ```python
 from licensing.models import *
 from licensing.methods import Key, Helpers
+```
+
+##### Python 2
+Python 2 library is currently contained in a single file, [cryptolens_python2.py](https://github.com/Cryptolens/cryptolens-python/blob/master/cryptolens_python2.py).
+You need to download it and place in the same folder where you have the rest of your code. It can then be imported as follows:
+
+```python
+from cryptolens_python2 import *
 ```
 
 #### In Java

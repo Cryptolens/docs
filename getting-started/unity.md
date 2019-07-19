@@ -10,6 +10,8 @@ labelID: getting_started
 ## Idea
 In this post we have summarized the necessary steps to add software licensing into a Unity game. Unity uses Mono runtime, which means that a special version of our .NET client library can be used.
 
+> We recommend to read the **Considerations** section in the end of the tutorial that can help when troubleshooting common errors.
+
 ## Implementation
 
 ### Client library
@@ -43,3 +45,5 @@ Please keep in mind if you use the version of [Key.Activate](https://help.crypto
 
 ### Considerations
 The `GetMachineCode()` and `IsOnRightMachine()` methods require root access on Linux.
+
+Some users who build and then run the unity project may get a null response from `Key.Activate`, which will be treated as if the license key is invalid. We recommend to set **API Compatibility level** to .NET 4.x in Edit > Project Settings > Player > Other Settings > API Compatibility Level. In this case, the the binaries for .NET 4.* need to be used, i.e. not the .NET Standard version.

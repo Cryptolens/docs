@@ -39,6 +39,8 @@ Maximum number of machines is a way to specify how many unique machine codes can
 #### Setting to zero
 Setting maximum number of machines turns this feature off, i.e. machine codes will not be added to the license. It means users will be able to run the software on any number of machines.
 
+> Note, `Helpers.IsOnRightMachine()` will return false if no machine code is registered with the license, which will be the case if maximum number of machines is set to 0. As a solution, please check the `MaxNumberOfMachines` field, ensuring it is not 0, before calling `Helpers.IsOnRightMachine()`.
+
 #### Decreasing the value
 Let's say you had maximum number of machines set to 10 and one customer has used up the machine code quota, i.e. they have activated on 10 computers. If you decrease this value to something less than 10, eg. 5, all of the activated machines will still work. That's because the platform does not know which machine codes should work and which should not. If you would like to remove some of the machines codes, you can click on the yellow button next to each license and remove the machine codes in from the list.
 
@@ -115,6 +117,10 @@ An access token tells Cryptolens who you are (authentication) and what permissio
 It's recommend to restrict access tokens as much as possible, both in terms of what it can do (eg. Activate or Create Key) and what information it returns (read more [here](/legal/DataPolicy#using-feature-lock-for-data-masking)). For example, you should preferably only allow access tokens used in the client application to `Activate` a license key. The permission to `Create Key` should only be accessible in applications that you control, eg. on your server.
 
 So if you have a restricted access token, the chances that an adversary will be able to do any harm is minimal. For example, the worst that an adversary can do is to activate more devices (up to a [certain limit](#maximum-number-of-machines)), which can be fixed quite easily in the dashboard.
+
+## Billing
+
+When you sign up for an account, you get 30 days to test the service for free. If you would like to keep the subscription after the trial, it's important to add a valid credit card before 30 days trial has elapsed. After the trial, the account will be downgraded and adding a card will not automatically start the subscription. We are going to fix this but in meantime you can email us at support@cryptolens.io and we will upgrade your account.
 
 ## Legal
 
