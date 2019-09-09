@@ -69,6 +69,13 @@ Here are some sample queries:
 * `customer.id=3` - Keys where where Customer's id is 3.
 * `customer.created= today` - Keys where the Customer's creation date is set to today.
 
+### Sorting based on Reseller (only in dashboard)
+
+You can use the reseller id of a reseller to find licenses that they have issued. For example:
+
+* `resellerid=1234` - show only licenses created by reseller with id 1234.
+* `resellerid=-1` - show licenses that were not created by any reseller.
+
 
 ### Sorting based on Activated Devices
 The Activated Devices (aka Activated Machines) is stored as a list of elements that contain three fields:

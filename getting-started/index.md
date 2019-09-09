@@ -66,7 +66,7 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
     <div class="card">
     <a href="https://github.com/Cryptolens/cryptolens-python" style="text-decoration:none;">
         <div class="card-body" style="background-color: #220999;">
-            <h3 class="text-center" style="color:white;">Python</h3> 
+            <h3 class="text-center" style="color:white;">Python / Autodesk Maya</h3> 
         </div>
     </a>
     </div>
