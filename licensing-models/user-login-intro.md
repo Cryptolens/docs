@@ -20,8 +20,16 @@ In order to get this to work, you need to send your users a specific link so tha
 ## Implementation
 
 ### Creating a customer
-The first step is to create a customer in the dashboard. You can either do this in the [dashboard](https://app.cryptolens.io/Customer) or
-through the Web API using [Add Customer](https://app.cryptolens.io/docs/api/v3/AddCustomer) method. In both cases, you need to set 
+The first step is to allow users to sign up for a Cryptolens account. You can either share the **generic sign up** link with your
+customers (which can be found on the left side on the [customer page](https://app.cryptolens.io/Customer)) or create a customer in advance either 
+through the [dashboard](https://app.cryptolens.io/Customer) or through the Web API using the [Add Customer](https://app.cryptolens.io/docs/api/v3/AddCustomer) method.
+The generic sign up link is similar to the one below:
+
+```
+https://app.cryptolens.io/Portal/@cryptolens.io/Associate?vid=2&auth=authcode
+```
+
+When creating a customer in advance,  you need to set 
 **EnableCustomerAssociation** to true. A link will than be created similar to the one below, which should be sent to your customers.
 
 ```
@@ -78,5 +86,14 @@ else
 The code above will open a new browser window where the customer can authorize the app to retrieve the license keys. If this is successful,
 you should ideally record the `res.LicenseKeyToken` value so that next time the application starts it is passed to `existingToken`. Only if
 `GetLicenseKeys` method is not successful when you pass in the token value should it be called again without the `existingToken` specified.
+
+### Considerations
+
+When a new device is registered with a customer, it will still be possible to activate the license key with `Key.Activate` and register an additional machine code.
+Therefore, we recommend to use one of the eight features or a data object to differentiate between these two cases.
+
+## More information
+
+You can read more how user account authentication works on our [blog](https://cryptolens.io/2018/10/secure-user-account-authentication-inside-apps-for-software-licensing/).
 
 

@@ -32,6 +32,8 @@ Most of the settings don't need to be changed; we will cover the important ones 
 * **Does this pricing plan have multiple price tiers based on quantity** - this option is quite useful if you want to apply a **flat fee** on top of the usage counter. For example, you
 can have a recurring plan where you charge $10/month and then add any additional usage to it.
 
+**Note**: it's important to create a metadata field with the properties of the license key, as described [here](/recurring-payments/setup#plans).
+
 ### Record usage
 To record usage, we can use [Record Usage](https://app.cryptolens.io/docs/api/v3/RecordUsage) method. It will call [Stripe's metered usage API](https://stripe.com/docs/api/usage_records) and increment the current value with the provided amount. All you need is to create an access token with `Subscription` permission and provide a license key with a product id.
 
