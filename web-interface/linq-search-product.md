@@ -58,11 +58,16 @@ Block can be sorted similar to Features. "Yes" and "No" refer to the Boolean val
 ### Sorting based on Customer
 A customer object has four fields that can be used when sorting licenses.
 
-* **Id** - (a number, similar to ID field sorting).
-* **Name** - (a string, similar to notes field sorting).
-* **Email** - (a string, similar to notes field sorting).
-* **CompanyName** - (a string, similar to notes field sorting).
-* **Created** - (a date, similar to Created field sorting).
+* **Id** - a number, similar to ID field sorting.
+* **Name** - a string, similar to notes field sorting.
+* **Email** - a string, similar to notes field sorting.
+* **CompanyName** - a string, similar to notes field sorting.
+* **Created** - a date, similar to Created field sorting.
+* **EnableCustomerAssociation** - Whether it should be possible to customers to sign up for an account (a boolean).
+* **IsPublic** - Whether resellers should be able to see this customer. Note, if a reseller is registered with this customer, they will still be able to see it even if this is set to false (a boolean). 
+* **ResellerId** - The UserId of the account that acts as a reseller (an integer).
+* **MaxNoOfDevices** - The maximum number of devices that the customer can log in on if user account authentication is used (an integer).
+* **Owner** - the user id of the owner of this object. This will be your user id (an integer).
 
 Here are some sample queries:
 * `customer.name="Bob"` - Keys where the Customer's name is "Bob"

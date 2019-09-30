@@ -53,6 +53,21 @@ There are two ways you can restrict the number of machines that can use a licens
 
 For trial keys, it's better to use the first approach whereas for paid licenses, either approach will work fine, although floating licenses will be more convenient for your customers and remove the hassle of license deactivation.
 
+#### Node-locked vs. floating licenses
+There is a difference between how [node-locked](/licensing-models/node-locked) and [floating licenses](/licensing-models/floating) work, and how the maximum number of machines limit is enforced. For node-locked licenses, the device will be registered with the license key and a list of these devices can be found in the `ActivatedMachines` property of a LicenseKey or in the list of _Activated devices_ (in the dashboard). You will need to deactivate unused devices if want to allow new devices to use the license.
+
+In the floating license case, the devices will be registered with the license key temporarily and it will therefore not be possible to list all of them in `ActivatedMachines` property. Only the the floating license device that is being activated in the request will be shown.
+
+To list all devices, including those registered on a floating license model, you can click on the yellow button next to the license key:
+
+![](/images/edit-feature-defs.png)
+
+The `FloatingTimeInterval` is set to 100 by default and can easily be changed.
+
+> **Note** The number of machines activated using node-locking model will not affect the number of machines in the floating license model. In other words,
+if maximum number of machines is set to **5**, then you can have 5 unique devices registered using the node-locked model and another 5 devices can use
+the license key concurrently (floating license model).
+
 ### Protocols
 Cryptolens uses two different protocols to deliver license key information to the client during activation:
 
