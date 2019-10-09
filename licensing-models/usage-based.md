@@ -133,7 +133,7 @@ if (!Helpers.IsSuccessful(listResult)) {
     System.out.println("Could not list the data objects.");
 }
 
-if (listResult.DataObjects == null) {
+if (listResult.DataObjects.size() == 0) {
     BasicResult addResult = Data.AddDataObject(auth,
             new AddDataObjectToKeyModel(
                     3941,
