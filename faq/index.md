@@ -76,6 +76,15 @@ Cryptolens uses two different protocols to deliver license key information to th
 
 Most of the clients have methods that allow to load a license key object from file or from String. For example, [LoadFromFile (.NET)](https://help.cryptolens.io/api/dotnet/api/SKM.V3.ExtensionMethods.html#SKM_V3_ExtensionMethods_LoadFromFile_SKM_V3_LicenseKey_), [LoadFromString (Java)](https://help.cryptolens.io/api/java/io/cryptolens/models/LicenseKey.html#LoadFromString-java.lang.String-java.lang.String-int-) or [load_from_string (Python)](https://help.cryptolens.io/api/python/#licensing.models.LicenseKey.load_from_string).
 
+### Securing your account with 2FA
+We recommend to set up two factor authentication to secure your account. At the moment, we support the TOTP protocol. You can install an authenticator app on your phone or use Yubico authenticator in case you have a Yubico security key. For example, if you have Yubikey, you can active two factor authentication as follows:
+
+1. Visit the [two factor set up page](https://app.cryptolens.io/Account/TwoFactorSetUp).
+2. Click on "Enable two step authentication".
+3. Open [Yubico authenticator](https://www.yubico.com/products/services-software/download/yubico-authenticator/) and click on the plus sign to add a new account. If the QR code is visible, Yubico Authenticator will automatically recognize it. We recommend to require touch to access the credentials.
+4. Save the backup code in a secure place.
+5. You have now successfully enabled two-factor authentication!
+
 <!--### What is activation-->
 
 ## Client APIs / SDKs

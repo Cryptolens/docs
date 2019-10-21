@@ -1,11 +1,11 @@
 ---
-title: Node-locked licenses / Machine code locking
+title: Node locked licenses / Machine code locking
 author: Artem Los
-description: An overview of node-locked licenses
+description: An overview of node locked licenses
 labelID: licensing_models
 ---
 
-# Node-locked licenses
+# Node locked licenses
 
 ## Idea
 In order to ensure that a license key is not used on more machines than the user is entitled to, **machine code locking** (aka node-locked licenses) can be used.

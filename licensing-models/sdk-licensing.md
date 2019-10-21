@@ -15,27 +15,36 @@ In many ways, licensing an SDK or a desktop software is quite similar. In both c
 
 ## Implementation
 
-### License key input
-As with desktop apps, we need to perform a [key verification](/examples/key-verification) before the user of the SDK gains access to the methods. A license key field can be a part of the constructor, a method or a config file stored alongside the SDK.
+There are two ways of protecting SDKs. Either we keep track of each new device that uses the SDK (which requires internet access) or we allow developers to sign their assemblies using a special utility (which will not require access to the internet).
 
-It is recommended not to store this license key in plain text and to either encrypt it or ensure it is compiled (and obfuscated) in the final software.
+The choice depends on both the platform and the licensing model you would like to support:
 
-### Licensing models
+* **Tack all devices** - this approach is better suited for SDKs where you would like to charge your customers for usage, eg. per install or unique device. This will work on all platforms. Each instance using the SDK will need to contact Cryptolens at least once.
 
-#### Feature lock
-In Cryptolens, you can set eight features to either true or false. These features can represent your own features in the SDK.
+* **Offline mode** - if do not want to charge customers per device/install, this approach would suit better. There is no need to contact Cryptolens at any point. This works with SDKs targeting .NET (including Mono/Unity).
 
-For example, imagine that your SDK has one method to convert raw sound to .mp3, another to .ogg and a third to .flac. All of these methods can be considered as features.
+### Track all devices (all platforms)
+If your SDK will have access to the internet, you can protect it in two ways: by registering every end user of the SDK or by counting each time it is installed.
 
-#### Node-locking
+As with desktop apps, we need to perform a [key verification](/examples/key-verification) before the user of the SDK gains access to the methods. A license key field can be a part of the constructor, a method or a config file stored alongside the SDK. If you only want to contact Cryptolens only once, you can save the response from `Key.Activate` and use it instead of contacting Cryptolens. Please read more [here](/examples/offline-verification).
+
+#### Charge per end user
 
 A useful way to ensure that you retain control of all end user instances is to enable [node locking](/licensing-models/node-locked).
 
-For example, you can have different pricing tiers for the number of end users your customers can have (eg. 1 end user for trials, 10,000 for standard and 1,000,000 for enterprise),
-or you can charge for each new 1000nd activation. In the first case, you can simply enter the upper bound in [maximum number of machines](/web-interface/maximum-number-of-machines) field. In the second case (where you charge for each 1000nd activation), you can set some upper bound (eg. 10,000) as the [maximum number of machines](/web-interface/maximum-number-of-machines), which you later increase as they start to reach this limit. For billing purposes, a script can be used to count the number of new activations since last time checked.
+For example, you can have different pricing tiers for the number of end users your customers can have (eg. 1 end user for trials, 10,000 for standard and 1,000,000 for enterprise), or you can charge for each new 1000nd activation. In the first case, you can simply enter the upper bound in [maximum number of machines](/web-interface/maximum-number-of-machines) field. In the second case (where you charge for each 1000nd activation), you can set some upper bound (eg. 10,000) as the [maximum number of machines](/web-interface/maximum-number-of-machines), which you later increase as they start to reach this limit. For billing purposes, a script can be used to count the number of new activations since last time checked.
 
 #### Charge per install
 Instead of keeping track of each end user instance, we can instead count the number of installs and then charge for them. This can be done quite easily with data objects, which you [increment](https://app.cryptolens.io/docs/api/v3/IncrementIntValue) each time a new install occurs (and recording this on the end user machine to not count the same machine twice).
+
+### Offline mode (.NET/Mono/Unity)
+If your SDK won't have access to the internet, we can protect it by requiring developers to sign each assembly that uses the SDK with a special utility. You can read more about it [here](https://github.com/Cryptolens/sdk-licensing).
+
+Using this approach, you can still charge per install per end user as described earlier. Moreover, it's possible to charge per SDK developer, as described below.
+
+### Charge per SDK developer
+When you use the offline mode approach to protect your SDK, end users are not required to contact Cryptolens. However, to get a signed certificate, developers using the SDK need to contact Cryptolens. The signing utility will send the machine code of the device that requests a certificate, which allows you to enforce [node-locking](/licensing-models/node-locked). For example, you can limit how many devices can be used for signing that use the same license key.
+
 
 <!-- #### Usage based-->
 
@@ -57,7 +66,10 @@ We will illustrate how SDKs can be protected on a class that contains helper met
 > With this setup, you can easily customize the permitted methods in the dashboard for each license key.
 
 ### Initialization
-From the customer perspective, SDK usage can look as follows:
+From the customer perspective, SDK usage will depend on if we use the **track all devices** approach or **offline mode**.
+
+#### Track all devices approach
+The customer (developer using the SDK in their approach) will need to supply a license key to unlock functionality.
 
 ```cs
 var math = new MathMethods("FULXY-NADQW-ZAMPX-PQHUT");
@@ -66,10 +78,20 @@ Console.WriteLine(math.Abs(5));
 Console.WriteLine(math.Fibonacci(5));
 ```
 
+#### Offline mode approach
+Since the customer has already provided the license key when signing the assembly, it will not be required when initializing the class.
+
+```cs
+var math = new MathMethods();
+
+Console.WriteLine(math.Abs(5));
+Console.WriteLine(math.Fibonacci(5));
+```
+
 Depending on the license key, some methods may or may not work.
 
 ### Under the hood
-As can be seen in the previous section, the license check occurs in the constructor when the customer provides us with the license key. The code for this is essentially the same as the one in the [key verification](/examples/key-verification) tutorial. The only difference is that we have added some code to take into account the expiration date and the features.
+As can be seen in the previous section, the license check occurs in the constructor when the customer provides us with the license key. In the **track all devices** approach with end user tracking, the code for this is essentially the same as the one in the [key verification](/examples/key-verification) tutorial. The only difference is that we have added some code to take into account the expiration date and the features.
 
 The `permittedMethods` variable is a `Dictionary<string, bool>` and we use it to track what methods the customer has access to.
 
@@ -119,6 +141,9 @@ public int Abs(int num)
 ```
 
 ### Source code
+
+#### Track all changes approach
+
 ```cs
 using System;
 using System.Collections.Generic;
@@ -193,6 +218,105 @@ namespace SDKExample
 
                 return true;
             }
+
+        }
+
+        /// <summary>
+        /// Compute the absolute value of a number
+        /// </summary>
+        public int Abs(int num)
+        {
+            if (!permittedMethods.ContainsKey("Abs"))
+                throw new ArgumentException("The use of this method is not permitted.");
+
+            if (num > 0)
+                return num;
+            return -num;
+        }
+
+        /// <summary>
+        /// Compute the factorial, eg. num!.
+        /// </summary>
+        public int Factorial(int num)
+        {
+            if (!permittedMethods.ContainsKey("Factorial"))
+                throw new ArgumentException("The use of this method is not permitted.");
+
+            if (num == 0)
+                return 1;
+            return num * Factorial(num - 1);
+        }
+
+        /// <summary>
+        /// Compute the nth fibonacci number.
+        /// </summary>
+        public int Fibonacci(int num)
+        {
+            if (!permittedMethods.ContainsKey("Fibonacci"))
+                throw new ArgumentException("The use of this method is not permitted.");
+
+            return fibonacciHelper(num);
+        }
+
+        // we use a helper methods to avoid checking the permission on each iteration.
+        private int fibonacciHelper(int num)
+        {
+            if (num == 0 || num == 1)
+                return 1;
+            return fibonacciHelper(num - 1) + fibonacciHelper(num - 2);
+        }
+    }
+}
+```
+#### Offline mode
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+
+namespace SDKExample
+{
+    public class MathMethods
+    {
+        private Dictionary<string, bool> permittedMethods = new Dictionary<string, bool>();
+
+        public MathMethods()
+        {
+            if (!licenseCheck())
+            {
+                // error occurred when verifying the license.
+                throw new ArgumentException("License verification failed.");
+            }
+        }
+
+        private bool licenseCheck()
+        {
+            string RSA = "{enter the RSA Public key here}";
+            var license = SKM.V3.Methods.Helpers.VerifySDKLicenseCertificate(RSA);
+
+            if(license == null)
+            {
+                return false;
+            }
+
+            // everything went fine if we are here!
+            permittedMethods = new Dictionary<string, bool>();
+
+            if (license.F5)
+            {
+                permittedMethods.Add("Abs", true);
+            }
+            if (license.F6)
+            {
+                permittedMethods.Add("Factorial", true);
+            }
+            if (license.F7)
+            {
+                permittedMethods.Add("Fibonacci", true);
+            }
+
+            return true;
 
         }
 
