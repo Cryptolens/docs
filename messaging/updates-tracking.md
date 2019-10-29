@@ -22,9 +22,9 @@ Let's suppose the user is listening on the stable branch and we want to show the
 
 ```cs
 var currentVersion = 1538610060;
-var result = (GetMessagesResult)Message.GetMessages("access token with GetMessages permission", new GetMessagesModel { Channel = "stable", Time = currentVersion } );
+var result = Message.GetMessages("access token with GetMessages permission", new GetMessagesModel { Channel = "stable", Time = currentVersion } );
 
-if(result == null || result.Result == ResultType.Error)
+if (!Helpers.IsSuccessful(messages))
 {
     // we could not check for updates
     Console.WriteLine("Sorry, we could not check for updates.");

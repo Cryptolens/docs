@@ -27,9 +27,9 @@ The channel is set to **news**, but this can be changed depending on the user pr
 // if it does not exist, use DateTimeOffset.Now.ToUnixTimeSeconds(), i.e. current unix time stamp.
 // var lastSeenTime = result.Messages[0].Created
 
-var result = (GetMessagesResult)Message.GetMessages("token with GetMessages permission", new GetMessagesModel { Channel = "news", Time = lastSeenTime } );
+var result = Message.GetMessages("token with GetMessages permission", new GetMessagesModel { Channel = "news", Time = lastSeenTime } );
 
-if(result == null || result.Result == ResultType.Error)
+if (!Helpers.IsSuccessful(messages))
 {
     // we could not check for new message
     Console.WriteLine("Sorry, we could not access new messages");
