@@ -26,10 +26,27 @@ A product in Stripe can have multiple plans (assuming you are using the newest v
 For example, if you want the license key to have Feature 3 enabled, you need to create a metadata parameter `skm` with the value `{"F3":true}`. If you want the same key to be [node-locked](/licensing-models/node-locked) to one device and have Feature 3 enabled, you can set `skm` parameter to `{"F3": true, "MaxNoOfMachines": 1}`. You can optionally add `ProductId` in the `skm` parameter, in case you want the license key to belong to a different product.
 
 ### Webhooks
-In order to ensure that Cryptolens stays sync with Stripe about the status of each subscription, we need to add a receiving webhook endpoint. You can do this by visiting `Developers>Webhooks`and creating an endpoint with the following configuration:
+In order to ensure that Cryptolens stays sync with Stripe about the status of each subscription, we need to add a receiving webhook endpoint. The version of the API used is **2018-09-06**. You can create a webhook in two ways, either through Stripe's dashboard to curl. If you cannot select the API version in dashboard, you can fallback on curl.
 
+Cryptolens' Stripe endpoint has the following url: `https://app.cryptolens.io/api/subscription/StripeUrl?id=<your user id>`. You can find your specific url on [this page](https://app.cryptolens.io/User/Profile). 
+
+#### In the dashboard
+Please visit `Developers>Webhooks`and create an endpoint with the following configuration:
 * **URL to be called**: `https://app.cryptolens.io/api/subscription/StripeUrl?id=<your user id>` (**note**, this is the Stripe Webhook url )
+* **APIv version**: 2018-09-06 (if yo cannot select this, please use curl as described below)
 * **Filter event**: select `select types to send` and check `invoice.payment_succeeded` and `customer.subscription.deleted`.
+
+#### Using curl
+
+To create webhook endpoint through Stripe's API, we can use tools such as curl. In the call below, you need to replace Stripe's private key (`sk_test_123abcd`)`and the url.
+```
+curl https://api.stripe.com/v1/webhook_endpoints \
+  -u sk_test_123abcd: \
+  -d url="https://app.cryptolens.io/api/subscription/StripeUrl?id=<your user id>" \
+  -d "enabled_events[]"="invoice.payment_succeeded" \
+  -d "enabled_events[]"="customer.subscription.deleted" \
+  -d "api_version"="2018-09-06"
+```
 
 Once the webhook is created, please note down its **Signing secret**, which looks similar to this `whsec_CTQa9jRJY3LlnE28Xpv4gLejONQKjHv4`. We will need this value in the **Cryptolens setup** section.
 
