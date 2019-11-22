@@ -28,8 +28,6 @@ In most cases, we would recommend to give them two permissions: **edit** permiss
 
 In this section we describe what your employees can do with different permission levels. 
 
-#### Customer
-
 ### Access Type
 There are three different access types that you can assign to a user. Note, extra permission is given to users depending on the resource they have permission to, which is covered in _Resources_.
 

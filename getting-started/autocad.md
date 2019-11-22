@@ -7,3 +7,5 @@ labelID: getting_started
 
 # AutoCAD Plug ins
 
+Please check out the following article: https://cryptolens.io/2019/01/autocad-plugin-software-licensing/
+
