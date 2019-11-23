@@ -1,7 +1,7 @@
 ---
 title: Restricted accounts
 author: Artem Los
-description: Explains how to create restricted accounts.
+description: Explains how to create restricted accounts (aka operator view).
 labelID: web_interface
 ---
 
@@ -11,10 +11,11 @@ labelID: web_interface
 
 ## Idea
 
-Operator accounts allow you grant your employees restricted access to your dashboard. This is useful if you want to prevent them to accidentally remove product or an access token, while still allow them to perform necessary changes to licenses, etc.
+Operator accounts allow you to grant your employees restricted access to your dashboard. This is useful if you want to prevent them to accidentally remove product or an access token, while still allow them to perform necessary changes to licenses, etc.
+
+All operations performed by the user will be logged in the [Object log](https://app.cryptolens.io/docs/api/v3/GetObjectLog).
 
 ## Getting started
-To manage operators, you can visit the [operators page](https://app.cryptolens.io/Operator).
 
 ### Adding an operator
 To invite an employee to sign up for an operator account, you can share the link on the [operators page](https://app.cryptolens.io/Operator). When they have signed up, they will not have any access by default, so you will need to add this afterwards.
