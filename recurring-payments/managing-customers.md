@@ -9,8 +9,10 @@ labelID: payment_forms
 
 ## Adding new customers
 
-To allow your customers to login and manage their subscriptions, you need to register them as customers in Cryptolens. You either do this using the Web API or in the dashboard. When creating a new customer, you need to check **enable customer association** and note down the url. This should then be sent to the customer, which will allow them to create a new Cryptolens account or use an existing one. The association url will be similar to the one below:
+To allow your customers to login and manage their subscriptions, they need to have login details to access the customer dashboard. There are two ways this can be done:
 
+* **Provide a generic sign up link** (automatic) - anyone who has access to the link will be able to sign up for an account to access the customer dashboard. You can find this link [here](https://app.cryptolens.io/Customer/SignUpLink). We recommend this option if you want to have an **automated** way for your prospects to sign up for the customer portal.
+* **Register customers yourself** (manual) - if want to control who can sign up for the customer portal, you can create the customers yourself. When you create a new customer on the [customer page](https://app.cryptolens.io/Customer), please select **enable customer association**. This will generate a sign up link similar to the one below, which you can send to a specific customer.
 ```
 https://app.cryptolens.io/Portal/@cryptolens.io/Associate?id=123&auth=activationcode
 ```
