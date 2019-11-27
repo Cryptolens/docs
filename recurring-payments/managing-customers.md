@@ -17,6 +17,9 @@ To allow your customers to login and manage their subscriptions, they need to ha
 https://app.cryptolens.io/Portal/@cryptolens.io/Associate?id=123&auth=activationcode
 ```
 
+### Custom terms of use
+If you want customers to accept your terms of use, you can do so by adding a new data object (user level) on [this page](https://app.cryptolens.io/Data?refType=0) with the name `cryptolens_customtosurl` and StringValue set to the url of your terms of use.
+
 ## Overseeing customers
 
 There are two ways of managing customers: both in Stripe and in Cryptolens. In Stripe you can manage your customers subscriptions and in Cryptolens their licenses. To see all your customers in Stripe, you can go to the `Customers` page and to see active subscriptions, you can go to `Billing>Subscriptions`.
