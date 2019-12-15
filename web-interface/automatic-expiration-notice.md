@@ -16,6 +16,7 @@ In order to be able to send these notifications, a license needs to be associate
 
 ## Implementation
 
-The easiest way to setup an automatic notifications is by creating a data object (associated with the product) with the name `cryptolens_expirationnotice` and the StringValue `0,3,7`. To manage product data objects, you can click on "Data Objects" link on the product page.
+To enable automatic expiration notifications, you can click on _Edit Feature Names_ on the product page and then select `Automatic expiration notification`. The default behaviour is to send an email notification 7 and 3 in advance and another email when the license key gets blocked (assuming automatic license key blocking is enabled).
 
-The string value `0,3,7` means that an expiration notice should be sent 7 and 3 days in advance and the 0 means that when the license gets blocked, a notification will be sent too. For example, if you only want to send expiration notice in advance, you can change this string to `3,7` and if you only want to send confirmations when a license gets blocked, you can can set it to `0`.
+If you want to edit how many days in advance an email is sent and whether an email should be sent when the license key gets blocked, you can do so by modifying a data object associated with the product. It's called `cryptolens_expirationnotice`. By default, its value is `0,3,7`. The string value `0,3,7` means that an expiration notice should be sent 7 and 3 days in advance and the 0 means that when the license gets blocked, a notification will be sent too. For example, if you only want to send expiration notice in advance, you can change this string to `3,7` and if you only want to send confirmations when a license gets blocked, you can can set it to `0`.
+
