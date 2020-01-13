@@ -165,7 +165,7 @@ result = Key.activate(token=auth,\
                    key="ICVLD-VVSZR-ZTICT-YKGXL",\
                    machine_code=Helpers.GetMachineCode())
 
-if result[0] == None or not Helpers.IsOnRightMachine(res[0]):
+if result[0] == None or not Helpers.IsOnRightMachine(result[0]):
     # an error occurred or the key is invalid or it cannot be activated
     # (eg. the limit of activated devices was achieved)
     print("The license does not work: {0}".format(result[1]))

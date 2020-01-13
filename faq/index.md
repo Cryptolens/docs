@@ -144,7 +144,16 @@ So if you have a restricted access token, the chances that an adversary will be 
 
 ## Billing
 
-When you sign up for an account, you get 30 days to test the service for free. If you would like to keep the subscription after the trial, it's important to add a valid credit card before 30 days trial has elapsed. After the trial, the account will be downgraded and adding a card will not automatically start the subscription. We are going to fix this but in meantime you can email us at support@cryptolens.io and we will upgrade your account.
+When you sign up for an account, you get 30 days to test the service for free. If you would like to keep the subscription after the trial, it's important to add a valid credit card before 30 days trial has elapsed. After the trial, the account will be downgraded.
+
+### How monthly pricing is computed
+The pricing is entirely based on usage. It's based on two values: the number of **active licenses** (i.e. those that are not blocked) and the number of active end users. 
+
+For example, let's suppose that you have 20 licenses and 40 end users. In that case, since there are more than 10 end users, the service fee (based on end users) will be 50 (in the standard package). Since there are 20 licenses, the total cost for them will be 20 * 0.1 = 2. The sum will be 52 per month. If your usage goes down, the price will go down too.
+
+To compute the number of **active end users**, we count the number of unique (license, machine code) pairs in a certain period of time (for node-locked licenses, it's one year back and for floating licenses it's a month back). For example, if a license key is set to work on at most one machine, then if each machine verifies the license continuously and there are 10 licenses in total, this will result in 10 end users. If you perform license key verifications periodically or only once, this value will be lower. A unblocked license will always count as at least 1 active end user.
+
+Note: for customers inside the EU, we will add an additional VAT on top of the price if no VAT number has been provided. The currency is EUR for customers inside EEA and USD otherwise.
 
 ## Legal
 
