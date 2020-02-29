@@ -118,7 +118,7 @@ dmidecode -s system-uuid
 In Java, the [following method](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/methods/Helpers.java#L23) is used.
 
 #### Python
-In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L64). Note, the machine code will not be the same as in .NET.
+In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L167). Note, the machine code will not be the same as in .NET.
 
 #### C++
 In C++, we use the same method that was used in .NET prior to v4.0.15. The source code can be found [here](https://github.com/Cryptolens/cryptolens-cpp/blob/master/src/MachineCodeComputer_COM.cpp). We are working on shipping a platform independent version in the next release.
