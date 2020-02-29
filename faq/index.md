@@ -121,7 +121,7 @@ In Java, the [following method](https://github.com/Cryptolens/cryptolens-java/bl
 In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L64). Note, the machine code will not be the same as in .NET.
 
 #### C++
-In C++, we use the same method that was used in .NET prior to v4.0.15. The source code can be found [here](https://gist.github.com/svedi/1f2dfac7c54965f9659fbe5447b3bf72). We are working on shipping a platform independent version in the next release.
+In C++, we use the same method that was used in .NET prior to v4.0.15. The source code can be found [here](https://github.com/Cryptolens/cryptolens-cpp/blob/master/src/MachineCodeComputer_COM.cpp). We are working on shipping a platform independent version in the next release.
 
 #### Plan ahead
 Our plan is to introduce a platform independent method to retrive the UUIDs, in order to ensure that machine codes are the same for all SDKs.
