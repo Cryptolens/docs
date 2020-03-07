@@ -9,6 +9,62 @@ labelID: basics
 
 > The FAQ is a work in progress and is continuously updated based on questions we receive by mail.
 
+## Table of contents
+
+<ul>
+<li><a href="#platform">Platform</a>
+    <ul>
+        <li><a href="#expiration-date">Expiration date</a>
+        <ul>
+            <li><a href="#blocking-expired-licenses">Blocking expired licenses</a></li>
+            <li><a href="#starting-countdown-upon-activation">Starting countdown upon activation</a></li>
+            <li><a href="#plan-ahead">Plan ahead</a></li>
+        </ul>
+        </li>
+        <li><a href="#maximum-number-of-machines">Maximum number of machines</a>
+        <ul>
+            <li><a href="#setting-to-zero">Setting to zero</a></li>
+            <li><a href="#decreasing-the-value">Decreasing the value</a></li>
+            <li><a href="#how-access-can-be-restricted">How access can be restricted</a></li>
+            <li><a href="#node-locked-vs-floating-licenses">Node-locked vs. floating licenses</a></li>
+            <li><a href="#friendly-name">Friendly name</a></li>
+        </ul>
+        </li>
+        <li><a href="#protocols">Protocols</a></li>
+        <li><a href="#securing-your-account-with-2fa">Securing your account with 2FA</a></li>
+        
+    </ul>
+    </li>
+<li><a href="#client-apis--sdks">Client APIs / SDKs</a>
+ <ul>
+            <li><a href="#machine-code-generation">Machine code generation</a>
+             <ul>
+            <li><a href="#net">.NET</a></li>
+            <li><a href="#java">Java</a></li>
+            <li><a href="#python">Python</a></li>
+            <li><a href="#c">C++</a></li>
+            <li><a href="#plan-ahead-1">Plan ahead</a></li>
+        </ul>
+            </li>
+            <li><a href="#protecting-rsa-public-key-and-access-tokens">Protecting RSA Public Key and Access Tokens</a>
+                         <ul>
+            <li><a href="#rsa-public-key">RSA Public Key</a></li>
+            <li><a href="#access-token">Access Token</a></li>
+
+        </ul>
+            </li>
+        </ul>
+
+</li>
+<li><a href="#billing">Billing</a>
+   <ul>
+            <li><a href="#how-monthly-pricing-is-computed">How monthly pricing is computed</a></li>
+        </ul>
+</li>
+<li><a href="#legal">Legal</a></li>
+<li><a href="#what-is-skgl">What is SKGL?</a></li>
+</ul>
+
 ## Platform
 
 ### Expiration date
@@ -56,7 +112,9 @@ For trial keys, it's better to use the first approach whereas for paid licenses,
 #### Node-locked vs. floating licenses
 There is a difference between how [node-locked](/licensing-models/node-locked) and [floating licenses](/licensing-models/floating) work, and how the maximum number of machines limit is enforced. For node-locked licenses, the device will be registered with the license key and a list of these devices can be found in the `ActivatedMachines` property of a LicenseKey or in the list of _Activated devices_ (in the dashboard). You will need to deactivate unused devices if want to allow new devices to use the license.
 
-In the floating license case, the devices will be registered with the license key temporarily and it will therefore not be possible to list all of them in `ActivatedMachines` property. Only the the floating license device that is being activated in the request will be shown.
+In the floating license case, the devices will be registered with the license key temporarily and it will therefore not be possible to list all of them in `ActivatedMachines` property. Only the floating license device that is being activated in the request will be shown.
+
+> **To sum up**: in the node-locked case, activated devices will remain activated (unless deactivated at a later point), whereas for a floating device to remain active, it needs to send periodic **heartbeats**, within a time-window. The length of this time-window is specified using `FloatingTimeInterval` variable. If a device fails to send a request (aka heartbeat) within that interval, it will automatically be deactivated and other devices will be able to activate (i.e. use that seat).
 
 To list all devices, including those registered on a floating license model, you can click on the yellow button next to the license key:
 
@@ -67,6 +125,16 @@ The `FloatingTimeInterval` is set to 100 by default and can easily be changed.
 > **Note** The number of machines activated using node-locking model will not affect the number of machines in the floating license model. In other words,
 if maximum number of machines is set to **5**, then you can have 5 unique devices registered using the node-locked model and another 5 devices can use
 the license key concurrently (floating license model).
+
+#### Friendly name
+The **friendly name** is a way to assign a name to an activated device so that both you and your customers can keep track of which activation belongs to which user. Normally, the **machine code** contains the fingerprint of a device, for example, `9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08`. If you customer has many end users (i.e. activated devices), navigating between these device fingerprints can become troublesome. To resolve this, you can provide a `FriendlyName` when you call `Key.Activate`. At the time of writing, this is supported in our .NET client.
+
+There are a couple of ways you can compute the friendly name for a particular user. At this point, our recommendation is to set it to [Environment.MachineName](https://docs.microsoft.com/en-us/dotnet/api/system.environment.machinename?view=netstandard-2.1). For example, if your customers use Active Directory, the machine name will show up in the list of devices (for a particular user) in Active Directory Admin dashboard:
+
+<img src="/images/ad-user.png" width="100%" />
+
+When your customers have a large number of employees, we recommend to give them access to the customer portal with activation/deactivation permission. You can access a generic sign up link [here](https://app.cryptolens.io/Customer/SignUpLink). Once they are logged in, they will be able manage their licenses and activations in the [customer portal](https://app.cryptolens.io/Portal/Admin).
+
 
 ### Protocols
 Cryptolens uses two different protocols to deliver license key information to the client during activation:
