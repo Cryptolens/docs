@@ -159,10 +159,10 @@ We recommend to set up two factor authentication to secure your account. At the 
 
 ### Machine code generation
 
-Machine codes are used to uniquely identify an end user instances, i.e. a machine code is a device fingerprint. The way it is generated depends on the SDK and the platform, which is listed below:
+Machine codes are used to uniquely identify an end user instances, i.e. a machine code is a device fingerprint. The way it is generated depends on the SDK and the platform, which is listed below.
 
 #### .NET
-Prior to v4.0.15, machine codes have used the [following code](https://github.com/Cryptolens/cryptolens-dotnet/blob/master/Cryptolens.Licensing/SKM.cs#L1233) to gather device specific information and later hash it using either SHA1 or SHA256. The problem with this method is that it is Windows specific and requires System.Management (which is not supported in Mono when integrating with Unity). To solve this, we opted for platform specific methods to retrieve the UUID. You can read more about how to migrate [here](https://help.cryptolens.io/api/dotnet/articles/v4015.html#platform-independent-machine-code-method). Depending on the platform, the following shell calls are made to retrieve the UUID:
+Prior to v4.0.15, machine codes have used [following code](https://github.com/Cryptolens/cryptolens-dotnet/blob/master/Cryptolens.Licensing/SKM.cs#L1233) to gather device specific information and later hash it using either SHA1 or SHA256. The problem with this method is that it is Windows specific and requires System.Management (which is not supported in Mono when integrating with Unity). To solve this, we opted for platform specific methods to retrieve the UUID. You can read more about how to migrate [here](https://help.cryptolens.io/api/dotnet/articles/v4015.html#platform-independent-machine-code-method). Depending on the platform, the following shell calls are made to retrieve the UUID:
 
 **Windows**
 ```
@@ -182,21 +182,23 @@ Note, the method below requires root access.
 dmidecode -s system-uuid
 ```
 
+The old method (prior v4.0.15) is implemented in [Helpers.GetMachineCode](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Helpers.html#SKM_V3_Methods_Helpers_GetMachineCode_System_Boolean_). The new method that uses the UUID from the host OS is implemented in [Helpers.GetMachineCodePI](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Helpers.html#SKM_V3_Methods_Helpers_GetMachineCodePI). If you call `Helpers.GetMachineCodePI(v:2)` in .NET, you will get the same machine code generated on Windows as in the Python library with similar settings.
+
 #### Java
 In Java, the [following method](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/methods/Helpers.java#L23) is used.
 
 #### Python
-In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L167). Note, the machine code will not be the same as in .NET.
+In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L167). Note, the machine code will not be the same as in .NET with default parameters. If you call `Helpers.GetMachineCode(v=2)` in Python and Helpers.GetMachineCodePI(v: 2) in .NET, the machine code will be the same on Windows.
 
 #### C++
 In C++, we use the same method that was used in .NET prior to v4.0.15. The source code can be found [here](https://github.com/Cryptolens/cryptolens-cpp/blob/master/src/MachineCodeComputer_COM.cpp). We are working on shipping a platform independent version in the next release.
 
 #### Plan ahead
-Our plan is to introduce a platform independent method to retrive the UUIDs, in order to ensure that machine codes are the same for all SDKs.
+Our plan is to introduce a platform independent method to retrieve the UUIDs, in order to ensure that machine codes are the same for all client libraries. Currently, there is a way to get the same machine code on Windows in .NET and Python clients.
 
 ### Protecting RSA Public Key and Access Tokens
 
-If we take the [key verification tutorial](/examples/key-verification) as an example, there are three parameters that are specific to your account: `RSA Public Key`, `Access Token` and `ProductId`. The product id is not a se
+If we take the [key verification tutorial](/examples/key-verification) as an example, there are three parameters that are specific to your account: `RSA Public Key`, `Access Token` and `ProductId`. 
 
 #### RSA Public Key
 The RSA public key is used to verify a license key object sent by Cryptolens. This is especially useful if you want to implement [offline activation](/examples/offline-verification) since we don't want any of the properties (eg. features and expiration date) to be changed by the user.
