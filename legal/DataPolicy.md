@@ -17,7 +17,7 @@ labelID: security_advice
 5. [How to increase privacy for your customers](#how-to-increase-privacy-for-your-customers)
 
 ## Introduction
-This document summarizes the data being stored by Cryptolens AB ("Cryptolens") to provide the service SKM (https://app.cryptolens.io) and the protection measures we have in place to safeguard against accidental loss and data breach.
+This document summarizes the data being stored by Cryptolens AB ("Cryptolens") to provide the service Cryptolens (https://app.cryptolens.io) and the protection measures we have in place to safeguard against accidental loss and data breach.
 
 It should be used for informational purposes only. If you are unsure, please consult a lawyer.
 
@@ -54,7 +54,7 @@ If you use Cryptolens as it is intended to be used, there is no need to include 
 ## What data we collect
 In short, we collect two types of data: data about you and data about your customers. In cases where your customers integrate your software (eg. a library/SDK) as a part of theirs, the end user is also their customers.
 
-To make this as general as possible, we will go through the features in SKM and describe who this data belongs to.
+To make this as general as possible, we will go through the features in Cryptolens and describe who this data belongs to.
 
 ### Products
 Products is a way of grouping licenses. Many of the parameters in a product such as `name`, `description` and `licenses` belong to you directly. However, if you collect information in the `notes` field or `data objects` that can be linked, directly or indirectly to a person, this then becomes personally identifiable information.
@@ -68,7 +68,7 @@ In order to to be able to tell the difference between the computers/devices (we 
 
 * `Machine Code` - a device identifier
 * `IP` - the IP of the client device that performed the activation.
-* `IP Proxy` - the IP of the proxy (SKM backed) used to perform the activation.
+* `IP Proxy` - the IP of the proxy (Cryptolens backed) used to perform the activation.
 * `Time` - the time of the first activation.
 
 The `machine code` and the `IP address` constitute personal identifiable information. We also have a record that links this to a certain key, but this is never returned through the API.
@@ -98,14 +98,14 @@ All of the fields above are personal identifiable information.
 The list below shows the list of sub processors that we are using to deliver you the service:
 
 * [Microsoft Azure](https://azure.microsoft.com) - for application and data storage (hosted in North Europe).
-* [SendGrid](https://sendgrid.com/) - to send transactional mail.
+* [Hetzner](https://www.hetzner.de/) - stores the analytics and cdn modules (hosted in Finland).
+* [MailChimp](https://sendgrid.com/) - to send transactional mail.
 * [Intercom](https://www.intercom.com/) - to make sure you can chat with us.
 * [Google Analytics](https://analytics.google.com) - for website analytics.
-* [Pipedrive](https://www.pipedrive.com/en-gb) - for customer management
 
 
 ## Safeguarding measures
-When developing SKM, we apply an **assume breach policy**. This means that we develop components in such a way as to ensure that if a breach occurs, we can minimize its damanage.
+When developing Cryptolens, we apply an **assume breach policy**. This means that we develop components in such a way as to ensure that if a breach occurs, we can minimize its damanage.
 
 ### When data is no longer needed
 Cryptolens strives to only store data that is needed to provide the service. Once such data is no longer needed, it will be removed or anonymized. To be more precise:
@@ -124,7 +124,7 @@ Our database firewall is restricted so that only authorized services can access 
 Automatic backups occur on a daily basis.
 
 ## How to increase privacy for your customers
-In order to safeguard customer data and ensure compliance, both you as a software vendor and us as the data controller have to cooperate. In this section, we have outlined several tips of how to increase safety when using SKM.
+In order to safeguard customer data and ensure compliance, both you as a software vendor and us as the data controller have to cooperate. In this section, we have outlined several tips of how to increase safety when using Cryptolens.
 
 ### Access tokens
 #### Restrict the scope
@@ -155,6 +155,7 @@ On the [security settings](https://serialkeymanager.com/User/Security) page, ple
 Please do not use Web API 2. It can be blocked on the [security settings](https://serialkeymanager.com/User/Security) page.
 
 ## History
+* 2020.04.05 Update the list of third party services. Update the name of the service from SKM to Cryptolens.
 * 2018.05.24 Update the consent requirement (i.e. you no longer need a consent from your customers to be compliant).
 * 2018.03.16 First version.
 
