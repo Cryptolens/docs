@@ -1,7 +1,7 @@
 ---
 title: Deleting keys
 author: Artem Los
-description: The way to delete / remove keys from SKM.
+description: The way to delete / remove keys from Cryptolens.
 labelID: web_interface
 ---
 
