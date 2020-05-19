@@ -77,7 +77,10 @@ This may feel a bit counter-intuitive and we are continuously working on improvi
 For now, if you see that a code-example contains a call to the `activate` method (which all examples do at the moment), it means that you need to check the expiration date even if you get a successful result. A way to do this is to call `HasNotExpired` (depending on the library) or simply check the `Expire` field. If you plan to support both time-limited and time-unlimited licenses, you can use one of the feature flags as a way to distinguish this. Please read more [here](/web-interface/keys-that-dont-expire).
 
 #### Blocking expired licenses
-In order to ensure that licenses stop working after that they have expired, you can select "Block Expired Licenses" when editing [feature names](/web-interface/feature-definitions). Expired licenses will be blocked within an hour.
+In order to ensure that licenses stop working after that they have expired, you can select "Block Expired Licenses" when editing [feature names](/web-interface/feature-definitions). Expired licenses will be blocked within an hour. Note: the following licenses will not be blocked:
+
+* if the license key has a data object with the name **cryptolens_stripesubscriptionitemid**, since these licenses are managed by Stripe through the recurring billing module
+* if [start countdown upon activation](https://help.cryptolens.io/web-interface/trial-activation)(aka trial activation) is enabled, provided that the maximum number of activations has not been reached. For example, if you have created a license with `start countdown upon activation=true` and `MaxNoOfMachines=1`, it will not be blocked if it has not been activated. This way, you can pre-generate the licenses and ensure that your customer can still activate them, even when the expiration date has passed. However, once it has been activated, it will be blocked after the new expiration date (assuming that the license is marked as time-limited).
 
 #### Starting countdown upon activation
 If you do not know when your customers will activate the license for the first time but you still want them to use it for a set number of days, you can enable [trial activation](/web-interface/trial-activation).
