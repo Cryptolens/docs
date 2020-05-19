@@ -14,13 +14,15 @@ We will assume that you already have a payment form with at least one payment pr
 * [Overview of Payment Forms](/payment-form/index)
 * [Overview of Requests and Custom Field](/payment-form/request)
 
+> **Update since 2020.05.04**: A customer can automatically be created in the CreateKey request. If you set `NewCustomer=true`, a new customer will be created and if `AddOrUseExistingCustomer=true`, an existing customer with the same email will be used or a new customer will be created. In both cases, you can call [CreateKey](https://app.cryptolens.io/docs/api/v3/CreateKey) with the same parameters that [AddCustomer](https://app.cryptolens.io/docs/api/v3/AddCustomer) accepts.
+
 ## Idea
 
 In order to both create a new customer and then assign them a new license key, we will send two requests to the [Web API](https://app.cryptolens.io/docs/api/v3), one to **create a customer** and one to **create license** key associated with that customer. The links to the required methods are provided below.
 
 > Note, we will look more into the details of how to set things up in the next section.
 
-* [Create a customer (Web API docs)](https://app.cryptolens.io/docs/api/v3/Customer)
+* [Create a customer (Web API docs)](https://app.cryptolens.io/docs/api/v3/AddCustomer)
 * [Create a license (Web API docs)](https://app.cryptolens.io/docs/api/v3/CreateKey)
 
 ## Implementation

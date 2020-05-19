@@ -57,7 +57,8 @@ Unless circumstances clearly show otherwise, the definitions used in the Agreeme
 
 ### 7 SUBCONTRACTORS
 **7.1**	Through the agreement, Vendor has obtained a general prior authorization from the Customer to hire subcontractors. If Vendor intends to hire a new subcontractor, Vendor shall inform Customer about this so that the Customer may make any objections to this.
-7.2	If Vendor commits a subcontract in accordance with clause 7.1, Vendor shall sign an agreement that makes the subcontractor subject to the same obligations as Vendor has in relation to the Customer under the Agreement.
+
+**7.2**	If Vendor commits a subcontract in accordance with clause 7.1, Vendor shall sign an agreement that makes the subcontractor subject to the same obligations as Vendor has in relation to the Customer under the Agreement.
 
 ### 8 LIABILLITY
 **8.1**	Vendor will only be liable to Customer for damages if:
@@ -83,7 +84,8 @@ Vendor acts in violation of the Customer's written and lawful instructions.
 **10.1** Vendor shall ensure that Vendor employees, with the right to process personal data on behalf of the Customer, comply with the confidentiality of the data.
 
 **10.2**	The Parties undertake not to provide information about the Agreement's content and other information that the Parties have received in connection with the Agreement during the term of the agreement and subsequently not to third parties, whether written or oral and independent of format ("Confidential Information"). The Parties undertake to use Confidential Information solely for the purpose of fulfilling their obligations under the Agreement and not for any other purpose. The receiving Party undertakes to take the necessary steps to prevent any employee, subcontractor or other intermediary from using or disclosing Confidential Information for third parties.
-10.3	The above does not apply to such information which  
+
+**10.3**	The above does not apply to such information which  
 
 a)	at the time of disclosure, or later becomes available to the public in any other way than by violation of the Agreement; or
 b)	was already available to the receiving Party or which it has developed on its own before the conclusion of the Agreement and which has not been obtained directly or indirectly by violation of the Agreement.
