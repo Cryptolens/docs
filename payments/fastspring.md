@@ -2,7 +2,7 @@
 title: Integration with FastSpring
 author: Artem Los
 description: Explains how FastSpring can be integrated with Cryptolens
-labelID: web_interface
+labelID: payment_forms
 ---
 
 # Integration with FastSpring

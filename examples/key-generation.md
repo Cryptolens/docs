@@ -7,6 +7,9 @@ labelID: examples
 
 # Key Generation
 
+> This article uses an old version of the API to create a license. We are currently updating it and a new version will be available shortly. In meantime,
+we recommend to check out [Create Key](https://app.cryptolens.io/docs/api/v3/CreateKey) method documentation.
+
 Being able to create new license keys through external applications is important if you want to integrate Cryptolens with an external providers (eg. for payments, distribution etc).
 
 For example, if you already have a web store in place and want to keep using it, you can still use Cryptolens for eg. software licensing.
