@@ -7,4 +7,4 @@ labelID: web_api
 
 # Windows support with Visual Studio
 
-This tutorial was moved to the [GitHub repository](https://github.com/Cryptolens/cryptolens-cpp/blob/master/tutorials/add-to-project-windows.md) of the project.
+This tutorial has moved to the [GitHub repository](https://github.com/Cryptolens/cryptolens-cpp/blob/master/tutorials/add-to-project-windows.md) of the project.

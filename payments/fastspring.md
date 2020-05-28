@@ -13,6 +13,8 @@ FastSpring allows you to easily setup an online store where you can sell your pr
 By combining it with Cryptolens, you can use FastSpring as the payment processor and Cryptolens as the software licensing backend.
 Currently, the integration supports one-time payments.
 
+<img src="/images/fastspring-overview.png" style="width:100%;" />
+
 ## Implementation
 
 Visit your [FastSpring dashboard](https://dashboard.fastspring.com/) and create or select an existing product:
