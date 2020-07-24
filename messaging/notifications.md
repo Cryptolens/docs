@@ -54,3 +54,6 @@ else
 
 Console.Read();
 ```
+
+### Broadcast a message
+New messages can be sent on [this page](https://app.cryptolens.io/Message).

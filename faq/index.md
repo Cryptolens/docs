@@ -52,6 +52,7 @@ labelID: basics
             <li><a href="#access-token">Access Token</a></li>
 
         </ul>
+        <li><a href="#troubleshooting-api-errors">Troubleshooting API errors</a></li>
             </li>
         </ul>
 
@@ -214,6 +215,33 @@ An access token tells Cryptolens who you are (authentication) and what permissio
 It's recommend to restrict access tokens as much as possible, both in terms of what it can do (eg. Activate or Create Key) and what information it returns (read more [here](/legal/DataPolicy#using-feature-lock-for-data-masking)). For example, you should preferably only allow access tokens used in the client application to `Activate` a license key. The permission to `Create Key` should only be accessible in applications that you control, eg. on your server.
 
 So if you have a restricted access token, the chances that an adversary will be able to do any harm is minimal. For example, the worst that an adversary can do is to activate more devices (up to a [certain limit](#maximum-number-of-machines)), which can be fixed quite easily in the dashboard.
+
+### Troubleshooting API errors
+When implementing Cryptolens into your software, you may get different kinds of errors depending if you call the API directly or through one of the client libraries. This section 
+covers the most common errors, why they occur and how to troubleshoot them.
+
+The majority of errors (99%) are caused by a wrong **product id**, **access token** or **RSA Public key**. In some cases, it can also be because an active subscription is missing.
+Our client libraries might not always show the real error message and instead display a generic error. To find out the real error message from the Web API, you can call the method through curl. For example, to check the access token, you can call curl as shown below:
+
+```
+curl https://app.cryptolens.io/api/key/Activate? \ 
+     -d token={access token} \
+     -d ProductId={product id} \
+     -d Key={license key string}
+```
+
+You can also check this with the browser. The call above would translate to:
+```
+https://app.cryptolens.io/api/key/Activate?token={access token}&ProductId={product id}&Key={license key string}
+```
+
+The most common errors and their cause is summarized below:
+
+| Error message | Description |
+|---------------|-------------|
+| <span style="white-space:nowrap;">`Unable to authenticate`</span> | The access token is wrong. It is also shown if the subscription has expired. API access requires an active subscription. |
+| `Access denied` | The access token is correct but it does not have sufficient permission. Make sure that if you, for example, want to call GetKey that the access token has "GetKey" permission. |
+{:.table-bordered}
 
 ## Billing
 

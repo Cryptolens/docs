@@ -35,6 +35,8 @@ We have outlined two examples with detailed code examples:
 If you have already used the code in the [Key Verification](/examples/key-verification) tutorial, you only need to add few lines of code to get it to work.
 The additional code that has to be added is shown below (we will explain how it works later in the tutorial):
 
+> **Note:** The value `3` passed as a parameter to `HasValidSignature` (in .NET) or `LoadFromString` (in Java) is used to specify the expiration date of the license file. In this case, users can only be offline for at most 3 days until they need to reconnect again.
+
 #### In C\#
 ```cs
 
@@ -169,7 +171,7 @@ The examples use methods `SaveToFile`and `LoadFromFile`, which are useful abstra
 
 ### USB stick (air-gapped)
 
-In order to check a license key on an [air-gapped device](https://en.wikipedia.org/wiki/Air_gap_(networking)), we need to first load the certificate and then verify it.
+In order to check a license key on an [air-gapped device](https://en.wikipedia.org/wiki/Air_gap_(networking)), we need to first load the certificate and then verify it. In the example code, we also pass in `365` as a parameter to `HasValidSignature` (in .NET) or `LoadFromString` (in Java). This is used to ensure that users need to update the license file becomes invalid in 365 days, requiring the users to obtain a new license file.
 
 > Note, on an air-gapped device, it's important to check that the certificate is locked to to that device (aka machine code locking), which is why we have included `IsOnRightMachine()` call.
 

@@ -7,10 +7,12 @@ labelID: payment_forms
 
 # Setting things up
 
-Before we can use recurring payments feature in Cryptolens, we need to set up a few things in Stripe and in Cryptolens. In this article, we detail all the necessary steps.
+Before we can use recurring payments feature in Cryptolens, we need to set up a few things in Stripe and in Cryptolens. In this article, we detail all the necessary steps. We recommend to create a separate customer as described [here](/recurring-payments/managing-customers) to make testing easier.
 
 ## Stripe setup
 Stripe will contain most of the information regarding products, plans, subscriptions and customers. Additional information that is required for Cryptolens is stored in the metadata parameters. We have listed the specific metadata parameters for each object in Stripe below:
+
+> **Note:** It is important to add Cryptolens specific metadata both in the product and the plan (aka. "pricing"). Please check out [(Example) Stripe products and pricing plans](/recurring-payments/stripe-product-example) for a more detailed tutorial.
 
 ### Products
 The first step is to create a Stripe product, which can be done in `Billing>Products`. Each Stripe product will be linked to a product in Cryptolens. The way to link them is by creating a metadata parameter `skm_product_id`, and assign it the product id of a Cryptolens product. You can specify the metadata parameter after that the product has been created. The end result should be similar as shown in the picture below (3349 should be changed to your product id).
@@ -24,6 +26,8 @@ A product in Stripe can have multiple plans (assuming you are using the newest v
 > **Note:** Under the hood, all the parameters passed in the metadata field will be sent to [CreateKey](https://app.cryptolens.io/docs/api/v3/CreateKey) method.
 
 For example, if you want the license key to have Feature 3 enabled, you need to create a metadata parameter `skm` with the value `{"F3":true}`. If you want the same key to be [node-locked](/licensing-models/node-locked) to one device and have Feature 3 enabled, you can set `skm` parameter to `{"F3": true, "MaxNoOfMachines": 1}`. You can optionally add `ProductId` in the `skm` parameter, in case you want the license key to belong to a different product.
+
+To change the name of the plan, you can use the `Price description` field, which is what Cryptolens will use in the customer portal.
 
 ### Webhooks
 In order to ensure that Cryptolens stays sync with Stripe about the status of each subscription, we need to add a receiving webhook endpoint. The version of the API used is **2018-09-06**. You can create a webhook in two ways, either through Stripe's dashboard to curl. If you cannot select the API version in dashboard, you can fallback on curl.

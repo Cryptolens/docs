@@ -51,3 +51,6 @@ The easiest way to obtain the unix timestamp is by visiting [this link](https://
 ```
 $ date +%s
 ```
+
+### Broadcast a message
+New messages can be sent on [this page](https://app.cryptolens.io/Message).

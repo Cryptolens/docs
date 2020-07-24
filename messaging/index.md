@@ -8,7 +8,8 @@ labelID: messaging_api
 # Messaging API
 
 ## Idea
-Messaging API allow you to broadcast messages to all instances of the application (i.e. all end users), for example to notify about new updates.
+[Messaging API](https://app.cryptolens.io/Message) allow you to broadcast messages to all instances of the application (i.e. all end users), for example to notify about new updates.
+You can send new messages on the [following page](https://app.cryptolens.io/Message).
 
 <center>
 <img src="/images/messaging-api.png" style="width:100%; max-width:350px; display:block; margin-left:auto; margin-right:auto;"/>
