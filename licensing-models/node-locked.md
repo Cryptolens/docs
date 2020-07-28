@@ -54,3 +54,7 @@ End If
 This code will work for the first example (remember to set **maximum number of machines** to **2** in your dashboard).
 
 For the second example, we will need to modify the key verification code slightly. Instead of using `MachineCode = Helpers.GetMachineCode()`, we need another way of identifying unique machine codes. In this case, we need to ensure every device in the on-site generates the same machine code. This could, for example, be the network name, IP address, etc.
+
+## Related articles
+
+* [User based activations](/licensing-models/user-based-activations) - activating on a per user user rather than per machine basis.

@@ -17,6 +17,8 @@ Another advantage of creating user accounts for your customers is that they will
 In order to get this to work, you need to send your users a specific link so that their account is associated with a customer object in the 
 [dashboard](https://app.cryptolens.io/Customer). Cryptolens will take care of the account creation process, if it is required.
 
+> **Note:** Recently, we added support for "per user" activations, which also allows users to authenticate. In comparison to the method we describe in this tutorial, "per user" activations stores user information as an activation inside the license. You can read more about it [here](/licensing-models/user-based-activations).
+
 ## Implementation
 
 ### Creating a customer
