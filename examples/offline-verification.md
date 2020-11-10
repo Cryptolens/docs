@@ -133,7 +133,7 @@ if (license == null || !Helpers.IsOnRightMachine(license, currentMachineId)) {
 
     LicenseKey licenseFile = LicenseKey.LoadFromString(RSAPubKey, contents, 3);
 
-    if(licenseFile != null && Helpers.IsOnRightMachine(license, currentMachineId)) {
+    if(licenseFile != null && Helpers.IsOnRightMachine(licenseFile, currentMachineId)) {
         System.out.println("Offline mode");
         System.out.println("The license is valid!");
         System.out.println("It will expire: " + licenseFile.Expires);
@@ -247,7 +247,7 @@ try {
 
 LicenseKey licenseFile = LicenseKey.LoadFromString(RSAPubKey, contents, 365);
 
-if(licenseFile != null && Helpers.IsOnRightMachine(license, currentMachineId)) {
+if(licenseFile != null && Helpers.IsOnRightMachine(licenseFile, currentMachineId)) {
 
     // if you have multiple products, make sure the license file has correct product id.
     /*if(licenseFile.ProductId != 123) {
