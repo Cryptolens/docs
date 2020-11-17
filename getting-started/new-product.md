@@ -14,7 +14,6 @@ In order to create a new product:
 1. Click on 'create new product' on the <a href="https://app.cryptolens.io" target="_blank">main page</a>   
 2. On the '<a href="https://app.cryptolens.io/Product/Create" target="_blank">create new product page</a>', 
 enter the name of your application and press 'Create'.
-id as well.
 
 ## Product Id
 When you start implementing Cryptolens Client API into your code, you will need to provide
