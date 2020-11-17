@@ -36,4 +36,4 @@ If you use the default firewall, it can be opened as follows:
 2. Right click on **Inbound Rules** and then click on **Add Rule**
 3. Ryle type should be **Port**
 4. **Specific local ports** should be checked, and the textbox at the right of it should be set to 5000 (or any other port of your choosing).
-5. Click next through the entire wizzard and that should be it.
+5. Click next through the entire wizard and that should be it.
