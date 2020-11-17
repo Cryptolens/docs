@@ -9,7 +9,7 @@ labelID: licensing_models
 
 ## Idea
 
-Instead of selling your software as a [one-time purchase](/licensing-models/perpetual), you can instead collect monthly or early payments from your customers.
+Instead of selling your software as a [one-time purchase](/licensing-models/perpetual), you can instead collect monthly or yearly payments from your customers.
 
 There are at least three ways to set up a licensing model that supports some form of recurring payments. You can require an active subscription to: 
 
