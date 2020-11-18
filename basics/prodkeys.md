@@ -12,7 +12,7 @@ labelID: basics
 </p>
 
 ## Key
-A (license) key is a 20 letters long strong, eg. `MUYVD-LSEBY-CXHRQ-XFAGY`, that has
+A (license) key is a 20 letters long string, eg. `MUYVD-LSEBY-CXHRQ-XFAGY`, that has
 license information associated with it. For example, it can store info such as:
 
 * Trial key or subscription (time-limited)
