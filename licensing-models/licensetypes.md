@@ -30,7 +30,7 @@ labelID: licensing_models
 </p>
 <p>
 Instead of offering your application as a 'product', you can offer it it as a 'service'
-(for example, your customers may get addition support together with the product during the subscription period).
+(for example, your customers may get additional support together with the product during the subscription period).
 </p> 
 <p>
 This model is good because it provides you with a recurring revenue stream.
