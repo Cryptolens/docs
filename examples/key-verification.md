@@ -174,6 +174,8 @@ else:
     print("The license is valid!")
 ```
 
+**Note:** The code above assumes that node-locking is enabled. By default, license keys created with Maximum Number of Machines set to zero, which deactivates node-locking. As a result, machines will not be registered and the call to `Helpers.IsOnRightMachine(result[0])` will return False. You can read more about this behaviour [here](https://help.cryptolens.io/faq/index#maximum-number-of-machines). For testing purposes, please feel free to remove `Helpers.IsOnRightMachine(result[0])` from the if statement.
+
 #### In Java
 ```java
 String RSAPubKey = "{enter the RSA Public key here}";
@@ -192,6 +194,8 @@ if (license == null || !Helpers.IsOnRightMachine(license)) {
     System.out.println("It will expire: " + license.Expires);
 }
 ```
+
+**Note:** The code above assumes that node-locking is enabled. By default, license keys created with Maximum Number of Machines set to zero, which deactivates node-locking. As a result, machines will not be registered and the call to `Helpers.IsOnRightMachine(license)` will return False. You can read more about this behaviour [here](https://help.cryptolens.io/faq/index#maximum-number-of-machines). For testing purposes, please feel free to remove `Helpers.IsOnRightMachine(license)` from the if statement.
 
 #### In C++
 ```cpp
@@ -294,7 +298,15 @@ result.then(function(license) {
 ## Common errors
 
 ### .NET Core issues
-The `Helpers.GetMachineCode()` method is currently not supported on the .NET Core. **MachineCode** can be any value that allows you to uniquely identify an end user (eg. their computer).
+If you plan to target multiple platforms, we recommend to install [Cryptolens.Licensing.CrossPlatform](https://www.nuget.org/packages/Cryptolens.Licensing.CrossPlatform/).
+
+### Helpers.GetMachineCode issues
+In some Windows environments (e.g. when developing Excel addins), it might not be feasible to call Helpers.GetMachineCode on .NET Framework 4.6. The reason for this is the call we make to System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform. To fix this, we have added a boolean flag in Helpers class. Before calling Helpers.GetMachineCode or Helpers.IsOnRightMachine, please set Helpers.WindowsOnly=True.
+
+```cs
+Helpers.WindowsOnly = true;
+var machineCode = Helpers.GetMachineCode();
+```
 
 ### Namespaces missing
 This means that [Cryptolens.Licensing](/web-api/skm-client-api) library was not included into the project. It can be easily added using **NuGet packager manager**, which you can find by right clicking on the project:
