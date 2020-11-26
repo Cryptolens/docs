@@ -91,7 +91,7 @@ For example, imagine you want your customers to be able to use your application 
 
 <tr>
 <td>Custom licensing</td>
-<td><p>SKM can be thought of as a toolbox for developers that simplifies implementation of a big variety of licensing scenarios.
+<td><p>Cryptolens can be thought of as a toolbox for developers that simplifies implementation of a big variety of licensing scenarios.
 </p>
 </td>
 

@@ -15,13 +15,13 @@ In many ways, licensing an SDK or a desktop software is quite similar. In both c
 
 ## Implementation
 
-There are two ways of protecting SDKs. Either we keep track of each new device that uses the SDK (which requires internet access) or we allow developers to sign their assemblies using a special utility (which will not require access to the internet).
+There are two ways of protecting SDKs. Either we keep track of each new device that uses the SDK (which requires internet access) or we allow developers to have unlimited number of end users, as long as it is their own application that uses the SDK (does not require access to the internet).
 
 The choice depends on both the platform and the licensing model you would like to support:
 
 * **Tack all devices** - this approach is better suited for SDKs where you would like to charge your customers for usage, eg. per install or unique device. This will work on all platforms. Each instance using the SDK will need to contact Cryptolens at least once.
 
-* **Offline mode** - if do not want to charge customers per device/install, this approach would suit better. There is no need to contact Cryptolens at any point. This works with SDKs targeting .NET (including Mono/Unity).
+* **Offline mode** - if you do not want to charge customers per device/install, this approach would suit better. There is no need to contact Cryptolens at any point. This approach works if there is a way to identify the application that calls the SDK. In this tutorial, we will cover how it can be done if your SDKs are targeting .NET (including Mono/Unity) or if it the SDK will work on mobile devices.
 
 ### Track all devices (all platforms)
 If your SDK will have access to the internet, you can protect it in two ways: by registering every end user of the SDK or by counting each time it is installed.
@@ -37,13 +37,22 @@ For example, you can have different pricing tiers for the number of end users yo
 #### Charge per install
 Instead of keeping track of each end user instance, we can instead count the number of installs and then charge for them. This can be done quite easily with data objects, which you [increment](https://app.cryptolens.io/docs/api/v3/IncrementIntValue) each time a new install occurs (and recording this on the end user machine to not count the same machine twice).
 
-### Offline mode (.NET/Mono/Unity)
-If your SDK won't have access to the internet, we can protect it by requiring developers to sign each assembly that uses the SDK with a special utility. You can read more about it [here](https://github.com/Cryptolens/sdk-licensing).
+### Offline mode (track applications using the SDK)
+If your SDK won't have access to the internet, we can protect it by restricting which applications can call its methods, ensuring that only the applications that were developed by your customers can use the SDK. This is accomplished by storing the identifier of the application inside the license file, either inside the "Machine code" field or as a data object.
 
-Using this approach, you can still charge per install per end user as described earlier. Moreover, it's possible to charge per SDK developer, as described below.
+In this model, you can charge **per developer** or **per application**.
 
-### Charge per SDK developer
+#### In .NET/Mono/Unity
 When you use the offline mode approach to protect your SDK, end users are not required to contact Cryptolens. However, to get a signed certificate, developers using the SDK need to contact Cryptolens. The signing utility will send the machine code of the device that requests a certificate, which allows you to enforce [node-locking](/licensing-models/node-locked). For example, you can limit how many devices can be used for signing that use the same license key.
+
+* [Signing utility and docs](https://github.com/Cryptolens/sdk-licensing).
+
+#### Other environments (mobile SDKs)
+Depending on the platform, there will be different ways to retrieve the identifier of the application. If you have developed a mobile SDK, you can use the application/bundle id as a way of identifying the application. The distribution process will be similar to the one below:
+
+1. To allow an application to use the SDK, you need to obtain the application id and add it as an "activated device" inside the license (for example, by calling Key.Activate or in the dashboard).
+2. Next, send the license file to the customer. They need to place it so that your SDK will be able to read it upon initialization.
+3. Whenever the SDK is called, it will verify that the license contains the application id of the calling application.
 
 
 <!-- #### Usage based-->
