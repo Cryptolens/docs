@@ -44,7 +44,7 @@ else
 Console.Read();
 ```
 
-The variable `currentVersion` is the date when you published this release (in unix timestamp format). Each time you update the application, you need to remember to update this values.
+The variable `currentVersion` is the date when you published this release (in unix timestamp format). Each time you update the application, you need to remember to update this value.
 
 The easiest way to obtain the unix timestamp is by visiting [this link](https://duckduckgo.com/?q=unix+timestamp) or, if you are on Linux or macOS, type the following in the terminal:
 
@@ -52,5 +52,18 @@ The easiest way to obtain the unix timestamp is by visiting [this link](https://
 $ date +%s
 ```
 
+In .NET, this can be done using `DateTimeOffset` as follows:
+
+```cs
+var currentTime = DateTimeOffset.Now.ToUnixTimeSeconds()
+```
+
+In Python, this can be done with `datetime`:
+
+```python
+import datetime
+datetime.datetime.utcnow().timestamp()
+```
+
 ### Broadcast a message
-New messages can be sent on [this page](https://app.cryptolens.io/Message).
+New messages can be sent on [this page](https://app.cryptolens.io/Message). You can also use our [API endpoint](https://app.cryptolens.io/docs/api/v3/CreateMessage).

@@ -18,7 +18,7 @@ This is done since containers can easily be copied and moved across different ma
 
 An quick way to obtain a random identifier is to use the GUID. A method to obtain it is available in most languages. We have summarized several examples below:
 
-### C#
+### C\#
 
 ```cs
 var machineCode = Guid.NewGuid();

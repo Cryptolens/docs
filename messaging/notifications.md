@@ -56,4 +56,4 @@ Console.Read();
 ```
 
 ### Broadcast a message
-New messages can be sent on [this page](https://app.cryptolens.io/Message).
+New messages can be sent on [this page](https://app.cryptolens.io/Message). You can also use our [API endpoint](https://app.cryptolens.io/docs/api/v3/CreateMessage).
