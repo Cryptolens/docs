@@ -27,7 +27,7 @@ This is the central place where you can control all your applications. It allows
 * Analyse usage
 
 ## Cryptolens Client API
-To make sure that your applications can communicate with our server, you can use one of our [client libraries]((/web-api/skm-client-api)).
+To make sure that your applications can communicate with our server, you can use one of our [client libraries](/web-api/skm-client-api).
 A client library provides an implementation of all the methods of the Web API as well as several other methods that
 are useful. A client library is not necessary to be able to verify a license, but it makes it easier.
 
