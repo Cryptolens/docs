@@ -21,6 +21,9 @@ Let's say that you want to look at a license (or several licenses) with a certai
 * `key="ITVBC-GXXNU-GSMTK-NIJBT"` - One license key (if exists).
 * `key.contains("ITVBC")` - All keys that contain "ITVBC".
 
+**Update:** you can search for a specific license without the "key=" prefix. In other words,
+`ITVBC-GXXNU-GSMTK-NIJBT` and `key="ITVBC-GXXNU-GSMTK-NIJBT`" are equivalent.
+
 
 ### Sorting "Created" and "Expires"
 
