@@ -99,7 +99,7 @@ The list below shows the list of sub processors that we are using to deliver you
 
 * [Microsoft Azure](https://azure.microsoft.com) - for application and data storage (hosted in North Europe).
 * [Hetzner](https://www.hetzner.de/) - stores the analytics and cdn modules (hosted in Finland).
-* [MailChimp](https://sendgrid.com/) - to send transactional mail.
+* [AWS](https://aws.amazon.com/) - to send transactional mail (hosted in Sweden).
 * [Intercom](https://www.intercom.com/) - to make sure you can chat with us.
 * [Google Analytics](https://analytics.google.com) - for website analytics.
 
@@ -135,7 +135,7 @@ It is important to create `access tokens` that have very constrained scopes of p
 * using feature lock for data masking, where applicable
 
 #### Using feature lock for data masking
-Methods such as [Activate](https://serialkeymanager.com/docs/api/v3/Activate) and [GetKey](https://serialkeymanager.com/docs/api/v3/GetKey) allow you to mask certain fields to boost privacy. Masking is especially important if you are developing an SDK. We recommend that you mask:
+Methods such as [Activate](https://app.cryptolens.io/docs/api/v3/Activate) and [GetKey](https://app.cryptolens.io/docs/api/v3/GetKey) allow you to mask certain fields to boost privacy. Masking is especially important if you are developing an SDK. We recommend that you mask:
 
 * `Notes`, `Data objects` - if you are storing data related to your customer, since it will be visible by all the end users.
 * `Activated Machines` - should always be masked since it reveals personal identifiable information about the customers.
@@ -149,12 +149,16 @@ Always use a strong password and preferably one that you cannot remember, relyin
 Two-factor auth provides an additional layer of protection on top of the password. Please 
 
 #### Making sure we have your correct email
-On the [security settings](https://serialkeymanager.com/User/Security) page, please makes sure we have your correct email address.
+On the [security settings](https://app.cryptolens.io/User/Security) page, please makes sure we have your correct email address.
 
 #### Disable Web API 2
-Please do not use Web API 2. It can be blocked on the [security settings](https://serialkeymanager.com/User/Security) page.
+Please do not use Web API 2. It can be blocked on the [security settings](https://app.cryptolens.io/User/Security) page.
+
+#### Add object locks
+You can add [Object locks](https://app.cryptolens.io/security/ObjectLocks) to prevent accidental deletion of objects, for example, products and access tokens.
 
 ## History
+* 2020.12.29 Update the provider for transactional mail + add new security features.
 * 2020.04.05 Update the list of third party services. Update the name of the service from SKM to Cryptolens.
 * 2018.05.24 Update the consent requirement (i.e. you no longer need a consent from your customers to be compliant).
 * 2018.03.16 First version.

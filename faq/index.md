@@ -28,6 +28,7 @@ labelID: basics
             <li><a href="#how-access-can-be-restricted">How access can be restricted</a></li>
             <li><a href="#node-locked-vs-floating-licenses">Node-locked vs. floating licenses</a></li>
             <li><a href="#friendly-name">Friendly name</a></li>
+            <li><a href=#definition-of-an-end-user--machine-code>Definition of an end user / machine code</a></li>
         </ul>
         </li>
         <li><a href="#protocols">Protocols</a></li>
@@ -138,6 +139,36 @@ There are a couple of ways you can compute the friendly name for a particular us
 <img src="/images/ad-user.png" width="100%" />
 
 When your customers have a large number of employees, we recommend to give them access to the customer portal with activation/deactivation permission. You can access a generic sign up link [here](https://app.cryptolens.io/Customer/SignUpLink). Once they are logged in, they will be able manage their licenses and activations in the [customer portal](https://app.cryptolens.io/Portal/Admin).
+
+#### Definition of an end user / machine code
+In most cases, an **end user** is defined as a unique device using a certain license. In our examples, we achieve this by calling the `Key.Activate` method with `MachineCode=Helpers.GetMachineCode()`. The `Helpers.GetMachineCode()` will return a device fingerprint that is unique for each device.
+
+However, there are other ways end users can be defined. The choice will depend on your specific licensing model. We will briefly outline several other ways it can be defined:
+
+##### Per process
+If your customers will be able to run multiple instances on the same machine, you can define the end user so that includes the process id in addition to the fingerprint of the device. For example, it can be defined in .NET as follows:
+
+```cs
+MachineCode = Helpers.GetMachineCode() + System.Diagnostics.GetCurrentProcess().Id
+```
+
+##### Per user
+The end user can also be defined as the currently logged in user (for example, Active Directory user), allowing the same user to use their license on multiple machines where they are logged in.
+
+##### Per instance
+When the identifier changes frequently (for example, in the case of [docker containers](/licensing-models/containers)) or when there is no reliable way to obtain an identifier (for example, in the case with virtual machines), it is better to generate a random identifier each time the application starts, use it only within one session and the discard it. Since this will lead to a large number of new end users being registered with the license, we recommend to apply the [floating license model](/licensing-models/floating).
+
+```cs
+var machineCode = Guid.NewGuid();
+```
+
+```python
+import uuid
+machine_code = uuid.uuid4().hex
+```
+
+##### Per network location
+You can also use treat all users within the same network as one end users. For example, this would allow all employees within the same geographical location to be treated as one end user.
 
 
 ### Protocols
