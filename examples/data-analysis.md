@@ -1,7 +1,7 @@
 ---
 title: Data analysis and reports
 author: Artem Los
-description: Example of how to use the license server
+description: Example of how to analyse various data sources in Cryptolens
 labelID: examples
 ---
 
