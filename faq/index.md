@@ -28,7 +28,7 @@ labelID: basics
             <li><a href="#how-access-can-be-restricted">How access can be restricted</a></li>
             <li><a href="#node-locked-vs-floating-licenses">Node-locked vs. floating licenses</a></li>
             <li><a href="#friendly-name">Friendly name</a></li>
-            <li><a href=#definition-of-an-end-user--machine-code>Definition of an end user / machine code</a></li>
+            <li><a href="#definition-of-an-end-user--machine-code">Definition of an end user / machine code</a></li>
         </ul>
         </li>
         <li><a href="#protocols">Protocols</a></li>
@@ -158,9 +158,13 @@ The end user can also be defined as the currently logged in user (for example, A
 ##### Per instance
 When the identifier changes frequently (for example, in the case of [docker containers](/licensing-models/containers)) or when there is no reliable way to obtain an identifier (for example, in the case with virtual machines), it is better to generate a random identifier each time the application starts, use it only within one session and the discard it. Since this will lead to a large number of new end users being registered with the license, we recommend to apply the [floating license model](/licensing-models/floating).
 
+In C\#, the GUID can be obtained as follows:
+
 ```cs
 var machineCode = Guid.NewGuid();
 ```
+
+In Python, it can be achieved as follows:
 
 ```python
 import uuid

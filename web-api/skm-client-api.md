@@ -21,6 +21,7 @@ There are currently five versions of the API.
 * [PHP version](#php-version)
 * [Golang version](#golang-version)
 * [NodeJS version](#nodejs-version)
+* [C version](#c-version-1)
 
 ### .NET version
 
@@ -29,7 +30,7 @@ There are currently five versions of the API.
 * [API documentation](https://help.cryptolens.io/api/dotnet/api/index.html)
 * [Source code, pre-releases, examples](https://github.com/Cryptolens/cryptolens-dotnet)
 
-**Note:** If you plan to use the client with Mono (eg. in Unity) or on Linux/Mac, you need to use the binaries without System.Management, which can be downloaded [here](https://github.com/Cryptolens/cryptolens-dotnet/releases).
+**Note:** If you plan to use the client with Mono (eg. in Unity) or on Linux/Mac, you need to use the cross platform version of the library, [Cryptolens.Licensing.CrossPlatform](https://www.nuget.org/packages/Cryptolens.Licensing.CrossPlatform/), which is available on NuGet. You can also download the pre-compiled binaries [here](https://github.com/Cryptolens/cryptolens-dotnet/releases).
 
 #### Getting started
 
@@ -72,3 +73,6 @@ We recommend to review the following tutorials:
 
 ### NodeJS version
 * [Example](https://github.com/Cryptolens/cryptolens-nodejs)
+
+### C version
+* [Example](https://github.com/Cryptolens/cryptolens-c)

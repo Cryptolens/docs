@@ -22,25 +22,39 @@ It is quite easy to verify a license. This can be done with the code snippet bel
 
 > For production use cases, it is better to create a specific access token as described [here](/getting-started/access-token). 
 
-The code below should be included whenever you want to verify a license key, which intuitively happens during app start (eg. Form_Load for desktop apps). In addition, you can invoke it whenever a user updates the license key.
+The code below should be included whenever you want to verify a license key, which normally occurs during app start (eg. Form_Load for desktop apps). In addition, you can invoke it whenever a user updates the license key. In some licensing models, this check needs to be called periodically.
+
+* [In C\#](#in-c)
+* [In VB.NET](#in-vbnet)
+* [In Python](#in-python)
+* [In Java](#in-java)
+* [In C++](#in-c-1)
+* [In Go](#in-golang)
+* [In NodeJs](#in-nodejs)
+* [In C (beta)](https://github.com/Cryptolens/cryptolens-c)
 
 ### Adding namespaces
 
 #### In C\#
-To get the C# code to work, please install **Cryptolens.Licensing** package from NuGet. (see [this tutorial](/getting-started/skm-client-api)).
+To get the C# code to work, please install **Cryptolens.Licensing** package from NuGet. If your application will run on multiple platforms, please install [Cryptolens.Licensing.CrossPlatform](https://www.nuget.org/packages/Cryptolens.Licensing.CrossPlatform/) instead (see [this tutorial](/getting-started/skm-client-api)).
 ```csharp
 using SKM.V3;
 using SKM.V3.Methods;
 using SKM.V3.Models;
 ```
 
+The code to verify a license key is available [here](#in-c-2).
+
 #### In VB.NET
-To get the VB.NET code to work, please install **Cryptolens.Licensing** package from NuGet. (see [this tutorial](/getting-started/skm-client-api)).
+To get the VB.NET code to work, please install **Cryptolens.Licensing** package from NuGet. If your application will run on multiple platforms, please install [Cryptolens.Licensing.CrossPlatform](https://www.nuget.org/packages/Cryptolens.Licensing.CrossPlatform/) instead (see [this tutorial](/getting-started/skm-client-api)).
 ```vb
 Imports SKM.V3
 Imports SKM.V3.Methods
 Imports SKM.V3.Models
 ```
+
+The code to verify a license key is available [here](#in-vbnet-1).
+
 
 #### In Python
 
@@ -60,12 +74,18 @@ You need to download it and place in the same folder where you have the rest of 
 from cryptolens_python2 import *
 ```
 
+The code to verify a license key is available [here](#in-python-1).
+
+
 #### In Java
 To get the Java code to work, you need to reference **cryptolens.jar** available [here](https://github.com/cryptolens/cryptolens-java).
 ```java
 import io.cryptolens.methods.*;
 import io.cryptolens.models.*;
 ```
+
+The code to verify a license key is available [here](#in-java-1).
+
 
 #### In C++
 Please read through the [following instructions](https://github.com/cryptolens/cryptolens-cpp) on how to obtain the client library.
@@ -83,17 +103,26 @@ Please read through the [following instructions](https://github.com/cryptolens/c
 namespace cryptolens = ::cryptolens_io::v20180502;
 using Cryptolens = cryptolens::basic_SKM<cryptolens::RequestHandler_curl,cryptolens::SignatureVerifier_OpenSSL>;
 ```
+
+The code to verify a license key is available [here](#in-c-3).
+
+
 #### In Golang
 
 ```golang
 import "github.com/Cryptolens/cryptolens-golang/cryptolens"
 ```
 
+The code to verify a license key is available [here](#in-golang-1).
+
 #### In Node.js
 
 ```js
 const Key = require('cryptolens').Key;
 ```
+
+The code to verify a license key is available [here](#in-nodejs-1).
+
 
 ### Key verification
 
