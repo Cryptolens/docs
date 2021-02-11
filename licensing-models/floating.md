@@ -25,7 +25,7 @@ As with [node-locked](/licensing-models/node-locked) licenses, floating licenses
 
 ### In your application
 
-We can reuse almost the entire code snippet from the [key verification](/examples/key-verification) tutorial, with the only difference in the last parameter, which we have to add. The `IsOnRightMachine` check is similar to the one in the [node-locking](/licensing-models/node-locking) example, only differing in `isFloatingLicense`, which is set to true. 
+We can reuse almost the entire code snippet from the [key verification](/examples/key-verification) tutorial, with the only difference in the last parameter, which we have to add. The `IsOnRightMachine` check is similar to the one in the [node-locking](/licensing-models/node-locked) example, only differing in `isFloatingLicense`, which is set to true. 
 
 #### Floating without overdraft
 
