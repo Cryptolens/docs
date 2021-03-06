@@ -67,7 +67,7 @@ Always ask the question whether the data you put in these fields is necessary to
 In order to to be able to tell the difference between the computers/devices (we refer to them as _machines_) that have activated their license, we store an additional set of fields for each of those machines. This includes:
 
 * `Machine Code` - a device identifier
-* `IP` - the IP of the client device that performed the activation.
+* `IP` - the IP of the client device that performed the activation. The anonymized IP address is used with the last bits masked.
 * `IP Proxy` - the IP of the proxy (Cryptolens backed) used to perform the activation.
 * `Time` - the time of the first activation.
 
@@ -78,10 +78,14 @@ The `machine code` and the `IP address` constitute personal identifiable informa
 
 * `Pid` - the product id
 * `Key` - the key id of the key	always returned
-* `IP` - the IP address that called this method. this is the client user's IP.
+* `IP` - the IP address that called this method. this is the client user's IP. The anonymized IP address is used with the last bits masked.
 * `Time` - the date and time when the activation was performed (the first time).
 * `Machine Code` - a device identifier
 * `State` - a number with a certain pattern that describes the request and its results.
+* `FriendlyName` - a identifier that you can pass to add a label to the device. It is used to help you and your clients to map a device to a certain user easier.
+* `FloatingExpires` - the time when the floating license should expire.
+* `DOIntValue` - the int value associated with the data object.
+* `DOId` - the id the data object that was involved in the request. 
 
 Similar to **activated machines**, the `machine code` and the `IP address` constitute personal identifiable information. In addition, we store your user id in order to ensure that we only return your records.
 
@@ -92,7 +96,12 @@ To facilitate grouping of licenses that belong to the same customer, we use the 
 * `Email` - the email of the customer.
 * `CompanyName` - the company name of the company the customer belongs to.
 
-All of the fields above are personal identifiable information.
+All of the fields above are personal identifiable information. In addition, there are other fields that are associated with a customer object, such as the maximum number of machines, the id of the associated reseller, etc. You can find the complete list in the API documentation.
+
+### Account information
+To make sure that we can send you correct invoice, we store billing information such as the company name, address, VAT Id. 
+
+For security purposes, we store the history of IP addresses used to login on your account. 
 
 ## Third party services
 The list below shows the list of sub processors that we are using to deliver you the service:
@@ -102,16 +111,23 @@ The list below shows the list of sub processors that we are using to deliver you
 * [AWS](https://aws.amazon.com/) - to send transactional mail (hosted in Sweden).
 * [Intercom](https://www.intercom.com/) - to make sure you can chat with us.
 * [Google Analytics](https://analytics.google.com) - for website analytics.
+* [Stripe](https://stripe.com/) - to process payments.
+* [Digital Ocean](https://www.digitalocean.com/) - hosting of help pages and documentation (hosted in Germany).
 
 
 ## Safeguarding measures
-When developing Cryptolens, we apply an **assume breach policy**. This means that we develop components in such a way as to ensure that if a breach occurs, we can minimize its damanage.
+When developing Cryptolens, we apply an **assume breach policy**. This means that we develop components in such a way as to ensure that if a breach occurs, we can minimize its damage.
 
 ### When data is no longer needed
 Cryptolens strives to only store data that is needed to provide the service. Once such data is no longer needed, it will be removed or anonymized. To be more precise:
 
-* The IP and address in both the **Activatated Machines** and **Logging** will be erased after 24 months.
-* Inactive accounts will be erased after 1 year of inactivity.
+* The IP and address in both the **Activatated Machines** and **Logging** will be anonymized after 24 months.
+* Inactive accounts will be erased after 1 year of inactivity and associated data anonymized and/or removed.
+
+### Access to the information
+Access to your information is restricted to specific employees. All employees that need to access your information have signed a non disclosure agreement.
+
+By default, none of our employees access your data unless you ask us for help with troubleshooting. In such cases, sensitive data is masked and we always strive to minimize access to the information to what is needed to help you with a certain query.
 
 ### Protection of the database
 #### Encryption of data at rest
@@ -158,6 +174,7 @@ Please do not use Web API 2. It can be blocked on the [security settings](https:
 You can add [Object locks](https://app.cryptolens.io/security/ObjectLocks) to prevent accidental deletion of objects, for example, products and access tokens.
 
 ## History
+* 2021.03.03 Update the data that is collected.
 * 2020.12.29 Update the provider for transactional mail + add new security features.
 * 2020.04.05 Update the list of third party services. Update the name of the service from SKM to Cryptolens.
 * 2018.05.24 Update the consent requirement (i.e. you no longer need a consent from your customers to be compliant).
