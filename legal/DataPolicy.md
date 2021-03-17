@@ -67,7 +67,7 @@ Always ask the question whether the data you put in these fields is necessary to
 In order to to be able to tell the difference between the computers/devices (we refer to them as _machines_) that have activated their license, we store an additional set of fields for each of those machines. This includes:
 
 * `Machine Code` - a device identifier
-* `IP` - the IP of the client device that performed the activation. The anonymized IP address is used with the last bits masked.
+* `IP` - the IP of the client device that performed the activation.
 * `IP Proxy` - the IP of the proxy (Cryptolens backed) used to perform the activation.
 * `Time` - the time of the first activation.
 
