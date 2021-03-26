@@ -215,7 +215,19 @@ system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }'
 
 **Linux**
 
-Note, the method below requires root access.
+If we cannot determine the type of hardware, the following method will be used:
+
+```
+findmnt", "--output=UUID --noheadings --target=/boot
+```
+
+If we can detect that the application runs on a Raspberry PI, we will extract the "Serial" by running the following command:
+
+```
+cat /proc/cpuinfo
+```
+
+Alternative way to identify Linux instances is to run the command below. Note that it requires sudo access.
 
 ```
 dmidecode -s system-uuid
