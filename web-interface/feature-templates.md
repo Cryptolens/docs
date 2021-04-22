@@ -64,16 +64,14 @@ Once you have defined the feature template, the page to create a new license key
 ![](https://i0.wp.com/cryptolens.io/wp-content/uploads/2019/05/image.png?zoom=1.25&ssl=1)
 
 ### Verifying features
-At the time of writing, the Java client supports checking these additional features out of the box. You can do that using a special version of [Helpers.HasFeature()](https://help.cryptolens.io/api/java/io/cryptolens/methods/Helpers.html#HasFeature-io.cryptolens.models.LicenseKey-java.lang.String-) method. For example, to check if Submodule1 is present, you can type
+You can verify that a certain feature exists using `Helpers.HasFeature`. For example, to check if Submodule1 is present, the following code can be used:
 
 ```
 Helpers.HasFeature(license, "ModuleB.Submodule 1")
 ```
-If you only want to check if ModuleB is present, without being specific, you can insteadwrite
+
+If you only want to check if ModuleB is present, without being specific, you can instead use:
 
 ```
 Helpers.HasFeature(license, "ModuleB")
 ```
-
-### Plan ahead
-Support for additional features is a fairly new feature so we would be grateful if you could report any errors or suggestions to us. At the time of writing, the Java client supports this out of the box. We plan to ship this to our other client libraries, starting with .NET. If you would like us to focus on a specific client library, please let us know.

@@ -122,9 +122,32 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
     </a>
     </div>
 </div>
+
 <div class="col-md-4">
     <div class="card">
-    <a href="#" style="text-decoration:none;">
+    <a href="https://github.com/Cryptolens/cryptolens-autolisp" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">AutoLISP</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-c" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">C</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card">
+    <a href="https://github.com/Cryptolens/cryptolens-ahk" style="text-decoration:none;">
         <div class="card-body" style="background-color: #220999;">
             <h3 class="text-center" style="color:white;">AutoHotKey</h3> 
         </div>
@@ -132,3 +155,6 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
     </div>
 </div>
 </div>
+
+
+<p>More examples can be found on our <a href="https://github.com/Cryptolens">GitHub</a> page. Please reach out to us at <a href="mailto:support@cryptolens.io">support@cryptolens.io</a> if you have any questions.</p>
