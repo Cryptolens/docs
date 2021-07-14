@@ -14,6 +14,8 @@ of instances that can run the application, we recommend to choose the [floating 
 
 This is done since containers can easily be copied and moved across different machines, making it difficult to identify individual containers.
 
+> **Note:** When clients do not have internet access, our [license server](https://github.com/Cryptolens/license-server#floating-licenses-offline) can be used instead.
+
 ## Implementation
 
 An quick way to obtain a random identifier is to use the GUID. A method to obtain it is available in most languages. We have summarized several examples below:

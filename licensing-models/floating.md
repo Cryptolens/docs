@@ -17,6 +17,9 @@ Here are some examples:
 * you have developed a desktop app that your customers can install unlimited number of times, with the condition that they use it on 1 device at a time.
 * a company has 100 employees, but you only want to ensure that 20 of those can use your software simultaneously.
 * a company has 10 devices that have the software installed, but only 2 of them will use it concurrently. Sometimes, all of the 10 devices have to be used simultaneously and you want to permit that (aka overdraft license).
+* your application will run in a container that will created and removed frequently, and you want to ensure that your clients can only run 10 containers simultaneously.
+
+> **Note:** This tutorial focuses on how floating licenses can be implemented when there is a connection to the internet. If some of your clients will be offline, they can install our license server instead. More information is available [here](https://github.com/Cryptolens/license-server#floating-licenses-offline).
 
 ## Implementation
 

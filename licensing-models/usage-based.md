@@ -18,6 +18,8 @@ The point is to allow a larger group of people to be able to use your software. 
 
 Example project can be found [here](https://github.com/Cryptolens/Examples/tree/master/usage-based/java).
 
+> **Note:** If some of your clients will be offline, the usage information can still be tracked using our license server, as described [here](https://github.com/Cryptolens/license-server#usage-based-licensing-offline).
+
 ## Implementation
 
 We can implement usage based licensing using [data objects (aka custom variables)](https://app.cryptolens.io/docs/api/v3/Data). An advantage of using them is that they allow us to increment and decrement them atomically, which means that the counter will always reflect the actual usage of a specific feature.
