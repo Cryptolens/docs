@@ -28,6 +28,9 @@ If your set time was set to 30 (as an example), then if the user activates the l
 Please read these through before you start using feature in production.
 
 ### Maximum number of machines greater than 1
+
+> Update from **2021-07-26**: It is now possible to configure it so that the license is extended only when the first device activates, independent of the value of *Maximum number of machines*. To do that, you need to create a data object (inside the product) with the name "cryptolens_trialactivation" and string value "first_activation".
+
 Trial activation feature ensures that each new machine code can use the license for a set number of days (specified in set time / period). However, since the "expiration date" is global for
 the license (shared among all machines), setting maximum number of machines to a value greater than 1 will allow the old machines to use the license until the last machine expires.
 
