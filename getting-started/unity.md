@@ -17,6 +17,8 @@ In this post we have summarized the necessary steps to add software licensing in
 ### Client library
 To implement license key verification a Unity game, we can use a special build of the [client library for .NET](https://github.com/cryptolens/cryptolens-dotnet) that is platform independent. You can download it [here](https://github.com/Cryptolens/cryptolens-dotnet/releases). Make sure to reference the binary with the name `Cryptolens.Licensing.CrossPlatform.dll`. You can also install it through [NuGet](https://www.nuget.org/packages/Cryptolens.Licensing.CrossPlatform/).
 
+> `Cryptolens.Licensing.CrossPlatform` depends on the `Newtonsoft.Json` library. In earlier versions of Unity, it needs to be included alongside the `Cryptolens.Licensing.CrossPlatform.dll` file (it is provided in the same zip file as our library). In the later versions (from our tests, since 2020.3.16f1), you just need to include our library without `Newtonsoft.Json.dll`. For later versions, we recommend to use the .NET Framework 4.8 binary (in the net48 folder). If you have any questions, please reach out to us at <a href="mailto:support@cryptolens.io">support@cryptolens.io</a>.
+
 ### License key verification
 Once you have the binaries, we can get license key verification up and running quite quickly. We assume that already have [an account](/getting-started/create-account) and [a product](/getting-started/new-product). There are just two things left:
 
