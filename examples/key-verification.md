@@ -156,6 +156,8 @@ else
 Console.ReadLine();
 ```
 
+**Note:** If your application will run in Unity/Mono, Rhino/Grasshopper or on a platform other than Windows, we recommend to use a [different version of Key.Activate](/getting-started/unity#license-key-verification).
+
 #### In VB.NET
 
 ```vb
