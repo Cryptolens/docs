@@ -219,6 +219,8 @@ specified in **maximum number of machines** can use the software concurrently.
 #### Releasing a floating license
 Normally, floating licenses will automatically be released in a certain period of time (specified by `FloatingTimeInterval`). However, you can manually release a floating license by using [Key.Deactivate](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Key.html?#SKM_V3_Methods_Key_Deactivate_System_String_SKM_V3_Models_DeactivateModel_) with `Floating=True`, as shown below:
 
+**In C\#**
+
 ```cs
 var auth = "Access token with permission to access the deactivate method";
 Key.Deactivate(activateToken, new DeactivateModel { 
@@ -227,6 +229,14 @@ Key.Deactivate(activateToken, new DeactivateModel {
     MachineCode = Helpers.GetMachineCode(),
     Floating = true // <- add this
 });
+```
+
+```python
+result = Key.deactivate(token="Access token with permission to access the deactivate method",\
+                        product_id=3349,\
+                        key="ICVLD-VVSZR-ZTICT-YKGXL",\
+                        machine_code = Helpers.GetMachineCode(),\
+                        floating=True)
 ```
 
 #### Number of used and free licenses

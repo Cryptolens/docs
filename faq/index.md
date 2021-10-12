@@ -287,7 +287,10 @@ The most common errors and their cause is summarized below:
 | Error message | Description |
 |---------------|-------------|
 | <span style="white-space:nowrap;">`Unable to authenticate`</span> | The access token is wrong. It is also shown if the subscription has expired. API access requires an active subscription. |
+| `Something went wrong. Please contact support@cryptolens.io and we will try to fix it.` | A temporary server error. Try again with a new request. |
+|`No active subscription found. Please contact support.`| No active subscription is associated with the account and thus the API call failed. The error can be fixed by updating your billing information and add a valid payment method on the [billing page](https://app.cryptolens.io/billing). |
 | `Access denied` | The access token is correct but it does not have sufficient permission. Make sure that if you, for example, want to call GetKey that the access token has "GetKey" permission. |
+| `Not enough permission and/or key not found.` | If you have checked that the product contains the license key and the access token has the right permission to call the method, this error can be fixed by setting Key Lock to -1 when creating the access token (assuming that you are working with data object related methods). |
 {:.table-bordered}
 
 ## Billing
