@@ -236,7 +236,9 @@ dmidecode -s system-uuid
 The old method (prior v4.0.15) is implemented in [Helpers.GetMachineCode](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Helpers.html#SKM_V3_Methods_Helpers_GetMachineCode_System_Boolean_). The new method that uses the UUID from the host OS is implemented in [Helpers.GetMachineCodePI](https://help.cryptolens.io/api/dotnet/api/SKM.V3.Methods.Helpers.html#SKM_V3_Methods_Helpers_GetMachineCodePI). If you call `Helpers.GetMachineCodePI(v:2)` in .NET, you will get the same machine code generated on Windows as in the Python library with similar settings.
 
 #### Java
-In Java, the [following method](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/methods/Helpers.java#L23) is used.
+In Java, the [following method](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/methods/Helpers.java#L23) is used by default.
+
+Since v1.23, you can generate the same machine code as in the Python library and .NET libraries by calling `Helpers.GetMachineCode(2)` on Windows. It will use the UUID of the device and works in the `cryptolens-android.jar`, which does not depend on `slf4j`.
 
 #### Python
 In Python, similar to .NET, we opted for UUID, which can be provided by the OS. You can see the source code [here](https://github.com/Cryptolens/cryptolens-python/blob/master/licensing/methods.py#L167). Note, the machine code will not be the same as in .NET with default parameters. If you call `Helpers.GetMachineCode(v=2)` in Python and `Helpers.GetMachineCodePI(v: 2)` in .NET, the machine code will be the same on Windows.
