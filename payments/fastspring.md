@@ -55,3 +55,27 @@ For example, if you want create the same number of licenses as the **Quantity**,
 If you instead want to create one license but restrict it to the same number of machines as the quantity, you can rename it to **MaxNoOfMachines**.
 
 
+### Using a script instead of calling the Url
+
+It is possible to use select to use a JavaScript script as a fulfillment option instead of calling the API directly. One advantage of such approach is that you can customize the license key that is issued further, for example, by adding data objects.
+
+In the script below, we are first creating a license that will be valid for 90 days and then add two data objects to it.
+
+```js
+var responseKey = httpPost("https://app.cryptolens.io/api/key/CreateKey", 
+{ "token": "Token with CreateKey permission",
+"ProductId" : "123", "F1":"true", "Period" : "90" } );
+
+var license = JSON.parse(responseKey.body)["key"];
+
+var responseDO = httpPost("https://app.cryptolens.io/api/data/AddDataObjectToKey", 
+{ "token": "Token with AddDataObject permission",
+"ProductId" : "123", "Key": license, "name" :  "testfield1", "IntValue" : "50", "StringValue": "50" } );
+
+var responseDO2 = httpPost("https://app.cryptolens.io/api/data/AddDataObjectToKey", 
+{ "token": "Token with AddDataObject permission",
+"ProductId" : "123", "Key": license, "name" :  "testfield2", "IntValue" : "50", "StringValue": "50" } );
+
+license;
+
+```
