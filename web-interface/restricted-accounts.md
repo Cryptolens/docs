@@ -59,5 +59,8 @@ No special permission is granted beyond what is defined under _Access Type_.
 #### Analytics
 No special permission is granted beyond what is defined under _Access Type_. For now, the analytics portal only supports read-only mode, so **edit** or **owner** permissions don't give any extra access.
 
+#### Billing
+Allows users to manage billing information, access invoices, etc. View permission allows only viewing what is stored whereas Edit allows to change the pricing tier, the attached card, etc.
+
 ### Resource Id
 When this is set to zero, the user will have access to all products of that type. If you set it to be an id of an object (eg. product id), the user will only be granted the specified permission for that object.
