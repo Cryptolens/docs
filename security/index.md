@@ -15,3 +15,6 @@ GDPR related information can be found [here](/legal/GDPR)
 
 ## Security
 We have listed several security procedures [here](/legal/DataPolicy#safeguarding-measures).
+
+## Restricted networks
+Some of your clients might need to whitelist our IPs for activations to work. These are available [here](/security/api-ip).
