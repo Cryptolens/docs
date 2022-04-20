@@ -21,12 +21,12 @@ Now, suppose the user opens ModuleB. With the above setup, we can either check i
 We will go through in more detail how you can get started later in the article. The feature template used for our above example is shown below:
 
 ```
-["ModuleA", ["ModuleB", ["Submodule 1", "Submodule 2"]], "ModuleC", ["ModuleD", ["ModuleD1", ["Submodule D1", "Submodule D2"]]]]
+["ModuleA", ["ModuleB", ["Submodule 1", "Submodule 2"]], "ModuleC", ["ModuleD", [["ModuleD1", ["Submodule D1", "Submodule D2"]]]]]
 ```
 
 ## Set up
 ### Defining features
-Let’s suppose we want to define the following feature hierarchy:
+Let's suppose we want to define the following feature hierarchy:
 
 ![](https://i2.wp.com/cryptolens.io/wp-content/uploads/2019/05/image-3.png?zoom=1.25&ssl=1)
 
@@ -36,7 +36,7 @@ To define it, we can use a JSON array structure shown below:
 ["ModuleA", "ModuleB", "ModuleC"]
 ```
 
-Suppose now that we want to add sub features to ModuleB. For example, Submodule 1 and Submodule 2. To do that, we introduce a new array instead of the string “Module B”, which has the following structure:
+Suppose now that we want to add sub features to ModuleB. For example, Submodule 1 and Submodule 2. To do that, we introduce a new array instead of the string "Module B", which has the following structure:
 
 ```
 ["Module B", ["Submodule 1", "Submodule 2"]]
@@ -44,7 +44,15 @@ Suppose now that we want to add sub features to ModuleB. For example, Submodule 
 
 The first element defines name of the module, and the second element should ways be a list of submodules.
 
-We can keep adding submodules to submodules in a similar fashion.
+We can keep adding submodules to submodules in a similar fashion. For example, to express the following features:
+
+<img src="/images/2022-04-20-feature-template.png" style="width:300px;" />
+
+the template below can be used:
+
+```
+["Module C", ["ModuleD", [["ModuleD1", ["Submodule D2", "Submodule D4"]]]]]
+```
 
 To add your feature template to a product, you can click on Edit Feature Names on the product page and then scroll down until you see Feature Template.
 
@@ -52,7 +60,7 @@ In the example above, we would get the following feature hierarchy
 
 ![](https://i2.wp.com/cryptolens.io/wp-content/uploads/2019/05/image-4.png?zoom=1.25&ssl=1)
 
-It’s defined with the following feature template
+It's defined with the following feature template
 
 ```
 ["ModuleA", ["ModuleB", ["Submodule 1", "Submodule 2"]], "ModuleC"]
