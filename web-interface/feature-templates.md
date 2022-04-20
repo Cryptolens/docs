@@ -56,7 +56,7 @@ the template below can be used:
 
 To add your feature template to a product, you can click on Edit Feature Names on the product page and then scroll down until you see Feature Template.
 
-In the example above, we would get the following feature hierarchy
+In the example below, we would get the following feature hierarchy
 
 ![](https://i2.wp.com/cryptolens.io/wp-content/uploads/2019/05/image-4.png?zoom=1.25&ssl=1)
 
@@ -65,6 +65,8 @@ It's defined with the following feature template
 ```
 ["ModuleA", ["ModuleB", ["Submodule 1", "Submodule 2"]], "ModuleC"]
 ```
+
+Please check out _Examples_ section at the end of this page for more templates.
 
 ### Assigning features
 Once you have defined the feature template, the page to create a new license key and to edit existing one will have a box that allows you to define them, as shown below. The state will be stored in a data object with the name cryptolens_features, which we will cover in the next step.
@@ -82,4 +84,15 @@ If you only want to check if ModuleB is present, without being specific, you can
 
 ```
 Helpers.HasFeature(license, "ModuleB")
+```
+
+### Examples
+
+The modules below:
+<img src="/images/2022-04-20-feature-template-2.png" style="width:300px;" />
+
+can be expressed as:
+
+```
+["ModuleA", "ModuleC", ["ModuleD", [["ModuleD1", ["ModuleD1.1", "ModuleD1.2"]], ["ModuleD2", ["ModuleD2.1", "ModuleD2.2"] ], "ModuleD3", "ModuleD4" ]], "ModuleE"]
 ```
