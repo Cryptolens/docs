@@ -7,7 +7,7 @@ labelID: examples
 
 # Zapier integration
 
-> Our current Zapier integration is private. To access it, please email us at [support@cryptolens.io](mailto:support@cryptolens.io) and we will send you an invite. Our aim is to make it public once we have collected enough feedback.
+> Our current Zapier integration is private. To access it, you can use the following invite link: [https://zapier.com/developer/public-invite/128412/23e8cc7f6b2ca1a3a79dcadf2bfb0560/](https://zapier.com/developer/public-invite/128412/23e8cc7f6b2ca1a3a79dcadf2bfb0560/).
 
 ## Authentication
 To authenticate, you will need an [access token](https://app.cryptolens.io/User/AccessToken#/) with the following permissions:

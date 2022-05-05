@@ -29,6 +29,9 @@ You can also specify the port inside the application.
 
 > Please make sure to check that this port is open so that other computers in the network can access it (shown below).
 
+### Running as a Windows service
+If you would like to run the license server as a service on Windows, you can accomplish that as described [here](#running-the-license-server-as-a-service).
+
 ### Running on Linux and Mac
 To run the license server on either Linux or Mac, you need to make sure that .NET 5 runtime is installed (read more [here](https://dotnet.microsoft.com/download/dotnet/5.0)). Once it is installed, the license server can be started as follows:
 
@@ -36,7 +39,7 @@ To run the license server on either Linux or Mac, you need to make sure that .NE
 dotnet LicenseServer.dll
 ```
 
-In the rest of the article, you can just need to add `dotnet` before launching the server. Everything else is the same. Based on our tests, no sudo access is needed to run the license server on Linux.
+In the rest of the article, you just need to add `dotnet` before launching the server. Everything else is the same. Based on our tests, no sudo access is needed to run the license server on Linux.
 
 ## Allowing ports (Windows only)
 
@@ -86,6 +89,39 @@ If you want to load a specific list of files and folders, they can be separated 
 C:\> LicenseServer.exe 8080 10 work-offline "C:\Users\User Name\Downloads";"C:\temp\file.skm"
 ```
 
+##### Floating licenses offline
+If you want to use [floating licensing](https://help.cryptolens.io/licensing-models/floating) in offline mode (for example, to restrict the maximum number of containers a user can start), it can be done as follows:
+
+1. Visit [https://app.cryptolens.io/extensions/licenseserver](https://app.cryptolens.io/extensions/licenseserver) and copy the "License server configuration" and "RSA Public Key".
+2. When verifying the signature inside your application, please use the RSA Public Key on this page instead of the one you would normally use when your application can access our API. This key will only work with the license server that uses the configuration above.
+3. In the license server project, paste the value of "license server configuration" to `ConfigurationFromCryptolens` variable in `Program.cs`.
+4. Compile the license server in release mode.
+5. In the release folder, create a new folder called "licensefiles".
+6. Visit the [product page](https://app.cryptolens.io/Product) and click on the yellow button next to the license key that belongs to your client (to manage all activations). Now, click on "Download activation file" and put this file into the "licensefiles" folder created earlier.
+7. You can now send the license server (in the release folder, including all the files and folders) to your client.
+
+> **Note (for .NET users)** For the time being, `Key.Activate` needs to be called the same way as the in the Unity example: https://help.cryptolens.io/getting-started/unity
+
+```cs
+// call to activate
+var result = Key.Activate(token: auth, productId: 3349, key: "GEBNC-WZZJD-VJIHG-GCMVD", machineCode: "foo");
+
+// obtaining the license key (and verifying the signature automatically).
+var license = LicenseKey.FromResponse("RSAPubKey", result);
+```
+> **Note** If the local license server is enabled, floating license status will not be synchronized with Cryptolens, even if online mode is enabled. Moreover, GetKey request will return the information stored on the local license server and sign it using the local license server's private key. This means that if you have enabled floating licensing offline, you need to use public key that was shown on the [configuration page](https://app.cryptolens.io/extensions/LicenseServer) for both `Activate` and `GetKey` requests. 
+
+##### Usage-based licensing offline
+If the license server is set to work offline, it is still possible to collect information about usage (that is stored in data objects) and bill your clients for it.
+At the time of writing, only data objects associated with a license key can be used.
+
+To get started, please follow the same steps as described in the [floating license offline](#floating-licenses-offline) section. When creating the configuration file, please make sure that _offline mode_ is enabled.
+
+When this is done, all usage information will be stored in the "usage" folder. The structure of the logs is described here: [https://eprint.iacr.org/2021/937](https://eprint.iacr.org/2021/937)
+
+> **Note:** The license file in the `licensefiles` folder needs to have the data objects that will be incremented or decremented. Otherwise, the license server will throw an error.
+
+
 ### Loading settings from a config file
 To make it easier to deploy the license server on customer site, you can add all settings into `config.json` in the same folder as the server. The structure of the configuration file is shown below:
 
@@ -99,3 +135,26 @@ To make it easier to deploy the license server on customer site, you can add all
 ```
 
 The `ActivationFiles` can either reference a specific file or a folder. If it references a folder, all files with the `.skm` extension will be loaded.
+
+
+### Running the license server as a service
+The license server can run as a Windows service in the background. This can be accomplished as follows (using [sc](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create)). Note, these commands need to be ran as an Administrator:
+
+```
+sc create license-server binpath="D:\path\to\licenseserver\LicenseServer.exe" start=auto
+net start license-server
+```
+
+Note: the path to the license server needs to be absolute. Furthermore, it is important that the `ConfigurationFromCryptolens` variable is not empty and uses your own configuration. The configuration can be obtained on [https://app.cryptolens.io/extensions/licenseserver](https://app.cryptolens.io/extensions/licenseserver). When creating a new configuration, please set **Activation file folder** to an absolute path. For example, **C:\license-files**. 
+
+We have tested the license server version that targets .NET Framework 4.6.1.
+
+Below are other useful commands:
+```
+sc stop license-server
+sc queryex license-server
+sc delete  license-server
+```
+
+If you need any help, please let us know at support@cryptolens.io.
+

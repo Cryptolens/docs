@@ -89,6 +89,7 @@ Helpers.HasFeature(license, "ModuleB")
 ### Examples
 
 The modules below:
+
 <img src="/images/2022-04-20-feature-template-2.png" style="width:300px;" />
 
 can be expressed as:
