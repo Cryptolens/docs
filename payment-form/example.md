@@ -4,15 +4,19 @@ author: Artem Los
 description: Tutorial that includes step by step instructions on how to create a payment form that uses both Stripe and PayPal
 labelID: payment_forms
 ---
-Let's look at how it's possible to set up a Payment Form. Each set of steps is grouped into a certain section in order to make it easier for you to go through the tutorial.
-<h3>Aim (what to achieve?)</h3>
-After the steps below, we want to set up a payment form for the product <strong>Software Protector 365</strong>. We will charge $45 US Dollars for it. Once a payment is complete, we will give the user a valid serial key. We will use both PayPal and Stripe to process the payment. We will also notify our web application that the payment was processed.
+
+# Payment Form example
+
+The goal of this article is to set up a Payment Form with either Stripe or PayPal as the payment processor.
+
+### Goal
+After the steps below, we want to set up a payment form for the product <strong>Software Protector 365</strong>. We will charge $45 for it. Once a payment is complete, we will give the user a valid license key. We will use both PayPal and Stripe to process the payment. We will also notify our web application that the payment was processed.
 <h3>Payment Form</h3>
 <ol>
 	<li>The first step is to create a Payment Form. In the top menu, click on Forms &gt; Payment Forms. Then, click on <span style="color: #0000ff;"><strong>Create new Payment Form </strong>(blue button)</span>.</li>
 	<li>Enter a <strong>name</strong> and a short <strong>description</strong> of the form and press <strong><span style="color: #0000ff;">Create</span></strong>.</li>
 	<li>Now, you will see many different options:
-<img class="alignnone wp-image-1132 size-full" src="https://support.serialkeymanager.com/wp-content/uploads/2016/01/example-e1454151767757.png" alt="example" width="500" height="443" /></li>
+<img class="alignnone wp-image-1132 size-full" src="/images/example-e1454151767757.png" alt="example" width="500" height="443" /></li>
 	<li>Set <b>the header </b> to "Software Protector Order Form". Then, set <b>product name</b> to "Software Protector 365".</li>
 	<li>Set the <strong>currency</strong> to "USD". Then, set <strong>price </strong>to "45".</li>
 	<li>In the <strong>custom message</strong>, enter
@@ -30,7 +34,7 @@ We now have an almost working Payment Form. However, we need to tell it how it s
 </ol>
 After these steps, you should see a page similar to the one below:
 
-<a href="http://support.serialkeymanager.com/wp-content/uploads/2015/06/payforms2.png"><img class="alignnone wp-image-703 size-medium" src="http://support.serialkeymanager.com/wp-content/uploads/2015/06/payforms2-300x183.png" alt="payforms2" width="300" height="183" /></a>
+<img class="alignnone wp-image-703 size-medium" src="/images/payforms2-300x183.png" alt="payforms2" width="300" height="183" />
 <a name="paypal"></a>
 <h4>PayPal</h4>
 
@@ -52,22 +56,22 @@ After these steps, you should see a page similar to the one below:
 </ol>
 Once we are back to our original Payment Form, we should select our payment processors in <strong>stripe (payment processor)</strong> and <strong>paypal (payment processor</strong>) drop-down boxes.
 <h3>Adding a Request (aka Webhooks)</h3>
-Finally, we want to make sure that a new key is generated, which can be achieved using <a href="https://serialkeymanager.com/docs/api/v2/GenerateKey">GenerateKey</a> method in the <a href="https://support.serialkeymanager.com/kb/web-api-2-0">Web API</a> combined with Data Requests. Note, the difference between a <strong>data request</strong> and a <strong>void request</strong> (as described <a href="https://support.serialkeymanager.com/kb/introduction-to-payment-forms">here</a>) is that a data request allows us to use the result from a third party (in this case Web API) to change the message displayed once an order is processed. A void request is simply used to notify another site that a payment was processed.
+Finally, we want to make sure that a new key is generated, which can be achieved using <a href="https://app.cryptolens.io/docs/api/v3/CreateKey">Create Key</a> method combined with Data Requests. Note, the difference between a <strong>data request</strong> and a <strong>void request</strong> (as described <a href="/payment-form/index">here</a>) is that a data request allows us to use the result from a third party (in this case Web API) to change the message displayed once an order is processed. A void request is simply used to notify another site that a payment was processed.
 
 Let's start by adding a new data request. To do this, please press on the big plus button in the <strong>request </strong>section. You would see a page similar to the one below.
 
-<img class="alignnone size-full wp-image-1143" src="https://support.serialkeymanager.com/wp-content/uploads/2016/01/request.png" alt="request" width="528" height="254" />
+<img class="alignnone size-full wp-image-1143" src="/images/request.png" alt="request" width="528" height="254" />
 
-To the key generation link, please follow the instructions <a href="https://support.serialkeymanager.com/kb/key-generation">here</a>. Now, we are finished!
+To create the key generation link, please follow the instructions <a href="/examples/key-generation">here</a>. Now we are finished!
 <h3>Preview the Form</h3>
 Once this is complete, please press <strong>Preview</strong>. Preview contains a link to the live payment form that is ready to process transactions. Below is an illustration of how it might look like:
 
-<a href="https://app.cryptolens.io/Form/P/TWwk4yGK/3"><img class="alignnone size-full wp-image-1139" src="https://support.serialkeymanager.com/wp-content/uploads/2016/01/form.png" alt="form" width="520" height="784" /></a>
+<a href="https://app.cryptolens.io/Form/P/TWwk4yGK/3"><img class="alignnone size-full wp-image-1139" src="/images/form.png" alt="form" width="520" height="784" /></a>
 
 Let's try this form using Stripe. For example credit cards, please see <a href="https://stripe.com/docs/testing">this article</a>. If the payment was successful, you will see the following:
 
-<img class="alignnone size-full wp-image-1145" src="https://support.serialkeymanager.com/wp-content/uploads/2016/01/success.png" alt="success" width="512" height="195" />
+<img class="alignnone size-full wp-image-1145" src="/images/success.png" alt="success" width="512" height="195" />
 
 In addition, you will receive a message (receipt) to the specified address. In the case of PayPal, buyers email will be used. However, you can always disable this option, but this is not recommended.
 
-<img class="alignnone size-full wp-image-1146" src="https://support.serialkeymanager.com/wp-content/uploads/2016/01/receipt.png" alt="receipt" width="1058" height="327" />
+<img class="alignnone size-full wp-image-1146" src="/images/receipt.png" alt="receipt" width="1058" height="327" />
