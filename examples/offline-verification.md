@@ -1,7 +1,7 @@
 ---
 title: Offline Verification
 author: Artem Los
-description: An example of how to verify licenses without access to the internet.
+description: An example of how to verify/activate licenses without access to the internet. In the end of the tutorial, an example is shown on how to to create a license file, aka activation file or certificate. Such a file can be used by your clients to verify a license offline.
 labelID: examples
 ---
 
@@ -29,7 +29,12 @@ So, to be able to verify licenses offline, all you have to do is to provide your
 We have outlined two examples with detailed code examples:
 
 * [Periodic key verification](#periodic-key-verification)
+  * [Example code](#example-code)
+  * [How it works](#how-it-works)
+  * [Remarks](#remarks)
 * [USB stick (air-gapped)](#usb-stick-air-gapped)
+  * [Obtaining the license file / certificate](#obtaining-the-license-file--certificate)
+  * [Example code](#example-code-1)
 
 ### Periodic Key Verification
 If you have already used the code in the [Key Verification](/examples/key-verification) tutorial, you only need to add few lines of code to get it to work.
@@ -37,7 +42,8 @@ The additional code that has to be added is shown below (we will explain how it 
 
 > **Note:** The value `3` passed as a parameter to `HasValidSignature` (in .NET) or `LoadFromString` (in Java) is used to specify the expiration date of the license file. In this case, users can only be offline for at most 3 days until they need to reconnect again.
 
-#### In C\#
+#### Example code
+##### In C\#
 ```cs
 
 // ...
@@ -77,7 +83,7 @@ else
 }
 ```
 
-#### In VB.NET
+##### In VB.NET
 ```vb
 
 ' ...
@@ -109,7 +115,7 @@ Else
 End If
 ```
 
-#### In Java
+##### In Java
 ```java
 
 // ...
@@ -175,15 +181,28 @@ In order to check a license key on an [air-gapped device](https://en.wikipedia.o
 
 > Note, on an air-gapped device, it's important to check that the certificate is locked to to that device (aka machine code locking), which is why we have included `IsOnRightMachine()` call.
 
+#### Obtaining the license file / certificate
+
+The license file can be obtained in a variety of ways. In the end, a license file/certificate is just the response from the Key.Activate or GetKey method. We have listed three ways to obtain such a file:
+
+* **Activation Forms** is a page hosted by Cryptolens that allows your clients to activate a device by providing a license key and the machine code. You can read more about them [here](https://app.cryptolens.io/ActivationForms).
+* **Dashboard** can be used to download a license file. It can be done by navigating to the product page, and clicking on the yellow button next to the license key. A new window will open where you can either activate a new machine or download license file without activating (using *Download activation file* link).
+![](/images/activation-file-dashboard.png)
+* **API** can also be used to activate a new machine or obtain the license file. For example, you could call Key.Activate or Key.GetKey on your end, save the license key to file (using the built in methods) and then send this file to your client.
+
+> **Note**: if you plan to activate many machines on customer site, please check out the [following guide](https://github.com/Cryptolens/admin-tools/tree/master/manual-activation) that provides scripts and other tools to help your larger clients to generate a list of machines to activate.
+
+#### Example code
+
 For the code below, we need to ensure that:
 * **machine code locking** is enabled. You can change this for existing keys by selecting the key and providing the value in the box below (remember to save):
 ![](/images/machine-code-locking.png)
 
-* **activation forms** or another way of obtaining the certificate is present. Activation Forms are easy to set up and can be done [here](https://app.cryptolens.io/ActivationForms). All your customer has to do is to enter the license key and machine code in the form and then move the file into the same directory as your application. 
+* **activation forms** or another way of obtaining the certificate is present (which we discussed in *Obtaining the license file / certificate*). Activation Forms are easy to set up and can be done [here](https://app.cryptolens.io/ActivationForms). All your customer has to do is to enter the license key and machine code in the form and then move the file into the same directory as your application. 
 
 > Note, the name of the files returned by the activation form can differ, so it's better to ask the customer about the name of it or ask them to rename the file obtained from the activation  with the one hardcoded in the code below:
 
-#### In C\#
+##### In C\#
 ```cs
 var RSAPubKey = "{enter the RSA Public key here}";
 
@@ -209,7 +228,7 @@ else
 }
 ```
 
-#### In VB.NET
+##### In VB.NET
 ```vb
 Dim RSAPubKey = "{enter the RSA Public key here}"
 
@@ -231,7 +250,7 @@ Else
 End If
 ```
 
-#### In Java
+##### In Java
 ```java
 
 String currentMachineId = "test"; // usually you can call Helpers.GetMachineCode() to obtain this value. Other platforms, such as Android, require a different identifier.

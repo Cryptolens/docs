@@ -128,16 +128,16 @@ The code to verify a license key is available [here](#in-nodejs-1).
 
 #### In C\#
 ```csharp
-var licenseKey = "GEBNC-WZZJD-VJIHG-GCMVD";
-var RSAPubKey = "{enter the RSA Public key here}";
+var licenseKey = "GEBNC-WZZJD-VJIHG-GCMVD"; // <--  remember to change this to your license key
+var RSAPubKey = "enter the RSA Public key here";
 
-var auth = "{access token with permission to access the activate method}";
+var auth = "access token with permission to access the activate method";
 var result = Key.Activate(token: auth, parameters: new ActivateModel()
 {
     Key = licenseKey,
-    ProductId = 3349,
+    ProductId = 3349,  // <--  remember to change this to your Product Id
     Sign = true,
-    MachineCode = Helpers.GetMachineCode()
+    MachineCode = Helpers.GetMachineCodePI(v: 2)
 });
 
 if (result == null || result.Result == ResultType.Error ||
@@ -161,16 +161,16 @@ Console.ReadLine();
 #### In VB.NET
 
 ```vb
-Dim licenseKey = "GEBNC-WZZJD-VJIHG-GCMVD"
-Dim RSAPubKey = "{enter the RSA Public key here}"
+Dim licenseKey = "GEBNC-WZZJD-VJIHG-GCMVD" ' <--  remember to change this to your license key
+Dim RSAPubKey = "enter the RSA Public key here"
 
-Dim auth = "{access token with permission to access the activate method}"
+Dim auth = "access token with permission to access the activate method"
 
 Dim result = Key.Activate(token:=auth, parameters:=New ActivateModel() With {
                           .Key = licenseKey,
-                          .ProductId = 3349,
+                          .ProductId = 3349, ' <--  remember to change this to your Product Id
                           .Sign = True,
-                          .MachineCode = Helpers.GetMachineCode()
+                          .MachineCode = Helpers.GetMachineCodePI(v:=2)
                           })
 
 If result Is Nothing OrElse result.Result = ResultType.[Error] OrElse
@@ -187,16 +187,16 @@ End If
 
 #### In Python
 ```python
-RSAPubKey = "{enter the RSA Public key here}"
-auth = "{access token with permission to access the activate method}"
+RSAPubKey = "enter the RSA Public key here"
+auth = "access token with permission to access the activate method"
 
 result = Key.activate(token=auth,\
                    rsa_pub_key=RSAPubKey,\
                    product_id=3349, \
-                   key="ICVLD-VVSZR-ZTICT-YKGXL",\
-                   machine_code=Helpers.GetMachineCode())
+                   key="ICVLD-VVSZR-ZTICT-YKGXL",\  
+                   machine_code=Helpers.GetMachineCode(v=2))
 
-if result[0] == None or not Helpers.IsOnRightMachine(result[0]):
+if result[0] == None or not Helpers.IsOnRightMachine(result[0], v=2):
     # an error occurred or the key is invalid or it cannot be activated
     # (eg. the limit of activated devices was achieved)
     print("The license does not work: {0}".format(result[1]))
@@ -209,12 +209,12 @@ else:
 
 #### In Java
 ```java
-String RSAPubKey = "{enter the RSA Public key here}";
-String auth = "{access token with permission to access the activate method}";
+String RSAPubKey = "enter the RSA Public key here";
+String auth = "access token with permission to access the activate method";
 
 LicenseKey license = Key.Activate(auth, RSAPubKey, 
-                      new ActivateModel(3349, 
-                      "ICVLD-VVSZR-ZTICT-YKGXL", 
+                      new ActivateModel(3349,  // <--  remember to change this to your Product Id
+                      "ICVLD-VVSZR-ZTICT-YKGXL", // <--  remember to change this to your license key
                       Helpers.GetMachineCode()));
 
 if (license == null || !Helpers.IsOnRightMachine(license)) {

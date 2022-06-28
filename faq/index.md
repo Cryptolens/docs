@@ -98,7 +98,7 @@ Recently, we have added support in our Web API that takes into account the featu
 Maximum number of machines is a way to specify how many unique machine codes can be added to a certain license (using the `Activate` method). When the limit is reached, no more machine codes will be added. There are two special cases that is important to keep in mind:
 
 #### Setting to zero
-Setting maximum number of machines turns this feature off, i.e. machine codes will not be added to the license. It means users will be able to run the software on any number of machines.
+Setting maximum number of machines to zero turns this feature off, i.e. machine codes will not be added to the license. It means users will be able to run the software on any number of machines.
 
 > Note, `Helpers.IsOnRightMachine()` will return false if no machine code is registered with the license, which will be the case if maximum number of machines is set to 0. As a solution, please check the `MaxNumberOfMachines` field, ensuring it is not 0, before calling `Helpers.IsOnRightMachine()`.
 

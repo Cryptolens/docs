@@ -19,7 +19,7 @@ There are two ways of protecting SDKs. Either we keep track of each new device t
 
 The choice depends on both the platform and the licensing model you would like to support:
 
-* **Tack all devices** - this approach is better suited for SDKs where you would like to charge your customers for usage, eg. per install or unique device. This will work on all platforms. Each instance using the SDK will need to contact Cryptolens at least once.
+* **Track all devices** - this approach is better suited for SDKs where you would like to charge your customers for usage, eg. per install or unique device. This will work on all platforms. Each instance using the SDK will need to contact Cryptolens at least once.
 
 * **Offline mode** - if you do not want to charge customers per device/install, this approach would suit better. There is no need to contact Cryptolens at any point. This approach works if there is a way to identify the application that calls the SDK. In this tutorial, we will cover how it can be done if your SDKs are targeting .NET (including Mono/Unity) or if it the SDK will work on mobile devices.
 

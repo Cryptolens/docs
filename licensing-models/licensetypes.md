@@ -1,7 +1,7 @@
 ---
 title: Overview of licensing models
 author: Artem Los
-description: An overview of some of the supported licensing models in SKM.
+description: An overview of some of the supported licensing models in Cryptolens.
 labelID: licensing_models
 ---
 
