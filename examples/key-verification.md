@@ -118,7 +118,8 @@ The code to verify a license key is available [here](#in-golang-1).
 #### In Node.js
 
 ```js
-const Key = require('cryptolens').Key;
+const key = require('cryptolens').Key;
+const Helpers = require('cryptolens').Helpers;
 ```
 
 The code to verify a license key is available [here](#in-nodejs-1).
@@ -215,9 +216,9 @@ String auth = "access token with permission to access the activate method";
 LicenseKey license = Key.Activate(auth, RSAPubKey, 
                       new ActivateModel(3349,  // <--  remember to change this to your Product Id
                       "ICVLD-VVSZR-ZTICT-YKGXL", // <--  remember to change this to your license key
-                      Helpers.GetMachineCode()));
+                      Helpers.GetMachineCode(2)));
 
-if (license == null || !Helpers.IsOnRightMachine(license)) {
+if (license == null || !Helpers.IsOnRightMachine(license, 2)) {
     System.out.println("The license does not work.");
 } else {
 
@@ -294,8 +295,8 @@ int main()
 #### In Golang
 
 ```golang
-token := "{access token with permission to access the activate method}"
-publicKey := "{enter the RSA Public key here}"
+token := "access token with permission to access the activate method"
+publicKey := "enter the RSA Public key here"
 
 licenseKey, err := cryptolens.KeyActivate(token, cryptolens.KeyActivateArguments{
 	ProductId:   3646,
@@ -311,18 +312,21 @@ if err != nil || !licenseKey.HasValidSignature(publicKey) {
 #### In Node.js
 
 ```js
-var RSAPubKey = "{Your RSA Public key, which can be found here: https://app.cryptolens.io/User/Security}";
-var result = Key.Activate(token="{access token with permission to access the activate method}", RSAPubKey, ProductId=3349, Key="GEBNC-WZZJD-VJIHG-GCMVD", MachineCode="test");
+var RSAPubKey = "Your RSA Public key, which can be found here: https://app.cryptolens.io/User/Security";
+var result = key.Activate(token="access token with permission to access the activate method", RSAPubKey, ProductId=3349, Key="GEBNC-WZZJD-VJIHG-GCMVD", MachineCode=Helpers.GetMachineCode());
 
 result.then(function(license) {
-    if (!license) {
-        // failure
-        return;
-    }
+
+    // success
     
     // Please see https://app.cryptolens.io/docs/api/v3/model/LicenseKey for a complete list of parameters.
     console.log(license.Created);
+
+}).catch(function(error) {
+    // in case of an error, an Error object is returned.
+    console.log(error.message);
 });
+
 ```
 
 

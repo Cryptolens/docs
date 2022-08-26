@@ -154,6 +154,17 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
     </a>
     </div>
 </div>
+
+<div class="col-md-4">
+    <div class="card">
+    <a href="/getting-started/excel" style="text-decoration:none;">
+        <div class="card-body" style="background-color: #220999;">
+            <h3 class="text-center" style="color:white;">Excel Addins</h3> 
+        </div>
+    </a>
+    </div>
+</div>
+
 </div>
 
 

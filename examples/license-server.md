@@ -8,6 +8,7 @@ labelID: examples
 # License Server
 
 > More documentation can be found in the [project's GitHub repository](https://github.com/Cryptolens/license-server).
+> **Note**: A separate subscription is required to use the license server ([more information](https://cryptolens.io/products/license-server/)).
 
 ## Idea
 **Problem**: Large companies tend to have strict policies that restrict certain machines to have direct internet access. This is a problem if we want license files on them to be up-to-date.

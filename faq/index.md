@@ -204,9 +204,19 @@ Machine codes are used to uniquely identify an end user instances, i.e. a machin
 Prior to v4.0.15, machine codes have used [following code](https://github.com/Cryptolens/cryptolens-dotnet/blob/master/Cryptolens.Licensing/SKM.cs#L1233) to gather device specific information and later hash it using either SHA1 or SHA256. The problem with this method is that it is Windows specific and requires System.Management (which is not supported in Mono when integrating with Unity). To solve this, we opted for platform specific methods to retrieve the UUID. You can read more about how to migrate [here](https://help.cryptolens.io/api/dotnet/articles/v4015.html#platform-independent-machine-code-method). Depending on the platform, the following shell calls are made to retrieve the UUID:
 
 **Windows**
+
+Two methods are currently being used. In older versions of the library (and when v=1), the following command is used in platform independent methods (i.e. with PI extension).
 ```
 cmd.exe /C wmic csproduct get uuid
 ```
+
+In newer versions, the following method is used (which returns the same UUID) as above.
+
+```
+cmd /c powershell.exe -Command \"(Get-CimInstance -Class Win32_ComputerSystemProduct).UUID\"\n"
+```
+
+The reason for the switch is that WMIC will no longer be supported in future versions of Windows 11.
 
 **Mac**
 ```
@@ -218,10 +228,10 @@ system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }'
 If we cannot determine the type of hardware, the following method will be used:
 
 ```
-findmnt", "--output=UUID --noheadings --target=/boot
+findmnt --output=UUID --noheadings --target=/boot
 ```
 
-If we can detect that the application runs on a Raspberry PI, we will extract the "Serial" by running the following command:
+If we can detect that the application runs on a Raspberry PI (can be determined by calling `cat /proc/device-tree/model`), we will extract the "Serial" by running the following command:
 
 ```
 cat /proc/cpuinfo
