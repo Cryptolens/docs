@@ -113,6 +113,7 @@ The list below shows the list of sub processors that we are using to deliver you
 * [Google Analytics](https://analytics.google.com) - for website analytics.
 * [Stripe](https://stripe.com/) - to process payments.
 * [Digital Ocean](https://www.digitalocean.com/) - hosting of help pages and documentation (hosted in Germany).
+* [Hotjar](https://www.hotjar.com/) - to display a form on each page so that user feedback can be submitted.
 
 
 ## Safeguarding measures
