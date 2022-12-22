@@ -113,8 +113,7 @@ The list below shows the list of sub processors that we are using to deliver you
 * [Google Analytics](https://analytics.google.com) - for website analytics.
 * [Stripe](https://stripe.com/) - to process payments.
 * [Digital Ocean](https://www.digitalocean.com/) - hosting of help pages and documentation (hosted in Germany).
-* [Hotjar](https://www.hotjar.com/) - to display a form on each page so that user feedback can be submitted.
-
+* [Mixpanel](https://mixpanel.com/) - to get general understanding of how vistors navigate between different pages to improve the product experience.
 
 ## Safeguarding measures
 When developing Cryptolens, we apply an **assume breach policy**. This means that we develop components in such a way as to ensure that if a breach occurs, we can minimize its damage.
