@@ -7,15 +7,48 @@ labelID: examples
 
 # License Server
 
-> More documentation can be found in the [project's GitHub repository](https://github.com/Cryptolens/license-server).
-> **Note**: A separate subscription is required to use the license server ([more information](https://cryptolens.io/products/license-server/)).
+> **Note**: a seprate subscription is required to use the license server: https://cryptolens.io/products/license-server/
 
 ## Idea
 **Problem**: Large companies tend to have strict policies that restrict certain machines to have direct internet access. This is a problem if we want license files on them to be up-to-date.
 
 **Solution**: We allow one computer, the *license server*, to have internet access. All the machines in the network will contact the license server and it will in turn contact Cryptolens. Alternatively, the *license server* can store a copy of the license files and work offline.
 
-![](/images/license-server.png)
+![](example.png)
+
+## Getting started
+Since v2.12-rc, there are two ways you can configure the server. Either, you can use the pre-built version of the server with default values or you can use the configuration string from [this page](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=False&LocalFloatingServer=False) and build the server on your end.
+
+### Using the pre-built license server
+If you do not plan to use the **local floating license server** capability (which requires the server to be built on your end), you can use one of our pre-built binaries.
+
+When you use the binaries, you can either store the configuration in the config file (as we describe later) or configure the server using environment variables (read more [here](#alternative-ways-to-configure-the-server)). Please keep in mind that the license server will **only read the environment variables** if you run it as a service.
+
+### Building the server yourself
+If you need the local floating license capability, the license server needs to be compiled on your end to create the binaries. All configuration is stored inside the `ConfigurationFromCryptolens` variable in `Program.cs`, which can be created on [this page](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=False&LocalFloatingServer=False). In other words, there is no need to provide any arguments when calling the license server or use an external configuration file.
+
+The license server can be compiled on most operating systems and the process is as follows:
+
+#### Install .NET
+To install .NET, visit https://dotnet.microsoft.com/en-us/download/dotnet/6.0 and download the SDK (i.e. not the runtime).
+
+#### Configuring the server
+There are three steps involved:
+
+1. Visit [the configuration page](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=False&LocalFloatingServer=False) to create a configuration that will make the server work in standard mode.
+2. Copy the configuration string and paste it in the `ConfigurationFromCryptolens` variable in `Program.cs`.
+3. Environment variables can also be used to change configuration data for a specific user. Please read more [here](#alternative-ways-to-configure-the-server).
+
+Later in this tutorial, there are examples of calling the license server using command line arguments. We recommend to use the configuration string as described in (1) if possible. If you have any questions, please reach out to us at support@cryptolens.io.
+
+#### Building the server
+To build the server, you can run the following command in the folder that contains the `LicenseServerCore.sln` file:
+
+```
+dotnet build LicenseServerCore.sln --configuration Release
+```
+
+From now on, you can use the instructions further down on this page to launch the executable.
 
 ## Starting the server
 
@@ -26,7 +59,7 @@ One way of doing it is to run CMD as an administrator and then type the command 
 C:\> LicenseServer.exe 5000
 ```
 
-You can also specify the port inside the application.
+For newer versions of the license server, you can [this configuration](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=False&LocalFloatingServer=False&Port=5000) to set the port to 5000.
 
 > Please make sure to check that this port is open so that other computers in the network can access it (shown below).
 
@@ -34,7 +67,7 @@ You can also specify the port inside the application.
 If you would like to run the license server as a service on Windows, you can accomplish that as described [here](#running-the-license-server-as-a-service).
 
 ### Running on Linux and Mac
-To run the license server on either Linux or Mac, you need to make sure that .NET 5 runtime is installed (read more [here](https://dotnet.microsoft.com/download/dotnet/5.0)). Once it is installed, the license server can be started as follows:
+To run the license server on either Linux or Mac, you need to make sure that .NET 5 runtime or later is installed (read more [here](https://dotnet.microsoft.com/download/dotnet/5.0)). Once it is installed, the license server can be started as follows:
 
 ```
 dotnet LicenseServer.dll
@@ -70,16 +103,18 @@ As an example, to launch the server that caches licenses for 10 days, it can be 
 C:\> LicenseServer.exe 8080 10
 ```
 
+For newer versions of the license server, you can use [this configuration](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=False&LocalFloatingServer=False&CacheLength=10&Port=8080) instead.
+
 #### Customers who are permanently offline
 The default behaviour of the server is to *always* attempt to get the latest copy of the license. However, if you know that the license server will not have access to the internet, it is better to enable the *offline mode* so that the license server always reads from cache.
 
-To enable offline mode, you can launch the server as follows:
+To enable offline mode, you can launch the server as follows (or use [this configuration string](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=True&LocalFloatingServer=False&CacheLength=10&Port=8080)):
 
 ```
 C:\> LicenseServer.exe 8080 10 work-offline
 ```
 
-In this case, it is a good idea to provide the license files (aka. activation files) that you want to load into the server. You only need to do it once or when the cache needs to be updated. If the license file (with a `.skm` extension) is in the *Downloads* folder, it can be loaded as follows:
+In this case, it is a good idea to provide the license files (aka. activation files) that you want to load into the server. You only need to do it once or when the cache needs to be updated. If the license file (with a `.skm` extension) is in the *Downloads* folder, it can be loaded as follows (or use [this configuration string](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=True&LocalFloatingServer=False&CacheLength=10&Port=8080&ActivationFileFolder=C:\Users\User%20Name\Downloads)):
 
 ```
 C:\> LicenseServer.exe 8080 10 work-offline "C:\Users\User Name\Downloads"
@@ -105,12 +140,27 @@ If you want to use [floating licensing](https://help.cryptolens.io/licensing-mod
 
 ```cs
 // call to activate
-var result = Key.Activate(token: auth, productId: 3349, key: "GEBNC-WZZJD-VJIHG-GCMVD", machineCode: "foo");
+var result = Key.Activate(token: auth, productId: 3349, key: "GEBNC-WZZJD-VJIHG-GCMVD", machineCode: "foo", floatingTimeInterval: 150, LicenseServerUrl: "http://192.168.0.2:8080");
 
 // obtaining the license key (and verifying the signature automatically).
 var license = LicenseKey.FromResponse("RSAPubKey", result);
 ```
-> **Note** If the local license server is enabled, floating license status will not be synchronized with Cryptolens, even if online mode is enabled. Moreover, GetKey request will return the information stored on the local license server and sign it using the local license server's private key. This means that if you have enabled floating licensing offline, you need to use public key that was shown on the [configuration page](https://app.cryptolens.io/extensions/LicenseServer) for both `Activate` and `GetKey` requests. 
+> **Note** If the local license server is enabled, floating license status will not be synchronized with Cryptolens, even if online mode is enabled. Moreover, GetKey request will return the information stored on the local license server and sign it using the local license server's private key. This means that if you have enabled floating licensing offline, you need to use public key that was shown on the [configuration page](https://app.cryptolens.io/extensions/LicenseServer) for both `Activate` and `GetKey` requests.
+
+If you need to deactivate machine earlier, you can use the Deactivate method with `Floating=true`, similar to the way it would have been done when calling Cryptolens' Web API:
+
+```cs
+var result = Key.Deactivate("", new DeactivateModel { ProductId = 3349, Key = "key", MachineCode = "machine", LicenseServerUrl = "http://192.168.0.2:8080", Floating = true });
+```
+
+To obtain the list of all activated floating machines, you can use the GetKey call:
+
+```cs
+var result = Key.GetKey(token: "", productId: 3349, key: "", LicenseServerUrl: "http://192.168.0.2:8080");
+
+// obtaining the license key (and verifying the signature automatically).
+var license = LicenseKey.FromResponse("RSAPubKey", result);
+```
 
 ##### Usage-based licensing offline
 If the license server is set to work offline, it is still possible to collect information about usage (that is stored in data objects) and bill your clients for it.
@@ -124,6 +174,9 @@ When this is done, all usage information will be stored in the "usage" folder. T
 
 
 ### Loading settings from a config file
+
+> **Note** In newer versions of the license server, we recommend to create a [configuration string](https://app.cryptolens.io/extensions/LicenseServer?OfflineMode=False&LocalFloatingServer=False) as described in the beginning of this page.
+
 To make it easier to deploy the license server on customer site, you can add all settings into `config.json` in the same folder as the server. The structure of the configuration file is shown below:
 
 ```
@@ -159,3 +212,24 @@ sc delete  license-server
 
 If you need any help, please let us know at support@cryptolens.io.
 
+### Alternative ways to configure the server
+
+It is also possible to configure the license server using environment variables. For now, the license server will only read the environment variables in two cases:
+
+1. If the `ConfigurationFromCryptolens` in Program.cs is not null or empty.
+2. If license server runs as a service (Windows).
+
+For example, if you prefer to use the environment variables, you can set `ConfigurationFromCryptolens` to any string value and then rely on the environment variables. Alternatively, you can create a configuration string at https://app.cryptolens.io/extensions/licenseserver and then set "path to config file" to `USE_ENVIRONMENT_VARIABLES`.
+
+Cryptolens uses the following environment variables:
+
+| Name   | Description      |
+|----------|-------------|
+| `cryptolens_offlinemode` | Specifies if the license server should contact the central server (if set to false) or rely on the cached version if such exists (if set to true). When set to true, the license server will at first try the cache before attempting to contact the license server. |
+| `cryptolens_port` | The port to use. |
+| `cryptolens_activationfilefolder` | The path to the folder with activation files. Please set it to an absolute path when running the license server as a service. |
+| `cryptolens_cachelength` | The amount of days until a new license file should be obtained. |
+| `cryptolens_pathtoconfigfile` | The path to the configuration file. This can be useful if you anticipate that your clients might need to change certain properties more often, and then it may be easier to change the file rather than restarting the machine (which is often required for the environment variables to take effect). For now, you can set the port and the folder to the activation files. If you plan to run the server as a service, please set this to absolute path.|
+| `cryptolens_cachefolder` | Path to the cache folder. If you plan to run the server as a service, please set this to absolute path. |
+
+> **Note**: when running the license server as a service, all paths to files and folders need to be **absolute**.

@@ -21,7 +21,7 @@ The **public key** won't allow them to re-sign the data, only to validate it.
 In order to find your unique public key:
 
 1. In the menu in the right corner (with your name), select 'Security Settings'.
-2. Copy the entire public key and replace it with ours (in the `publicKey` variable).
+2. Copy the entire public key and replace it with yours (in the `publicKey` variable).
 
 <img src="/images/skm-pubkey.png" style="width:100%; max-width:651px;"/> 
 
