@@ -43,3 +43,25 @@ An issuance right gives the reseller the ability to create new licenses keys on 
 * **License Template** - This contains information about how the license key should be created and which product it should belong to. You can read more about license templates [here](/web-interface/license-template).
 * **Amount** - This specifies how many licenses they will be able to issue. You can always grant a reseller a new issuance right if they use up an existing one.
 * **Expires In** - This specifies how long the issuance right will be valid. If you do not want to impose a time constraint, please set this to a large number.
+
+## Remarks
+
+Below we have summarized some common errors that you or your resellers might encounter.
+
+### Reseller receives "Could not issue a new license. Error message: Could not find the reseller." error
+
+This error is caused if the license template sets the ResellerId value to a non-zero value. To fix this, please update the license template that is used in an issuance right so that ResellerId is set to zero.
+
+For example, the following configuration is correct:
+
+```
+{"ProductId":15189,"Period":30,"F1":false,"F2":false,"F3":false,"F4":false,"F5":false,"F6":false,"F7":false,"F8":false,"Notes":null,"Block":false,"CustomerId":0,"TrialActivation":false,"MaxNoOfMachines":0,"AllowedMachines":null,"NoOfKeys":0,"NewCustomer":false,"AddOrUseExistingCustomer":false,"ResellerId":0,"Name":null,"Email":null,"CompanyName":null,"EnableCustomerAssociation":false,"AllowActivationManagement":false,"AllowMultipleUserAssociation":false}
+```
+
+whereas the one below is not, since ResellerId is set to 19579.
+
+```
+{"ProductId":15189,"Period":30,"F1":true,"F2":true,"F3":true,"F4":true,"F5":true,"F6":true,"F7":true,"F8":true,"Notes":null,"Block":false,"CustomerId":0,"TrialActivation":false,"MaxNoOfMachines":100,"AllowedMachines":null,"NoOfKeys":1,"NewCustomer":false,"AddOrUseExistingCustomer":false,"ResellerId":19579,"Name":null,"Email":null,"CompanyName":null,"EnableCustomerAssociation":false,"AllowActivationManagement":false,"AllowMultipleUserAssociation":false}
+```
+
+You can read more about license templates [here](/web-interface/license-template).
