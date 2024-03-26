@@ -26,8 +26,9 @@ We can implement usage based licensing using [data objects (aka custom variables
 
 We can implement this in two ways; the choice of which depends on if we want to bill users upfront (in advance) or in the end of the billing cycle (based on the actual usage).
 
-* **Paying upfront**: If you want to bill users upfront, one strategy is to treat the value of a data object as a credit, i.e. users can buy a certain amount of credits, eg. 1000, which will allow them to use a specific feature 1000 times before they have to refill. That is, we will decrement this value each time the feature is used.
-* **Paying based on actual usage**: When charging based on actual usage, one way is to set the data object to zero and keep incrementing it as a feature is being used. In the end of the month, we record the usage and either reset it or keep the value (if we keep it, we need to know it next month so that we don't charge customers twice).
+* [**Paying based on actual usage**](#paying-based-on-actual-usage): When charging based on actual usage, one way is to set the data object to zero and keep incrementing it as a feature is being used. In the end of the month, we record the usage and either reset it or keep the value (if we keep it, we need to know it next month so that we don't charge customers twice).
+* [**Paying upfront**](#paying-upfront): If you want to bill users upfront, one strategy is to treat the value of a data object as a credit, i.e. users can buy a certain amount of credits, eg. 1000, which will allow them to use a specific feature 1000 times before they have to refill. That is, we will decrement this value each time the feature is used.
+* [**Recurring credits as a part of a subscription**](#recurring-credits-as-a-part-of-a-subscription): If you already charge customers a subscription fee (e.g. monthly) and want to offer usage-credits as a part of the subscription that are re-filled periodically. 
 
 ### Creating a data object
 
@@ -211,6 +212,15 @@ if(!Helpers.IsSuccessful(decrementResult)) {
     System.out.println("Could not decrement the data object");
 }
 ```
+
+#### Recurring credits as a part of a subscription
+Let's suppose your subscription offers usage-credits that are refilled on a monthly basis. If we assume that each license key has the data object with the name "credits" associated with it, we can follow the following steps to automatically reset the int value of all data objects with the name "credits" (that are associated to a license key).
+
+1. Select the product.
+2. Click on **Data Objects** at the top of the page.
+3. Create a data object with the name **cryptolens_dobjreset** and set the string value to `[{"Name":"credits", "Freq":30, "Default":10}]`. This will set the int value of all data objects associated with a license key that have the name "credits" to 10 every 30 days.
+
+You can read more about this feature on [this page](/web-interface/product-configurations).
 
 ### Security note
 
