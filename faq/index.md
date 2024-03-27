@@ -310,6 +310,13 @@ The most common errors and their cause is summarized below:
 When you sign up for an account, you get 30 days to test the service for free. If you would like to keep the subscription after the trial, it's important to add a valid credit card before 30 days trial has elapsed. After the trial, the account will be downgraded.
 
 ### How monthly pricing is computed
+
+To find out how monthly pricing is calculated, please visit the [billing page](https://app.cryptolens.io/Billing) and click on the link **pricing page** that will allow you to estimate your usage.
+
+If your billing page includes the **End users** property, please read the section below to understand how end users are computed.
+
+#### If you are charged for end users
+
 The pricing is entirely based on usage. It's based on two values: the number of **active licenses** (i.e. those that are not blocked) and the number of active end users. 
 
 For example, let's suppose that you have 20 licenses and 40 end users. In that case, since there are more than 10 end users, the service fee (based on end users) will be 50 (in the standard package). Since there are 20 licenses, the total cost for them will be 20 * 0.1 = 2. The sum will be 52 per month. If your usage goes down, the price will go down too.

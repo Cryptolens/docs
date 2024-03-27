@@ -16,7 +16,7 @@ As a rule of thumb it can be said that for usage-based pricing, there needs to b
 Another reason to consider implementing usage-based pricing is if you develop a tool where your customer is not the direct end user. SDK is one such example. In such cases, it's easier to motivate usage-based pricing since each end user your customer sells to is presumably going to create value for them.
 
 ### When to choose Subscription pricing
-If your customer is the direct end user of your software, then a flat subscription fee may be better. For example, if you offer a SaaS application, charging for each new teammate that your customer adds to their account might not be a good idea. That's because it could encourage your client to keep the number of teammates down and potentially share password to the same account. Moreover, it tends to be better to increase product adoption within the company.
+If your customer is the direct end user of your software, then a flat subscription fee may be better. For example, if you offer a SaaS application, charging for each new teammate that your customer adds to their account might not be a good idea. That's because it could encourage your client to keep the number of teammates down, since each time they plan to add a new teammate is a new "buy" decision for them. Smaller firms could potentially share login details to the same account, which is bad from a security standpoint. Moreover, it tends to be better to increase product adoption within the company.
 
 ### Summary
 If the "unit" you want to charge extra for creates "direct" value to your client and if your client is not the final end-user of your product, then usage-based licensing may work better. In other cases, subscription-based licensing would be better. 
