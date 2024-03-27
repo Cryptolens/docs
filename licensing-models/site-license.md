@@ -25,6 +25,6 @@ If we can assume that all users are domain authenticated, the domain name could 
 
 ```cs
 string upn = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-string domain = upn.Split('@')[1];”
+string domain = upn.Split('@')[1];
 ``` 
 
