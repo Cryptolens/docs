@@ -28,3 +28,18 @@ string upn = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 string domain = upn.Split('@')[1];
 ``` 
 
+### Tracking machines for analytics purposes
+
+With site licenses, a limit on individual machines/devices is no longer enforced and instead any number of machines within a network/site can use a license key. If you would still like to keep track of the machines that use the license, you could use the the `FriendlyName` field, which is a part of the `Key.Activate` call. This will allow you to monitor usage on a machine level from the API Logs.
+
+### Limiting maximum number of machines
+
+If you would still like to enforce a limit on the maximum number of concurrent machines (either using [node-locking](/licensing-models/node-locked) or [floating licensing](/licensing-models/floating)) as well as limit usage to a specific location/site, we can store the domain (e.g. Active directory or a similar way of identifying a site) in a data object associated with the license key. This way, only machines that run in a domain that was added to a license may proceed with activation. 
+
+License key verification can proceed as follows:
+
+1. Call `Key.GetKey` to obtain the license key object.
+2. Look up the data object that you have defined that contains the approved domain/site identifier. Compare it to the one that is computed on the client machine.
+3. If the client machine uses an approved domain, proceed with activation by calling Key.Activate.
+
+> **Tip** To add or edit a data object associated with a license key, click on the license key on the product page and scroll down to *data objects* section. You will then see a link to *add/edit data objects*.
