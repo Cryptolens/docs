@@ -11,9 +11,13 @@ labelID: payment_forms
 
 Cryptolens core functionality has always been the software licensing API, which keeps track of what features your customers are entitled to, how long they can use your software, etc. Since Cryptolens is a cloud-based application, you can easily integrate it with other services, including those that process payments.
 
-There are three ways to integrate payments with Cryptolens: [calling our API](/payments/external-providers) manually, using [payment forms](/payment-form/index) or the new [recurring payments](/recurring-payments/index).
+There are four ways to integrate payments with Cryptolens: [calling our API](/payments/external-providers) manually, using our [Zapier app](https://zapier.com/apps/cryptolens/integrations) with your payment provider, using [payment forms](/payment-form/index) or the new [recurring payments](/recurring-payments/index).
 
 ![](/images/cryptolens-payments-overview.png)
+
+### Zapier
+
+If the payment provider that you plan to use offers Zapier apps, this is an easier implementation route to take instead of having to maintain your own code that links Cryptolens together with the payment platform. You can check out the Zapier actions and triggers that Cryptolens supports on [this page](https://zapier.com/apps/cryptolens/integrations).
 
 ### Calling the API
 If you would like to integrate payments with a platform that does not have native support in Cryptolens, you can easily do that using the Web API. Please check out the [following page](https://app.cryptolens.io/docs/api/v3/key) to see what methods can be called to change a license.

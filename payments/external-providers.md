@@ -8,8 +8,7 @@ labelID: payment_forms
 # Integrating with external payment providers
 
 ## Introduction
-If you would like to process payments with a payment gateway that Cryptolens does not support out of the box, you can
-use several Web API methods to your help. In most cases, you only need to use [license key related](https://app.cryptolens.io/docs/api/v3/Key) methods
+If you would like to process payments with a payment gateway that Cryptolens does not support out of the box, you can either use our [Zapier app](https://zapier.com/apps/cryptolens/integrations) if your payment provider offers Zapier apps too, or you can use several Web API methods to your help. In most cases, you only need to use [license key related](https://app.cryptolens.io/docs/api/v3/Key) methods
 of our Web API, in particular:
 
 * [Create Key](https://app.cryptolens.io/docs/api/v3/CreateKey) - to issue a new license key
