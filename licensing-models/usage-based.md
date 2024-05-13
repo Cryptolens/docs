@@ -222,6 +222,8 @@ Let's suppose your subscription offers usage-credits that are refilled on a mont
 
 You can read more about this feature on [this page](/web-interface/product-configurations).
 
+> You can reset data objects with a different names as well. For example, to reset "credit" every day and "credit2" every second day, you can set **cryptolens_dobjreset** (on the product level) to **[{"Name":"credit", "Freq":1, "Default":5}, {"Name":"credit2", "Freq":2, "Default":5}]**.
+
 ### Security note
 
 You may have noticed that we recommend to set **KeyLock to '-1'** when creating access tokens that will be used to work with data objects.
