@@ -307,7 +307,7 @@ The most common errors and their cause is summarized below:
 
 ## Billing
 
-When you sign up for an account, you get 30 days to test the service for free. If you would like to keep the subscription after the trial, it's important to add a valid credit card before 30 days trial has elapsed. After the trial, the account will be downgraded.
+When you sign up for an account, you get 30 days to test the service for free and you can continue using Cryptolens for free on the Free tier after 30 days. If you would like to upgrade to a paid tier after the trial, it's important to add a valid credit card before 30 days trial has elapsed. After the trial, the account will be downgraded to the Free tier.
 
 ### How monthly pricing is computed
 

@@ -26,10 +26,12 @@ In later versions (from our tests, since 2020.3.16f1), Unity added Newtonsoft.Js
 ##### If Unity does not have an internal Newtonsoft.Json package
 This is the case for older versions of Unity (from our tests, for versions earlier than 2020.3.16f1). In this case, you need to include both `Cryptolens.Licensing.CrossPlatform.dll` and `Newtonsoft.Json.dll`.
 
-##### If Unity uses Newtonsoft.Json v12
-In this case, we recommend using the .NET Framework 4.8 binary (in the net48 folder) without including the `Newtonsoft.Json.dll` file.
-
 ##### If Unity uses Newtonsoft.Json v13
+In this case, we recommend using the .NET Framework 4.8 binary (in the net48 folder) without including the `Newtonsoft.Json.dll` file. It should be possible to use the .NET Standard assembly too, and this has been tested in 2022.3.39f1. However, if you are using an older version of Unity, you might need to change a setting to enable .NET Standard. We have outlined this in the [Considerations](#considerations) section at the bottom of this page.
+
+> If you are using the latest LTS version of Unity, it should already by targeting Newtonsoft.Json v13.
+
+##### If Unity uses a different version of Newtonsoft.Json
 In this case, our library needs to be recompiled with a few changes. The steps are as follows:
 
 * Step 1:  [Install the .NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
@@ -43,7 +45,7 @@ In this case, our library needs to be recompiled with a few changes. The steps a
 <AssemblyOriginatorKeyFile>certifikat.pfx</AssemblyOriginatorKeyFile>
 ...
 ```
-* Step 4: Change Newtonsoft.Json version from `12.0.3` to `13.0.1` in the section below:
+* Step 4: Change Newtonsoft.Json version from `13.0.1` to `12.0.3`(or any other version you would like to use) in the section below:
 
 ```
 <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net47' or '$(TargetFramework)' == 'net471' or '$(TargetFramework)' == 'net48'">

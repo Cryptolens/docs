@@ -12,6 +12,8 @@ This is especially useful if you plan to sell your software to larger enterprise
 
 > You can find example projects [here](https://github.com/Cryptolens/Examples/tree/master/offline-verification).
 
+If you prefer to watch a video, please check out <a href="https://cryptolens.io/2024/07/offline-license-verifications/" target="_blank">this post</a>. You can also find the notes used in the video tutorial on <a href="/content/offline-verification.pdf" target="_blank">this page</a>.
+
 ## Idea
 
 To verify licenses without internet access, Cryptolens uses public-key cryptography to sign each response that is sent to your application. You can think of each of these responses as a
