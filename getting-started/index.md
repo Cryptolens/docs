@@ -46,7 +46,7 @@ If you are new to Cryptolens, we recommend to go through the basics, such as [cr
 <div class="row">
 <div class="col-md-4">
     <div class="card">
-    <a href="https://cryptolens.io/2019/01/protecting-rhinoceros-plugins-with-software-licensing/" style="text-decoration:none;">
+    <a href="/getting-started/rhino-ceros-3d-grashopper" style="text-decoration:none;">
         <div class="card-body" style="background-color: #220999;">
             <h3 class="text-center" style="color:white;">Rhinoceros / Grasshopper</h3> 
         </div>

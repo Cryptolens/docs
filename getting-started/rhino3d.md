@@ -1,10 +1,10 @@
 ---
 title: Rhino 3D
 author: Artem Los
-description: Introduction to Rhinoceros plugin software licensing
+description: Introduction to Rhino ceros and Grashopper plugin software licensing
 labelID: getting_started
 ---
 
-# Rhino 3D
+# Rhino 3D / Grashopper
 
-Please check out the following article: https://cryptolens.io/2019/01/protecting-rhinoceros-plugins-with-software-licensing/
+This article moved to [this page](/getting-started/rhino-ceros-3d-grashopper).
